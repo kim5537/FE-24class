@@ -24,5 +24,27 @@
   align-items: center;
 }
 
-#navigation .menu_icon {
+.menu_icon a {
+  display: inline-block;
+  margin: 0 50px;
+}
+
+/*slide*/
+#slide {
+  width: 100%;
+  position: relative;
+  border: 1px solid #f00;
+}
+
+.slide_text_inner {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f00;
+  align-items: center;
+  justify-items: center;
+}
+
+.slide_container {
+  position: absolute;
 }

@@ -5,6 +5,16 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 :root {
   --bg-color-white: #fff;
   --bg-color-black: #000;
