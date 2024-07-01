@@ -1,0 +1,28 @@
+@import url("./reset.css");
+
+/*==Desktop==*/
+/*common*/
+#container {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: rgb(158, 158, 158);
+}
+
+/*top_navigation*/
+#top_navigation {
+  width: 100%;
+  height: 180px;
+  background-color: var(--bg-color-white);
+  position: fixed;
+}
+
+#navigation {
+  width: 1390px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navigation .menu_icon {
+}
