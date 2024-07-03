@@ -166,19 +166,21 @@ a {
 
 /*top contents text*/
 #top_contents {
-  border: 1px solid #f00;
+  border: 1px solid rgb(24, 16, 92);
+  margin: 80px auto;
   width: 1098px;
-  margin-right: 30%;
-  margin-top: 60px;
   color: #fff;
 }
 
 /*--item_cards--*/
-#card_items {
-  width: 60px;
-  height: 745px;
-  overflow: hidden;
+#card_items ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   position: absolute;
-  right: 0;
-  transform: translateY(-100%);
+  transform: translateY(-70px);
+  li {
+    width: 230px;
+    height: 200px;
+  }
 }
