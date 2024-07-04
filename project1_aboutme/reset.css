@@ -17,7 +17,7 @@ a {
 
 :root {
   --bg-color-white: #fff;
-  --bg-color-black: #000;
-  --bg-color-blue: #b1caef;
   --bg-color-yellow: #fff6f0;
+  --color-black: #000;
+  --color-blue: #b1caef;
 }
