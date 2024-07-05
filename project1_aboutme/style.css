@@ -43,7 +43,7 @@
 #slide {
   margin-top: 60px;
   width: 100%;
-  height: 650px;
+  height: 800px;
   position: relative;
   border: 1px solid #f00;
   overflow: hidden;
@@ -74,30 +74,10 @@
   transform: translate(-50%, -50%);
 }
 
-/* .slide_text {
-  width: 1080px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  .slide_text_inner {
-    border: 1px solid rgb(0, 26, 255);
-    text-align: center;
-    color: var(--bg-color-white);
-    img {
-      z-index: 4;
-      border: 1px solid #f00;
-      width: 200px;
-    }
-  }
-}
+/*a bout me*/
 
-#silde ul {
+#aboutme {
   width: 100%;
-  height: 900px;
+  height: 1030px;
+  border: 1px solid #f00;
 }
-
-.slide_container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
