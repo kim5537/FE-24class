@@ -1,4 +1,10 @@
+/*font*/
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@font-face {
+  font-family: "KCC-Hanbit";
+  src: url(./font/KCC-Hanbit.woff);
+  font-weight: 800;
+}
 
 :root {
   --bg-color-white: #fff;
@@ -23,5 +29,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-/*font*/
