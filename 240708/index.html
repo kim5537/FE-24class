@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        /* transition: width 0.3s, height 0.8s; */
+        /*벤더 프리픽스*/
+        /*ms=>m/s*/
+        /*크로스 브라우징 = 브라우저간에 꼬임*/
+        /*각 브러우저 간에 호환이 다 달라서 중간 유통자*/
+        /* -ms-transition-duration: 0.8s;
+        -moz-transition-duration: 0.8s;
+        -webkit-transition-duration: 0.8s; */
+        /* transition-duration: 0.8s; */
+        /* transition-property: width: 200px, height: 300px;
+        transition-delay: 0.2s;
+        transition-timing-funtion: cubic-bezier(.42,.13,.48,.88); */
+
+        transition: background 0.8s esae, width 0.5s ease-out 0.3s;
+
+        &:hover {
+          width: 200px;
+          height: 300px;
+        }
+        &:active {
+          background: crimson;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">box</div>
+  </body>
+</html>

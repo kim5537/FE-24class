@@ -57,7 +57,7 @@
             id="phone1"
             class="phoneNum"
             onkeyup="onchange()"
-            onchange="changphone1"
+            onchange="changePhone1()"
           />
           -
           <input
@@ -65,8 +65,8 @@
             name="secondNum"
             id="phone2"
             class="phoneNum"
-            onkeyup="onchange"
-            onchange="changphone2"
+            onkeyup="onchange()"
+            onchange="changePhone2()"
           />
           -
           <input
@@ -75,7 +75,7 @@
             id="phone3"
             class="phoneNum"
             onkeyup="onchange()"
-            onchange="changphone3"
+            onchange="changePhone3()"
           />
         </div>
         <div class="token_wrapper">
@@ -88,13 +88,13 @@
         </div>
         <div class="location_wrapper">
           <select name="location" id="location">
-            <option value="none" selected disabled>지역을 선택하세요.</option>
-            <option value="seoul">서울</option>
-            <option value="gyeonggi">경기</option>
-            <option value="incheon">인천</option>
-            <option value="daegu">대구</option>
-            <option value="masan">마산</option>
-            <option value="busan">부산</option>
+            <option selected disabled>지역을 선택하세요.</option>
+            <option>서울</option>
+            <option>경기</option>
+            <option>인천</option>
+            <option>대구</option>
+            <option>마산</option>
+            <option>부산</option>
           </select>
         </div>
         <div id="error_location" class="error"></div>
