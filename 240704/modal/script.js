@@ -1,5 +1,5 @@
 const btn = document.querySelector("#open");
-const modalBox = document.querySelector("#modal_contents");
+const modalBox = document.querySelector("#modal_box");
 const close = document.querySelector("#close");
 console.log(close);
 

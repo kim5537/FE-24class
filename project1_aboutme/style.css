@@ -76,9 +76,14 @@
 
 .slide_container {
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 /*------main denominator------*/
@@ -204,7 +209,7 @@
 /**back deco**/
 #favorite_bgimg {
   .deco2 {
-    width: 980px;
+    width: 1080px;
     bottom: 0;
     right: 50px;
     position: absolute;
