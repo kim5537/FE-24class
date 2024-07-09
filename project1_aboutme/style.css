@@ -331,56 +331,6 @@
       .menu_list {
         display: none;
       }
-
-      /*-header-*/
-      .mobile_menu_list {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        align-items: flex-end;
-        padding-top: 80px;
-        padding-right: 10px;
-        position: fixed;
-        top: 0;
-        width: 190px;
-        right: -190px;
-        height: 100vh;
-        background-color: var(--bg-color-white);
-        a:hover {
-          color: #6b0dde;
-          border-bottom: 1px solid #6b0dde;
-        }
-      }
-      .trigger {
-        border: 1px solid #000;
-        width: 30px;
-        height: 20px;
-        position: relative;
-        display: block;
-        span {
-          display: block;
-          width: 100%;
-          height: 2px;
-          background: var(--color-black);
-          position: absolute;
-          .action {
-            background: var(--bg-color-white);
-          }
-          &:nth-child(1) {
-            top: 0;
-            left: 0;
-          }
-          &:nth-child(2) {
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-          }
-          &:nth-child(3) {
-            bottom: 0;
-            left: 0;
-          }
-        }
-      }
     }
   }
 
@@ -392,7 +342,7 @@
       .menu_list {
         display: none;
       }
-      .mobile_menu_list {
+      .MobileList {
         display: flex;
         flex-direction: column;
         gap: 40px;
@@ -400,7 +350,7 @@
         padding-top: 80px;
         padding-right: 10px;
         position: fixed;
-        top: 0;
+        top: 0px;
         width: 190px;
         right: -190px;
         height: 100vh;
@@ -409,51 +359,60 @@
           color: #6b0dde;
           border-bottom: 1px solid #6b0dde;
         }
+        .open {
+          right: 0;
+        }
       }
+
+      /*trigger*/
       .trigger {
-        border: 1px solid #000;
+        display: block;
         width: 30px;
         height: 20px;
+        top: 20px;
+        left: 96%;
         position: relative;
-        display: block;
-        span {
+        & > span {
           display: block;
           width: 100%;
           height: 2px;
           background: var(--color-black);
           position: absolute;
-          .action {
+          .active {
             background: var(--bg-color-white);
           }
           &:nth-child(1) {
             top: 0;
             left: 0;
-            .action {
-              top: 50%;
-              left: 0;
-              transform: rotate(45deg);
-            }
           }
           &:nth-child(2) {
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-            .action {
-              opacity: 0;
-            }
           }
           &:nth-child(3) {
             bottom: 0;
             left: 0;
-            .action {
-              transform: rotate(-45deg);
-            }
           }
         }
       }
     }
   }
+  .trigger.active span:nth-child(1) {
+    top: 50%;
+    left: 0;
+    transform: rotate(45deg);
+  }
 
+  .trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .trigger.active span:nth-child(3) {
+    top: 50%;
+    left: 0;
+    transform: rotate(-45deg);
+  }
   /*slide*/
   #slide {
     width: 100%;
@@ -483,8 +442,15 @@
     margin: 0 auto;
     z-index: 1;
     background: url(./img/mobile_text_box1.png) no-repeat center/100%;
-    padding: 120px 10px 10px 10px;
+    padding: 110px 10px 10px 10px;
     text-align: justify;
+  }
+
+  .text_title {
+    text-align: right;
+    margin: 0 5px 20px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
   }
 
   /*aboutme*/
@@ -522,7 +488,7 @@
           margin-top: 200px;
         }
         .deco1 {
-          bottom: 1120px;
+          bottom: 1100px;
           right: 55%;
           width: 200px;
           height: 40px;
@@ -612,9 +578,9 @@
       #personality_bgimg {
         .back3 {
           height: 420px;
-          width: 460px;
+          width: 520px;
           top: 160px;
-          left: 44%;
+          left: 40%;
           transform: translateX(-40%);
         }
         .deco3 {
@@ -632,6 +598,15 @@
           transform: rotate(160deg) translateX(-40%);
         }
       }
+    }
+  }
+  #goals {
+    width: 100%;
+    height: 100%;
+    .footer_inner {
+      width: 100%;
+      height: 1800px;
+      transform: translate(-50%);
     }
   }
 }
