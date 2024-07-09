@@ -4,7 +4,7 @@ const gnbMobile = document.querySelector(".MobileList");
 console.log(gnbMobile);
 
 toggleBtn.addEventListener("click", () => {
-  // console.log("ok");
+  console.log("ok");
   gnbMobile.classList.toggle(".open");
-  // this.classList.toggle(".active");
+  this.classList.toggle(".active");
 });
