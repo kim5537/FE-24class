@@ -30,34 +30,16 @@ topSlide.addEventListener("click", () => {
   topImg.classList.toggle("active");
 });
 
-//각요소 마우스 오버
-// const illust1 = Document.querySelector(".Aillust");
-// console.log(illust1);
-// illust1.addEventListener("mouseover", () => {
-//   const scale1 = Document.querySelector(".back1");
-//   scale1.style.transform = "scale(1.2)";
-// });
+//------about me 이벤트----//
+const illust = document.querySelector(".Aillust");
 
-// Intersection Observer 객체 생성
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const bubble = entry.target.querySelector(".Abubble");
-        console.log(bubble);
-        // bubble.classList.add("active");
-      }
-    });
-  },
-  {
-    threshold: 0.5,
-  }
-);
-
-// // 관찰할 대상 요소 선택
-// const Aillust = document.querySelector(".Aillust");
-
-// // Intersection Observer에 관찰할 요소 등록
-// if (Aillust) {
-//   observer.observe(Aillust);
-// }
+// console.log(illust);
+illust.addEventListener("click", () => {
+  const deco1 = document.querySelector(".deco1");
+  deco1.style.opacity = "1";
+  const Abubble = document.querySelector(".Abubble");
+  Abubble.style.animation = "bubble linear 2s forwards";
+  const MAbubble = document.querySelector(".AMbubble");
+  MAbubble.style.animation = "Mbubble linear 2s forwards";
+  illust.style.animation = "Aillust linear 1s forwards";
+});
