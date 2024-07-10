@@ -173,16 +173,24 @@
       position: absolute;
       left: 30px;
       bottom: 380px;
+      & > img .active {
+        animation: illust linear 2s;
+      }
     }
     .Abubble {
       right: 170px;
       top: 240px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
       .text {
         bottom: 0px;
         right: 0px;
         background: url(./img/text_box1.png) no-repeat;
         background-size: contain;
         padding: 10px 10px 10px 50px;
+      }
+      &.active {
+        opacity: 1;
       }
     }
   }
@@ -199,6 +207,9 @@
   .back1 {
     margin-top: 200px;
     width: 950px;
+    &.active {
+      scale: 1.2;
+    }
   }
 }
 
