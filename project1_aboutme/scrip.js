@@ -2,25 +2,7 @@
 const toggleBtn = document.querySelector(".trigger");
 toggleBtn.addEventListener("click", () => {
   const gnbMobile = document.querySelector(".MobileList");
-  if (gnbMobile.classList.contains(open)) {
-    gnbMobile.style.right = "-190px";
-    gnbMobile.classList.remove(open);
-  } else {
-    gnbMobile.style.right = "0px";
-    gnbMobile.classList.add(open);
-  }
-  // gnbMobile.style.right = "0px";
-  // if (gnbMobile.style.right == "0px") {
-  //   toggleBtn.addEventListener("click", () => {
-  //     gnbMobile.style.right = "-190px";
-  //   });
-  // } else {
-  //   toggleBtn.addEventListener("click", () => {
-  //     gnbMobile.style.right = "0px";
-  //   });
-  // }
-  // gnbMobile.classList.add(".open");
-  // this.classList.toggle(".active");
+  gnbMobile.classList.toggle("open");
 });
 
 //------클릭시 상단 이미지 변경------//
@@ -31,15 +13,37 @@ topSlide.addEventListener("click", () => {
 });
 
 //------about me 이벤트----//
-const illust = document.querySelector(".Aillust");
+const Ahand = document.querySelector(".Ahand");
 
 // console.log(illust);
-illust.addEventListener("click", () => {
+Ahand.addEventListener("click", () => {
+  Ahand.style.animation = "Ahand linear 2s forwards";
   const deco1 = document.querySelector(".deco1");
   deco1.style.opacity = "1";
   const Abubble = document.querySelector(".Abubble");
-  Abubble.style.animation = "bubble linear 2s forwards";
+  Abubble.style.animation = "bubble linear 3s forwards";
   const MAbubble = document.querySelector(".AMbubble");
-  MAbubble.style.animation = "Mbubble linear 2s forwards";
-  illust.style.animation = "Aillust linear 1s forwards";
+  MAbubble.style.animation = "Mbubble linear 3s forwards";
+  const Aillust = document.querySelector(".Aillust");
+  Aillust.style.animation = "Aillust linear 2s forwards";
 });
+
+//------favorite 이벤트----//
+const fillust = document.querySelector(".fillust");
+fillust.addEventListener("click", () => {
+  const Square = document.querySelector(".back2");
+  Square.style.animation = "Square linear 0.5s forwards";
+  const circle = document.querySelector(".decoimg");
+  circle.style.animation = "circle linear 20s forwards";
+  const Fbubble = document.querySelector(".Fbubble");
+  Fbubble.style.animation = "bubble linear 3s forwards";
+  const FMbubble = document.querySelector(".FMbubble");
+  FMbubble.style.animation = "Mbubble linear 3s forwards";
+  const fback = document.querySelector(".fback");
+  console.log(fback);
+  fback.style.scale = "1";
+  fback.style.opacity = "1";
+  fback.style.transition = "all 2s";
+});
+
+//------personality 이벤트----//
