@@ -181,10 +181,10 @@
       .Ahand {
         position: absolute;
         width: 100%;
-        opacity: 0;
+        /* opacity: 0; */
       }
       .Aillust {
-        opacity: 0.1;
+        opacity: 0;
         position: absolute;
         width: 100%;
       }
@@ -307,15 +307,22 @@
       left: 20px;
       bottom: 240px;
       background: #fff;
-      .Pillust {
-        position: absolute;
-        height: 100%;
-        filter: blur(4px);
+      .room {
+        .roomimg {
+          position: absolute;
+          height: 100%;
+          scale: 1.3;
+          filter: blur(4px);
+        }
       }
-      .Phand {
+
+      .phone {
         position: absolute;
         height: 100%;
         transform: translateX(-200px);
+        .phoneimg {
+          height: 100%;
+        }
       }
     }
     .Pbubble {
@@ -362,11 +369,10 @@
   .back3 {
     width: 850px;
     bottom: 260px;
-    /* margin: 400px 40px 10px 5px; */
+
     left: 0px;
     position: absolute;
     z-index: -1;
-    /* background: url(./img/main3_back.png) no-repeat center/100%; */
   }
 }
 
@@ -401,8 +407,11 @@
         margin-top: 20px;
         color: var(--bg-color-white);
         text-shadow: 0 0 8px #d59d9d;
-        p {
-          margin-bottom: 100px;
+        .gtext {
+          opacity: 0;
+          p {
+            margin-top: 50px;
+          }
         }
       }
     }
@@ -458,29 +467,6 @@
   }
 }
 
-@keyframes Ahand {
-  0% {
-    opacity: 0;
-    scale: 1.7;
-  }
-  50% {
-    opacity: 1;
-    scale: 1.7;
-  }
-  70% {
-    /* transform: rotate(5deg); */
-    scale: 1.5;
-  }
-  80% {
-    /* transform: rotate(-5deg); */
-    scale: 1.2;
-  }
-  100% {
-    opacity: 1;
-    scale: 1;
-    /* transform: rotate(0deg); */
-  }
-}
 /*favorite*/
 
 @keyframes Square {
@@ -507,29 +493,68 @@
 /*personality*/
 @keyframes flower1 {
   0% {
-    transform: rotate(5deg);
+    transform: rotate(0deg);
   }
   40% {
-    transform: rotate(-5deg);
+    transform: rotate(-2deg);
   }
   60% {
-    transform: rotate(2deg);
+    transform: rotate(0deg);
   }
-  100% {
-    transform: rotate(-1deg);
+  90% {
+    transform: rotate(2deg);
   }
 }
 @keyframes flower2 {
   0% {
+    transform: rotate(0deg);
   }
   40% {
+    transform: rotate(-2deg);
   }
   60% {
+    transform: rotate(0deg);
   }
-  100% {
+  90% {
+    transform: rotate(2deg);
   }
 }
 
+@keyframes zoom {
+  0% {
+  }
+  40% {
+    transform: translate(-5%, 3%);
+    filter: blur(2px);
+  }
+  60% {
+    transform: translate(-2%, 5%);
+    filter: blur(4px);
+  }
+  100% {
+    transform: translate(0, 0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes phone {
+  0% {
+  }
+  40% {
+    transform: translate(-7%, 3%) scale(1.3);
+  }
+  60% {
+    transform: translate(-2%, 6%) scale(1.6);
+  }
+  90% {
+    transform: translate(0, 0) scale(2);
+    opacity: 1.9;
+  }
+  100% {
+    transform: translate(0, 0) scale(2);
+    opacity: 0;
+  }
+}
 /*=========mobile=========*/
 @media screen and (max-width: 1100px) and (min-width: 320px) {
   #container {
@@ -540,6 +565,9 @@
     #navigation {
       width: 100%;
       padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       .menu_list {
         display: none;
       }
@@ -580,56 +608,14 @@
         }
       }
 
-      /* .MobileList.open {
-        right: 0;
-      } */
-
       /*trigger*/
       .trigger {
         display: block;
-        width: 30px;
-        height: 20px;
-        top: 20px;
-        left: 94%;
+        font-size: 24px;
+
         position: relative;
-        & > span {
-          display: block;
-          width: 100%;
-          height: 2px;
-          background: var(--color-black);
-          position: absolute;
-          &:nth-child(1) {
-            top: 0;
-            left: 0;
-          }
-          &:nth-child(2) {
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-          }
-          &:nth-child(3) {
-            bottom: 0;
-            left: 0;
-          }
-        }
       }
     }
-  }
-  /*trigger active*/
-  .trigger.active span:nth-child(1) {
-    top: 50%;
-    left: 0;
-    transform: rotate(45deg);
-  }
-
-  .trigger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .trigger.active span:nth-child(3) {
-    top: 50%;
-    left: 0;
-    transform: rotate(-45deg);
   }
 
   /*slide*/
@@ -702,7 +688,7 @@
             }
             .Ahand {
               height: 100%;
-              scale: 1.7;
+              /* scale: 1.7; */
             }
           }
           .AMbubble {
@@ -809,7 +795,6 @@
             display: flex;
             width: 500px;
             height: 300px;
-            flex-direction: row;
             left: 50%;
             top: 40%;
             transform: translate(-50%, -50%);
