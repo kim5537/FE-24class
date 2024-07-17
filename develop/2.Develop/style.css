@@ -18,14 +18,20 @@ a {
 
 .contenes {
   position: relative;
-  padding: 30px;
+  height: 100vh;
   width: 100%;
-  height: 100%;
   background: #000;
+  video {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    position: fixed;
+  }
 }
 
 #loginpage {
   position: absolute;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -38,14 +44,17 @@ a {
 
 #login input[type="submit"] {
   font-size: 18px;
-  background: #fff;
   border-radius: 12px;
   padding: 8px 45px;
   border: 1px solid transparent;
+  color: #fff;
+  background: #000;
+  border: 1px solid rgb(60, 77, 230);
+  box-shadow: 0 0 3px #6ee8f1;
   &:hover {
-    background: #000;
-    border: 1px solid #fff;
+    background: rgb(39, 50, 150);
     color: #fff;
+    border: 1px solid #fff;
   }
 }
 
@@ -107,6 +116,7 @@ a {
   border: 1px solid rgb(60, 77, 230);
   box-shadow: 0 0 3px #6ee8f1;
   margin: 6px 0 30px;
+  color: #ccc;
 }
 
 .userpassword #password {
@@ -117,6 +127,7 @@ a {
   border: 1px solid rgb(60, 77, 230);
   box-shadow: 0 0 3px #6ee8f1;
   margin: 6px 0 30px;
+  color: #ccc;
 }
 
 #gender_btn {
@@ -171,6 +182,10 @@ a {
       color: #fff;
       border: 2px solid rgb(60, 77, 230);
       box-shadow: 0 0 5px #6ee8f1;
+      &:hover {
+        background: rgb(39, 50, 150);
+        border: 1px solid #fff;
+      }
     }
   }
 }
@@ -207,6 +222,11 @@ footer {
           color: #ccc;
         }
       }
+      &:hover {
+        background: rgb(39, 50, 150);
+        color: #000;
+        border: 1px solid #fff;
+      }
     }
   }
 }
@@ -216,59 +236,69 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* overflow: hidden; */
+  width: 100%;
+  position: relative;
   .back {
-    width: 600px;
-    height: 200px;
-    border: 1px solid #f00;
-    position: relative;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    -webkit-perspective: 1500;
+    perspective: 1500;
     .merry {
+      width: 600px;
+      height: 800px;
       position: absolute;
-      left: 50%;
-      top: 30px;
-      transform: translateX(-50%);
+      margin-left: 40%;
+      margin-top: -10%;
+      transform-style: preserve-3d;
+      animation: rint 25s infinite linear;
       .face {
+        /* width: 600px;
+        height: 800px; */
         position: absolute;
-        left: 0;
-        top: 0;
-        margin-left: -155px;
         backface-visibility: hidden;
         transform-style: preserve-3d;
         &:nth-child(1) {
-          transform: rotateY(0deg) translateZ(-370px);
+          transform: rotateY(0deg) translateZ(-1670px);
         }
         &:nth-child(2) {
-          transform: rotateY(36deg) translateZ(-370px);
+          transform: rotateY(36deg) translateZ(-1670px);
         }
         &:nth-child(3) {
-          transform: rotateY(72deg) translateZ(-370px);
+          transform: rotateY(72deg) translateZ(-1670px);
         }
         &:nth-child(4) {
-          transform: rotateY(108deg) translateZ(-370px);
+          transform: rotateY(108deg) translateZ(-1670px);
         }
         &:nth-child(5) {
-          transform: rotateY(144deg) translateZ(-370px);
+          transform: rotateY(144deg) translateZ(-1670px);
         }
         &:nth-child(6) {
-          transform: rotateY(180deg) translateZ(-370px);
+          transform: rotateY(180deg) translateZ(-1670px);
         }
         &:nth-child(7) {
-          transform: rotateY(216deg) translateZ(-370px);
+          transform: rotateY(216deg) translateZ(-1670px);
         }
         &:nth-child(8) {
-          transform: rotateY(252deg) translateZ(-370px);
+          transform: rotateY(252deg) translateZ(-1670px);
         }
         &:nth-child(9) {
-          transform: rotateY(288deg) translateZ(-370px);
+          transform: rotateY(288deg) translateZ(-1670px);
         }
         &:nth-child(10) {
-          transform: rotateY(324deg) translateZ(-370px);
+          transform: rotateY(324deg) translateZ(-1670px);
         }
         .box {
+          width: 1000px;
+          height: 1400px;
+          object-fit: cover;
           img {
-            width: 230px;
-            height: 400px;
+            filter: grayscale(50%);
+            filter: brightness(70%);
+            width: 100%;
+            height: 100%;
             margin-bottom: 5px;
+            opacity: 0.8;
           }
         }
       }
