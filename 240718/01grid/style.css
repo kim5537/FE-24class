@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#grid {
+  display: grid;
+  height: 100vh;
+  grid-template-areas: "header header header" "welcome welcome welcome" "banner content aside" "footer footer footer";
+  div {
+    border: 1px solid #000;
+    &.header {
+      text-align: center;
+      grid-area: header;
+      background: rgb(150, 212, 135);
+    }
+    &.welcome {
+      grid-area: welcome;
+      background: url(./img/welcome-image.jpg) center/cover no-repeat;
+    }
+    &.banner {
+      grid-area: banner;
+    }
+    &.content {
+      grid-area: content;
+    }
+    &.aside {
+      grid-area: aside;
+    }
+    &.footer {
+      grid-area: footer;
+    }
+  }
+}

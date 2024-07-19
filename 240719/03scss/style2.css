@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background: #000;
+  height: 100vh;
+}
+.container .inputbox {
+  display: none;
+}
+.container .btn {
+  color: #fff;
+}

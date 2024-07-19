@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  width: 1400px;
+  margin: 0 auto;
+  border: 1px solid #000;
+  h1 {
+    grid-area: 1/1/1/4;
+    justify-self: start;
+  }
+  & > div {
+    border-bottom: 1px solid #ccc;
+    &.item1 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item2 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item3 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item4 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item5 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item6 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item7 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item8 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item9 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item10 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item11 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+    &.item12 {
+      display: grid;
+      grid-template-columns: 100px 300px;
+      & > div {
+        p {
+          color: blue;
+        }
+      }
+    }
+  }
+}
