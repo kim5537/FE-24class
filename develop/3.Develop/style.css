@@ -59,31 +59,31 @@ input[type="radio"] {
     &:nth-of-type(2) > article:nth-child(2) {
       div {
         width: 55%;
-        animation-delay: 2s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(3) > article:nth-child(2) {
       div {
         width: 62%;
-        animation-delay: 2.5s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(4) > article:nth-child(2) {
       div {
         width: 55%;
-        animation-delay: 3s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(5) > article:nth-child(2) {
       div {
         width: 75%;
-        animation-delay: 3.5s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(6) > article:nth-child(2) {
       div {
         width: 95%;
-        animation-delay: 4s;
+        animation-delay: 1.5s;
       }
     }
   }
@@ -101,31 +101,31 @@ input[type="radio"] {
     &:nth-of-type(2) > article:nth-child(2) {
       div {
         width: 55%;
-        animation-delay: 2s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(3) > article:nth-child(2) {
       div {
         width: 62%;
-        animation-delay: 2.5s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(4) > article:nth-child(2) {
       div {
         width: 55%;
-        animation-delay: 3s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(5) > article:nth-child(2) {
       div {
         width: 75%;
-        animation-delay: 3.5s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(6) > article:nth-child(2) {
       div {
         width: 95%;
-        animation-delay: 4s;
+        animation-delay: 1.5s;
       }
     }
   }
@@ -143,31 +143,31 @@ input[type="radio"] {
     &:nth-of-type(2) > article:nth-child(2) {
       div {
         width: 55%;
-        animation-delay: 2s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(3) > article:nth-child(2) {
       div {
         width: 62%;
-        animation-delay: 2.5s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(4) > article:nth-child(2) {
       div {
         width: 55%;
-        animation-delay: 3s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(5) > article:nth-child(2) {
       div {
         width: 75%;
-        animation-delay: 3.5s;
+        animation-delay: 1.5s;
       }
     }
     &:nth-of-type(6) > article:nth-child(2) {
       div {
         width: 95%;
-        animation-delay: 4s;
+        animation-delay: 1.5s;
       }
     }
   }
