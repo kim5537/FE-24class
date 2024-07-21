@@ -1,10 +1,339 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Nanum Gothic Coding", monospace;
+}
+
+#Container {
+  height: 100vh;
+  position: relative;
 }
 /*input*/
+input[type="radio"] {
+  display: none;
+  &#character1:checked ~ #mains #main {
+    left: 0;
+  }
+  &#character2:checked ~ #mains #main {
+    left: -100%;
+  }
+  &#character3:checked ~ #mains #main {
+    left: -200%;
+  }
+  &#character1:checked ~ #mains #main .window1 .main_content .data {
+    transform: translate(300px, 80px);
+    opacity: 1;
+  }
+  &#character2:checked ~ #mains #main .window2 .main_content .data {
+    transform: translate(300px, 80px);
+    opacity: 1;
+    & section article div {
+      animation-delay: 1s;
+      animation: stats 0.5s linear;
+      animation-fill-mode: both;
+    }
+  }
+  &#character3:checked ~ #mains #main .window3 .main_content .data {
+    transform: translate(300px, 80px);
+    opacity: 1;
+    & section article div {
+      animation-delay: 1s;
+      animation: stats 0.5s linear;
+      animation-fill-mode: both;
+    }
+  }
+  &#character1:checked ~ #mains #main .window1 .main_content .data section {
+    div {
+      animation: stats 0.5s linear;
+      animation-fill-mode: both;
+    }
+    &:nth-of-type(1) > article:nth-child(2) {
+      div {
+        width: 66%;
+        animation-delay: 1.5s;
+      }
+    }
+    &:nth-of-type(2) > article:nth-child(2) {
+      div {
+        width: 55%;
+        animation-delay: 2s;
+      }
+    }
+    &:nth-of-type(3) > article:nth-child(2) {
+      div {
+        width: 62%;
+        animation-delay: 2.5s;
+      }
+    }
+    &:nth-of-type(4) > article:nth-child(2) {
+      div {
+        width: 55%;
+        animation-delay: 3s;
+      }
+    }
+    &:nth-of-type(5) > article:nth-child(2) {
+      div {
+        width: 75%;
+        animation-delay: 3.5s;
+      }
+    }
+    &:nth-of-type(6) > article:nth-child(2) {
+      div {
+        width: 95%;
+        animation-delay: 4s;
+      }
+    }
+  }
+  &#character2:checked ~ #mains #main .window2 .main_content .data section {
+    div {
+      animation: stats 0.5s linear;
+      animation-fill-mode: both;
+    }
+    &:nth-of-type(1) > article:nth-child(2) {
+      div {
+        width: 66%;
+        animation-delay: 1.5s;
+      }
+    }
+    &:nth-of-type(2) > article:nth-child(2) {
+      div {
+        width: 55%;
+        animation-delay: 2s;
+      }
+    }
+    &:nth-of-type(3) > article:nth-child(2) {
+      div {
+        width: 62%;
+        animation-delay: 2.5s;
+      }
+    }
+    &:nth-of-type(4) > article:nth-child(2) {
+      div {
+        width: 55%;
+        animation-delay: 3s;
+      }
+    }
+    &:nth-of-type(5) > article:nth-child(2) {
+      div {
+        width: 75%;
+        animation-delay: 3.5s;
+      }
+    }
+    &:nth-of-type(6) > article:nth-child(2) {
+      div {
+        width: 95%;
+        animation-delay: 4s;
+      }
+    }
+  }
+  &#character3:checked ~ #mains #main .window3 .main_content .data section {
+    div {
+      animation: stats 0.5s linear;
+      animation-fill-mode: both;
+    }
+    &:nth-of-type(1) > article:nth-child(2) {
+      div {
+        width: 66%;
+        animation-delay: 1.5s;
+      }
+    }
+    &:nth-of-type(2) > article:nth-child(2) {
+      div {
+        width: 55%;
+        animation-delay: 2s;
+      }
+    }
+    &:nth-of-type(3) > article:nth-child(2) {
+      div {
+        width: 62%;
+        animation-delay: 2.5s;
+      }
+    }
+    &:nth-of-type(4) > article:nth-child(2) {
+      div {
+        width: 55%;
+        animation-delay: 3s;
+      }
+    }
+    &:nth-of-type(5) > article:nth-child(2) {
+      div {
+        width: 75%;
+        animation-delay: 3.5s;
+      }
+    }
+    &:nth-of-type(6) > article:nth-child(2) {
+      div {
+        width: 95%;
+        animation-delay: 4s;
+      }
+    }
+  }
+  &#character1:checked ~ .tab label[for="character1"] {
+    color: crimson;
+  }
+  &#character2:checked ~ .tab label[for="character2"] {
+    color: crimson;
+  }
+  &#character3:checked ~ .tab label[for="character3"] {
+    color: crimson;
+  }
+}
 
-/*main*/
+/*mains*/
+#mains {
+  height: 100vh;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+  #main {
+    width: 300%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    transition: all 0.3s;
+    .page {
+      width: 33.33%;
+      height: 100vh;
+      position: relative;
+      .main_content {
+        height: 100%;
+        width: 100%;
+        .data {
+          transform: translate(300px, -800px);
+          opacity: 0;
+          width: 400px;
+          height: 600px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          padding: 20px 10px;
+          background: #000;
+          border: 2px solid #000000;
+          border-radius: 10px;
+          transition: all 1s;
+          transition-delay: 0.4s;
+          h1 {
+            margin: 4px 14px;
+            font-size: 1.6rem;
+            color: #ffffff;
+          }
+          section {
+            article {
+              color: #fff;
+              &:nth-child(1) {
+                display: flex;
+                justify-content: space-between;
+                padding: 2px 15px;
+              }
+              &:nth-child(2) {
+                width: 90%;
+                height: 30px;
+                margin: 6px auto;
+                padding: 4px;
+                border: 2px solid #dcdcee;
+                overflow: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*character1*/
+.window1 {
+  .main_content {
+    background: top 20% left 0% / 130% url(./img/charac1.png) no-repeat;
+    border: 1px solid rgb(0, 0, 0);
+    .data {
+      box-shadow: 0 0 10px #47c5ff;
+      section {
+        div {
+          height: 100%;
+          background: linear-gradient(
+            to left,
+            rgb(54, 74, 94) 10%,
+            rgb(102, 137, 157)
+          );
+        }
+      }
+    }
+  }
+}
+
+/*character2*/
+.window2 {
+  .main_content {
+    background: top 60% left 0% / 120% url(./img/charac2.png) no-repeat;
+    border: 1px solid rgb(0, 0, 0);
+    .data {
+      box-shadow: 0 0 10px #b547ff;
+      section {
+        div {
+          height: 100%;
+          background: linear-gradient(
+            to left,
+            rgb(94, 54, 92) 10%,
+            rgb(157, 102, 139)
+          );
+        }
+      }
+    }
+  }
+}
+
+/*character3*/
+.window3 {
+  .main_content {
+    background: top 5% left 0% / 120% url(./img/charac3.png) no-repeat;
+    border: 1px solid rgb(0, 0, 0);
+    .data {
+      box-shadow: 0 0 10px #a5eaf3;
+      section {
+        div {
+          height: 100%;
+          background: linear-gradient(
+            to left,
+            rgb(166, 178, 187) 10%,
+            rgb(160, 202, 247)
+          );
+        }
+      }
+    }
+  }
+}
 
 /*tab*/
+.tab {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  top: 0;
+  background: #222;
+  color: #fff;
+  label {
+    cursor: pointer;
+  }
+  div {
+    width: 130px;
+    height: 100%;
+    margin-left: 40%;
+    background: url(./img/logo.png) center/contain no-repeat;
+  }
+}
+
+/*animation*/
+
+@keyframes stats {
+  from {
+    width: 0;
+  }
+}
