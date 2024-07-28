@@ -78,6 +78,21 @@ body .cd-section > div .content {
 }
 
 /*Project*/
+.project-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ddd;
+  position: relative;
+}
+.project-inner input[name=tabmenu] {
+  display: none;
+}
+.project-inner input[id=tab1]:checked ~ .tabs {
+  margin-left: 0;
+}
+
 /*plan*/
 .plan-inner {
   background: #222;
@@ -358,4 +373,4 @@ body .cd-section > div .content {
 .contact_inner .contact_feature > div.contact_info p {
   margin-top: 20px;
   line-height: 2.4rem;
-}
+}/*# sourceMappingURL=style.css.map */
