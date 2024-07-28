@@ -494,4 +494,47 @@ body .cd-section > div .content {
 .contact_inner .contact_feature > div.contact_info p {
   margin-top: 20px;
   line-height: 2.4rem;
+}
+
+/* Modal */
+.modal {
+  font-family: "Source Code Pro";
+}
+.modal .header {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 100;
+}
+.modal .header .header-inner {
+  width: 95%;
+  height: 90px;
+  line-height: 90px;
+  margin: 0 auto;
+  border-bottom: 1px solid #ddd;
+}
+.modal .header .header-inner .modal-display {
+  font-size: 18px;
+}
+.modal .hiring-main {
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.modal .hiring-main.project-main1 {
+  background: url("./img/project-main-01-01.jpg") center/cover no-repeat;
+  height: 100vh;
+}
+.modal .hiring-main .hiring-heading {
+  color: #fff;
+}
+.modal .hiring-main .hiring-heading span {
+  font-size: 20px;
+}
+.modal .hiring-main .hiring-heading h1 {
+  font-size: 60px;
+  font-weight: 200;
 }/*# sourceMappingURL=style.css.map */

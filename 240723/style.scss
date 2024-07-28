@@ -516,3 +516,46 @@ body {
     }
   }
 }
+
+/* Modal */
+.modal {
+  font-family: map-get($family, sourcecode);
+  .header {
+    position: fixed;
+    width: 100%;
+    background: map-get($color, main-light-bg);
+    z-index: 100;
+    .header-inner {
+      width: 95%;
+      height: 90px;
+      line-height: 90px;
+      margin: 0 auto;
+      border-bottom: 1px solid map-get($color, main-item-border);
+      .modal-display {
+        font-size: 18px;
+      }
+    }
+  }
+  .hiring-main {
+    height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &.project-main1 {
+      background: url("./img/project-main-01-01.jpg") center/cover no-repeat;
+      height: 100vh;
+    }
+    .hiring-heading {
+      color: map-get($color, main-light-bg);
+      span {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 60px;
+        font-weight: 200;
+      }
+    }
+  }
+}
