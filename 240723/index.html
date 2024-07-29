@@ -32,8 +32,25 @@
   </head>
   <body data-hijacking="on" data-animation="rotate">
     <div class="container">
-      <!-- <section class="cd-section visible" id="home">1</section> -->
-      <!-- <section class="cd-section" id="about">
+      <section class="cd-section visible" id="home">
+        <div>
+          <div class="content">
+            <div class="home-inner">
+              <h3 class="welcome-text">
+                You Can do it
+                <span>With EZEN Academy <i class="fa-solid fa-heart"></i></span>
+              </h3>
+              <div class="opacity-image"></div>
+              <div class="home-heading">
+                <span>Ceative</span>
+                <span>Architecture</span>
+                <span>Specialists</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cd-section" id="about">
         <div>
           <div class="content">
             <div class="about-inner">
@@ -78,8 +95,8 @@
             </div>
           </div>
         </div>
-      </section> -->
-      <section class="cd-section visible" id="project">
+      </section>
+      <section class="cd-section" id="project">
         <div>
           <div class="content">
             <div class="project-inner">
@@ -88,7 +105,7 @@
               <input type="radio" name="tabmenu" id="tab3" />
               <div class="tabs">
                 <div class="tab">
-                  <div class="project-info" deta-text="01">
+                  <div class="project-info" data-text="01">
                     <h3>project:class Wall Architecture</h3>
                     <p>
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -107,7 +124,10 @@
                       <div><span>230</span>Members</div>
                       <div><span>3M</span>Budget</div>
                     </div>
-                    <a href="./project-detail-01.html" class="view-project"
+                    <a
+                      href="./project-detail-01.html"
+                      data-featherlight="iframe"
+                      class="view-project"
                       >View project<i class="fa-solid fa-arrow-right"></i
                     ></a>
                   </div>
@@ -131,7 +151,7 @@
                   </div>
                 </div>
                 <div class="tab">
-                  <div class="project-info" deta-text="03">
+                  <div class="project-info" data-text="02">
                     <h3>project:Hallway of Architecture</h3>
                     <p>
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -174,7 +194,7 @@
                   </div>
                 </div>
                 <div class="tab">
-                  <div class="project-info" deta-text="03">
+                  <div class="project-info" data-text="03">
                     <h3>project:Outside Stairs Architecture</h3>
                     <p>
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -226,7 +246,7 @@
           </div>
         </div>
       </section>
-      <!-- <section class="cd-section " id="plan">
+      <section class="cd-section" id="plan">
         <div>
           <div class="content">
             <div class="plan-inner">
@@ -339,8 +359,8 @@
             </div>
           </div>
         </div>
-      </section> -->
-      <!-- <section class="cd-section" id="awards">
+      </section>
+      <section class="cd-section" id="awards">
         <div>
           <div class="content">
             <div class="awards-inner">
@@ -368,8 +388,8 @@
             </div>
           </div>
         </div>
-      </section> -->
-      <!-- <section class="cd-section" id="location">
+      </section>
+      <section class="cd-section" id="location">
         <div>
           <div class="content">
             <div class="location-inner">
@@ -436,8 +456,8 @@
             </div>
           </div>
         </div>
-      </section> -->
-      <!-- <section class="cd-section" id="contact">
+      </section>
+      <section class="cd-section" id="contact">
         <div>
           <div class="content">
             <div class="contact_inner">
@@ -494,7 +514,31 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
+      <header>
+        <div class="gnb-inner">
+          <div class="logo">
+            <a href="#none"><img src="./img/logo.png" alt="logo" /></a>
+          </div>
+          <div class="gnb">
+            <div class="slogan">We Design, not project</div>
+            <ul class="menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#project">Project</a></li>
+              <li><a href="#plan">Plan & History</a></li>
+              <li><a href="#awards">Awards</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </header>
     </div>
   </body>
 </html>
