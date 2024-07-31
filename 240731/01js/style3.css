@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .main_text {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .sale {
+        width: 140px;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: crimson;
+        color: #fff;
+        h1 {
+          transform: rotate(-35deg);
+        }
+      }
+      .calc {
+        text-align: center;
+        li {
+          .price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+          }
+          .percent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+          }
+        }
+      }
+    }
+  }
+}
