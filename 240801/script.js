@@ -17,46 +17,46 @@
 // calcSum("아이언맨");
 //인자값을 str로  정하여 후에 그 인자값을 끌어와(프롬프트 알림글) 변환함 (아이언맨)
 
-// function calcSum() {
-//   let sum = 0;
-//   for (let i = 1; 1 <= 10; i++) {
-//     sum += i;
-//   }
-//   console.log(`1부터 10가지 더하면 ${sum}`);
-// }
+function calcSum() {
+  let sum = 0;
+  for (let i = 1; 1 <= 10; i++) {
+    sum += i;
+  }
+  console.log(`1부터 10가지 더하면 ${sum}`);
+}
 //함수 선언
 
-// calcSum();
+calcSum();
 
 //함수 호출
 
 //sum은 여기서 지역번수이다. 함수내에 선언되었기 때문
 
 //======익명 함수 ===========//
-// const calcSum = function() {}
+const calcSum = function () {};
 //평션뒤 함수명이 없이 변수명을 넣었다.
 
-// const calcSum = function () {
-//   let sum = 0;
-//   for (let i = 1; 1 <= 10; i++) {
-//     sum += i;
-//   }
-//   console.log(`1부터 10가지 더하면 ${sum}`);
-// };
+const calcSum = function () {
+  let sum = 0;
+  for (let i = 1; 1 <= 10; i++) {
+    sum += i;
+  }
+  console.log(`1부터 10가지 더하면 ${sum}`);
+};
 
 //=====화살표 함수 ==========//
 //화살표모양이 function이란 키워드를 대체할 수 있도록 한 함수
 //함수명을 줄여 없앴으니 function이란 단어도 없애보자.하고 나온 화살표 함수
 
 //--------함수의 예시 ----------------//
-// function sum(a, b) {
-//   const result = a + b;
-//   alert(`두 수의 합은 ${result}`);
-// }
+function sum(a, b) {
+  const result = a + b;
+  alert(`두 수의 합은 ${result}`);
+}
 // 변수로 사칙 연산을 하고 있기때문에 문자가 들어가면 템플릿리터럴을 해야한다.
-//const result = `a + b +"문자"`;
+const result = `a + b +"문자"`;
 
-// sum(1, 2);
+sum(1, 2);
 //인자값을 넣어줘야한다.
 
 // ---for
