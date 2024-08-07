@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body .star-tating {
+  display: flex;
+  gap: 10px;
+  background: #333;
+  padding: 5px;
+  border-radius: 5px;
+}
+body .star-tating .stars .fa-star {
+  cursor: pointer;
+}
+body .star-tating .stars .fa-star.active {
+  color: yellow;
+}
+body .star-tating .print {
+  color: #fff;
+}

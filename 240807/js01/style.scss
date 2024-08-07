@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: end;
+  position: relative;
+  overflow: hidden;
+  #triggerBack {
+    width: 30px;
+    height: 30px;
+    background: purple;
+    display: inline-block;
+    .trigger {
+      width: 10px;
+      height: 10px;
+      position: relative;
+      top: 10px;
+      left: 8px;
+      & > span {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #fff;
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 49%;
+        }
+        &:nth-child(3) {
+          bottom: 0;
+        }
+      }
+    }
+  }
+  .gnb {
+    position: absolute;
+    width: 100px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: -100px;
+    gap: 10px;
+    padding-top: 20px;
+    background: purple;
+    color: #fff;
+  }
+}

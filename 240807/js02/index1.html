@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script1.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0 auto;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        .container {
+          width: 1200px;
+          .heading {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            .desc {
+              width: 70%;
+              p {
+                margin: 20px 0;
+              }
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <div class="img">
+          <img
+            style="width: 280px"
+            src="https://static.nike.com/a/images/t_default/ef0e754f-5fbe-4c4d-96c0-b3e95684b7bc/NIKE+P-6000.png"
+            alt=""
+          />
+        </div>
+        <div class="desc">
+          <h1>상품설명</h1>
+          <h2>상품명 : 나이키 G,Y.허슬 3 EP 일렉트릭</h2>
+          <p>
+            이중 스택 줌에어 유닉이 막강한 파워를 제공하고 통기성 좋은 갑파가
+            안정성과 시원함을 유지해줍니다.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+            eveniet doloribus, dolorum aliquam unde excepturi corrupti impedit
+            veritatis beatae illo facilis, inventore voluptas voluptates ratione
+            earum? Nesciunt dignissimos culpa eum? Reprehenderit natus nemo
+            error, maxime iure est rem laudantium alias debitis repudiandae iste
+            officiis sit non? Modi, amet, ex quaerat iusto, rerum laborum
+            impedit molestiae distinctio vel voluptates nulla itaque.
+          </p>
+          <button id="order">상품주문하기</button>
+        </div>
+      </div>
+      <div class="orderInfo"></div>
+    </div>
+  </body>
+</html>
