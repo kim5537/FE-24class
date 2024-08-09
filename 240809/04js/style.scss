@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*common*/
+html {
+  font-size: 13px;
+}
+
+/*variable*/
+$main-bgcolor: #ea7612;
+$main-darkcolor: #333;
+$clock-bgcolor: #fff;
+$clock-accentColor: #dc143c;
+
+/*body*/
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: $main-bgcolor;
+}
+
+/*Analog*/
+.clock-container {
+  width: 300px;
+  height: 300px;
+  border: 8px solid $main-darkcolor;
+  border-radius: 50%;
+  background: $clock-bgcolor;
+  position: relative;
+  .number {
+    position: absolute;
+    font-size: 2rem;
+    &#num3 {
+      top: 50%;
+      transform: translateY(-50%);
+      right: 4px;
+      font-weight: bold;
+    }
+    &#num6 {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 4px;
+      font-weight: bold;
+    }
+    &#num9 {
+      left: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+    }
+    &#num12 {
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+  }
+  #dot {
+    width: 14px;
+    height: 15px;
+    background: $main-darkcolor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 2;
+  }
+  #hour {
+    width: 7px;
+    height: 60px;
+    background: $main-darkcolor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -60px;
+    transform: translate(-50%, -50%);
+    transform-origin: center bottom;
+  }
+  #minute {
+    width: 2px;
+    height: 95px;
+    background: $main-darkcolor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -94px;
+    transform-origin: center bottom;
+  }
+  #second {
+    width: 2px;
+    height: 80px;
+    background: $clock-accentColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    margin-top: -80px;
+    transform-origin: center bottom;
+  }
+}
+
+/*Digital*/
+.digital-clock {
+  font-size: 2rem;
+}
