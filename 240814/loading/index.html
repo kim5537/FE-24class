@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/f75707ac34.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div class="box">
+      <span><i class="fa-solid fa-circle"></i></span>
+      <span><i class="fa-solid fa-circle"></i></span>
+      <span><i class="fa-solid fa-circle"></i></span>
+    </div> -->
+
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <script>
+      const name = prompt("PM의 이름은?");
+      const loading = document.querySelector(".loading");
+      setTimeout(() => {
+        loading.remove();
+        document.write(name);
+      }, 5000);
+    </script>
+  </body>
+</html>

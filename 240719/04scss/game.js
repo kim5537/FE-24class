@@ -73,11 +73,14 @@ const luckyNumber = {
 
 const startLotto = () => {
   const { digitCount, maxNumber } = luckyNumber;
+  //구조분해할당 = 할당부분 mdn
   let myNumber = new Set();
+  //Map 인스턴스의 set() 메서드는 이 Map에서 명시진 키와 값을 추가하거나 갱신합니다
   for (let i = 0; i < digitCount; i++) {
     myNumber.add(Math.floor(Math.random() * maxNumber) + 1);
   }
   if (myNumber.size === 6) {
+    //size == map객체의 항목 수
     result.innerText = `${[...myNumber]}`;
   } else {
     result.innerText = "재추첨 하겠습니다.";

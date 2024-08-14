@@ -1,0 +1,95 @@
+// * {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+// }
+
+// .box {
+//   height: 100vh;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 6px;
+//   span {
+//     animation: loding 1s 1s linear infinite;
+//     &:nth-child(1) {
+//       color: crimson;
+//       animation-duration: 0.5s;
+//     }
+//     &:nth-child(2) {
+//       color: dodgerblue;
+//       animation-duration: 0.7s;
+//     }
+//     &:nth-child(3) {
+//       color: rgb(139, 39, 179);
+//       animation-duration: 0.9s;
+//     }
+//   }
+// }
+
+// @keyframes loding {
+//   0% {
+//     scale: 0.7;
+//     opacity: 0.7;
+//   }
+//   30% {
+//     scale: 0.2;
+//     opacity: 0.2;
+//   }
+//   70% {
+//     scale: 1.1;
+//     opacity: 0.8;
+//   }
+//   100% {
+//     scale: 1;
+//     opacity: 1;
+//   }
+// }
+
+// 해설
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .loading {
+    span {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background: gray;
+      border-radius: 50%;
+      margin-right: 4px;
+      animation: loading 1s linear infinite;
+      &:nth-child(1) {
+        background: crimson;
+        animation-delay: 0s;
+      }
+      &:nth-child(2) {
+        background: dodgerblue;
+        animation-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        background: yellowgreen;
+        animation-delay: 0.4s;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
