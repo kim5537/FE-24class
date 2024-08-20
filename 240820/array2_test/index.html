@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="./script.js"></script>
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      background: url(../array_test/img/background.jpg) center/cover no-repeat;
+      display: flex;
+        justify-content: center;
+        align-items: center; 
+      .container {
+        background: rgba(0, 0, 0, 0.6);
+        width: 600px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        .buttons {
+          height: 20px;
+          width: 500px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          button {
+            cursor: pointer;
+            width: 100px;
+            padding: 4px 6px;
+            background: #000;
+            color: aliceblue;
+            border: 1px solid #424242;
+            &:hover{
+              background: rgb(121, 121, 121);
+            }
+          }
+        }
+        #result {
+          width: 400px;
+          height: 300px;
+          background: rgba(255, 255, 255, 0.4);
+          margin: 10px 0;
+          border-radius: 10px;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="buttons">
+      <button>20대 이상</button>
+      <button>30대 이상</button>
+      <button>40대 이상</button>
+    </div>
+    <ul id="result"></ul>
+  </div>
+</body>
+</html>

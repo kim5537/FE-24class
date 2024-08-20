@@ -44,7 +44,6 @@ body .player .controls .progress {
   left: 0;
 }
 body .player .controls .progress .bar {
-  width: 50%;
   height: 100%;
   background-color: #dc1437;
   position: relative;
@@ -117,6 +116,6 @@ body .player .controls .buttons .menu:nth-child(2) .time {
 body .player:hover .controls {
   transform: translateY(0);
 }
-body .player:hover .circle {
+body .player:hover .controls .progress .bar .circle {
   opacity: 1;
 }

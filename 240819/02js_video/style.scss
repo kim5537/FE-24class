@@ -43,8 +43,9 @@ body {
         position: absolute;
         top: 4px;
         left: 0;
+        // border: 1px solid #0f0;
         .bar {
-          width: 50%;
+          // width: 30%; >>스크립트제어
           height: 100%;
           background-color: $main-progress-color;
           position: relative;
@@ -118,7 +119,7 @@ body {
     &:hover .controls {
       transform: translateY(0);
     }
-    &:hover .circle {
+    &:hover .controls .progress .bar .circle {
       opacity: 1;
     }
   }

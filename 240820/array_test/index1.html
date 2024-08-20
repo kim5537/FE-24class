@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="./script1.js"></script>
+  <title>Document</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #container {
+    background: url(./img/background.jpg) center/cover no-repeat;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    width: 400px;
+    height: 280px;
+    margin: 10px auto;
+    .top {
+      color: aliceblue;
+      margin-top: 20px;
+      width: 90%;
+      padding: 10px;
+      text-align: center;
+      background: #000;
+    }
+    #name {
+      margin-top: 30px;
+      color: aliceblue;
+  
+    }
+    }
+  }
+</style>
+<body>
+  <!-- <div>
+    <img src="./img/background.jpg" alt="">
+  </div> -->
+  <div id="container">
+    <div class="inner">
+      <div class="top">
+        <label for="id">User Id</label>
+        <input type="text" name="id" id="id">
+      </div>
+      <div id="name"> 값</div>
+    </div>
+  </div>
+</body>
+</html>
