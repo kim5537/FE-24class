@@ -5,6 +5,9 @@ const volumeBar = document.querySelector("input[type='range']");
 const progressCover = document.querySelector(".progress")
 const player = document.querySelector(".player")
 //play & btn icon
+const rateButtons = document.querySelectorAll(".rate")
+const fullButton = document.querySelector("#fullscreenBtn")
+
 const play = () => {
   playButton.innerText = "||";
   video.play();
@@ -84,7 +87,15 @@ const videoPoint = (e) => {
   video.currentTime = clickedTime;
 };
 
-
+const setRate = (e) => {
+  // console.log(e) //target >> dataset: DOMStringMap >> rate:"1.5"
+  // console.log(e.target.dataset)
+  //구조분해할당을 해서 각각 0.5, 1 ...의 배열을 만들어서 한번에 이벤트를 줘 보자.
+  const {rate} = e.target.dataset;
+  // console.log(rate)
+  video.playbackRate = rate
+  //playbackRate 영상이 가진 고유한 속성. 배속을 의미한다.
+}
 
 
 playButton.addEventListener("click", togglePlay);
@@ -95,3 +106,15 @@ video.addEventListener("timeupdate",updateProgress)
 volumeBar.addEventListener("change", setVolume);
 progressCover.addEventListener("click",(e)=>{videoPoint(e)} )
 
+rateButtons.forEach((button)=>{
+  button.addEventListener("click",(e) => {setRate(e);
+    //콜백합수는 이벤트 객체가 없어도 이벤트객체를 찾아오는데 적어주는 이유는 정석적 문법 + 우리들의 의해를 위해
+  });
+});
+
+//fullbtn
+fullButton.addEventListener("click", () => {
+  video.requestFullscreen();
+  //requestFullscreen 해당소스를 전채확대 .
+  //DocumentFullscreen()은 전체 문서 확대이다.
+})
