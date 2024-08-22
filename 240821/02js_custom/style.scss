@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-ul,li {
+ul,
+li {
   list-style: none;
 }
 
@@ -14,13 +15,16 @@ a {
   color: inherit;
 }
 
-
-
 /*common*/
 main {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(180deg, rgb(60, 96, 138), rgb(85, 169, 247),rgb(246, 248, 215));
+  background: linear-gradient(
+    180deg,
+    rgb(60, 96, 138),
+    rgb(85, 169, 247),
+    rgb(246, 248, 215)
+  );
   position: relative;
   overflow: hidden;
   h1 {
@@ -51,7 +55,7 @@ main {
       font-size: 24px;
     }
   }
-  &>p {
+  & > p {
     position: absolute;
     bottom: 7vh;
     left: 50%;
@@ -80,7 +84,7 @@ main {
       position: absolute;
       top: 0;
       left: 0;
-      
+
       .inner {
         width: 100%;
         height: 100%;
@@ -108,8 +112,8 @@ main {
           display: flex;
           justify-content: center;
           align-items: center;
-          //전후문자를 위해 
-          //이미지는 js로 
+          //전후문자를 위해
+          //이미지는 js로
           //전후문자로 이미지, 그림자
           position: relative;
           // border: 1px solid aqua;
@@ -121,16 +125,16 @@ main {
             border-radius: inherit;
             position: absolute;
             top: 0;
-            left:  0 ;
+            left: 0;
             background-image: inherit;
             background-position: inherit;
             background-size: inherit;
             background-repeat: inherit;
             transform-origin: center center;
-          };
+          }
           &::before {
             transform: translateY(10%);
-            filter: blur(26px) brightness(1.6);
+            filter: blur(20px) brightness(1.6);
           }
           .dot {
             width: 3vw;
@@ -140,13 +144,178 @@ main {
             z-index: 3;
             box-shadow: inset 5px 5px 10px rgba(76, 61, 145, 0.3);
           }
-        };
-      };
+          &.on::after {
+            animation: ani 4s linear infinite;
+          }
+          &.on::before {
+            animation: ani2 4s linear infinite;
+          }
+        }
+        .txt {
+          text-align: center;
+          position: relative;
+          h2 {
+            font-size: 20px;
+            color: #222;
+          }
+          p {
+            font-size: 12px;
+            margin: 2vh 0 3vh 0;
+          }
+          ul {
+            display: flex;
+            justify-content: space-around;
+            li {
+              opacity: 0.6;
+              transition: opacity 0.3s, transform 0.3s;
+              cursor: pointer;
+              &:hover {
+                opacity: 1;
+                transform: scale(1.2);
+              }
+              &:nth-child(2) {
+                transform: scale(1.3);
+                opacity: 0.8;
+                &:hover {
+                  transform: scale(1.6);
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
       &.on .inner {
         opacity: 1;
         transform: scale(1.1);
         box-shadow: 0 0 30px rgba($color: #faffba, $alpha: 0.5);
       }
     }
+  }
+  .btnPrev {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20vw, -50px);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    span {
+      color: #fff;
+      font-size: 11px;
+      line-height: 1;
+      opacity: 1;
+      transform: translateX(30%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform-origin: left center;
+      transform: rotate(-180deg);
+      transition: transform 0.3s;
+    }
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      position: absolute;
+      bottom: 50%;
+      left: 0;
+      transform-origin: left center;
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+    &:hover span {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    &:hover::before {
+      transform: rotate(-30deg);
+    }
+    &:hover::after {
+      transform: rotate(30deg);
+    }
+  }
+  .btnNext {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(20vw, -50px);
+    display: flex;
+    align-items: center;
+    text-align: right;
+    cursor: pointer;
+    span {
+      color: #fff;
+      font-size: 11px;
+      line-height: 1;
+      opacity: 1;
+      transform: translateX(-30%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform-origin: right center;
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      position: absolute;
+      bottom: 50%;
+      left: 0;
+      transform-origin: right center;
+      transform: rotate(-180deg);
+      transition: transform 0.3s;
+    }
+    &:hover span {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    &:hover::before {
+      transform: rotate(30deg);
+    }
+    &:hover::after {
+      transform: rotate(-30deg);
+    }
+  }
+}
+
+@keyframes ani {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ani2 {
+  0% {
+    transform: translateY(10%), rotate(0deg);
+  }
+  100% {
+    transform: translateY(10%), rotate(360deg);
   }
 }
