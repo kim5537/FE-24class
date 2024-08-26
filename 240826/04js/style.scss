@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=11288960&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNS8wMi9DTFM2OS9OVVJJXzAwMV8wNDQ2X251cmltZWRpYV8yMDE1MTIwMw==&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006")
+    center/cover no-repeat;
+  .noti {
+    text-align: center;
+    color: crimson;
+    background: rgba($color: #fff, $alpha: 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    font: normal 12px/1.4 "arial";
+    display: none;
+  }
+  .container {
+    width: 300px;
+    height: 200px;
+    background: rgba($color: #69a7ee, $alpha: 0.7);
+    color: #fff;
+    padding: 16px;
+    border: 4px solid #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .current-weather {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 8px rgba($color: #fff, $alpha: 0.8);
+      }
+      .temp {
+        font: bold 20px/1 "arial";
+      }
+      .info {
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+}
