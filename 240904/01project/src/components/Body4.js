@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import Viewer from "./Viewer";
 
-const Viewer = ({ Number }) => {
-  return <div>{Number % 2 === 0 ? <h3>작수</h3> : <h3>홀수</h3>}</div>;
-};
+// const Viewer = ({ Number }) => {
+//   return <div>{Number % 2 === 0 ? <h3>작수</h3> : <h3>홀수</h3>}</div>;
+// };
 
 const Body4 = () => {
   const [Number, setNumber] = useState(0);
