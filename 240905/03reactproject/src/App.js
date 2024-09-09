@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useRef } from "react";
+import { useRef, useReducer, useCallback } from "react";
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
@@ -25,26 +25,60 @@ const mockTodo = [
   },
 ];
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "CREATE": {
+      return [action.newItem, ...state];
+    }
+    case "UPDATE": {
+      return state.map((it) =>
+        it.id === action.targetId ? { ...it, isDone: !it.isDone } : it
+      );
+    }
+    case "DELETE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
+    default:
+      return state;
+  }
+};
+
 function App() {
-  const [todo, setTodo] = useState(mockTodo);
+  const [todo, dispatch] = useReducer(reducer, mockTodo);
   const idRef = useRef(3);
-  const onCreate = (content) => {
-    //content의 역할은 input태그 안에 적은 텍스트값이다.
-    const newItem = {
-      id: idRef.current,
-      isDone: false,
-      //content: content// 이름이랑 같기때문에 하나로 씀
-      content,
-      createdDate: new Date().getTime(),
-    };
-    setTodo([newItem, ...todo]); //새로운 데이터 , 기존 데이터를 전개연산자로 하나의 배열로 만듬.
-    idRef.current += 1; // 아이디 증가하게
-  };
+
+  const onCreate = useCallback((content) => {
+    dispatch({
+      type: "CREATE",
+      newItem: {
+        id: idRef.current,
+        isDone: false,
+        content,
+        createdDate: new Date().getTime(),
+      },
+    });
+    idRef.current += 1;
+  }, []);
+
+  const onUpdate = useCallback((targetId) => {
+    dispatch({
+      type: "UPDATE",
+      targetId,
+    });
+  }, []);
+
+  const onDelete = useCallback((targetId) => {
+    dispatch({
+      type: "DELETE",
+      targetId,
+    });
+  }, []);
+
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} />
+      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   );
 }

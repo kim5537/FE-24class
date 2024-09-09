@@ -1,13 +1,13 @@
 import "./App.css";
 import Header from "./components/Header";
-import Body5 from "./components/Body5";
+import Body5S from "./components/Body5S";
 import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Body5 />
+      <Body5S />
       <Footer />
     </div>
   );
