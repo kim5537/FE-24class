@@ -1,8 +1,10 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import "./TodoList.css";
 import TodoItem from "./TodoItem";
+import { TodoContext } from "../App";
 
-const TodoList = ({ todo, onUpdate, onDelete }) => {
+const TodoList = () => {
+  const { todo = [] } = useContext(TodoContext);
   const [search, setSearch] = useState("");
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -39,17 +41,18 @@ const TodoList = ({ todo, onUpdate, onDelete }) => {
       />
       <div className="list_Wrapper">
         {getSearchResult().map((it) => (
-          <TodoItem
-            key={it.id}
-            {...it}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
-          />
+          <TodoItem key={it.id} {...it} />
         ))}
       </div>
     </div>
   );
 };
+
+// TodoList.defaultProps = {
+//defaultProps 함수는 사라질 것.
+//   todo: {},
+//그래서 기본매개변수를 줬다 { todo = [] } 이렇게 수정한 것.
+// };
 
 export default TodoList;
 //{todo.map((it) => (<div>{it.content}</div>))}
