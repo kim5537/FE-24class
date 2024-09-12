@@ -66,7 +66,7 @@ const sec3 = () => {
   anime({
     targets: ".sec3_svg path",
     d: [{ value: d0 }, { value: d1 }, { value: d2 }],
-    fill: [{ value: "#e4efe9" }, { value: "#fbc8d4" }, { value: "#b0cdf8" }],
+    fill: [{ value: "#b8dbc8" }, { value: "#fbc8d4" }, { value: "#b0cdf8" }],
     duration: 3000,
     easing: "easeInOutQuart",
     loop: true,
@@ -84,6 +84,121 @@ const sec3 = () => {
     easing: "easeOutSine",
   });
 };
+
+const staggerWrap = document.querySelector("#sec4 .img_wrap");
+const grid = [20, 20];
+const col = grid[0];
+const row = grid[1];
+
+const allElem = col * row;
+
+for (let i = 0; i < allElem; i++) {
+  const div = document.createElement("div");
+  div.className = "tail";
+  staggerWrap.appendChild(div);
+}
+
+const sec4 = () => {
+  const stageAni = anime.timeline({
+    targets: ".tail",
+    easing: "easeInBack",
+    delay: anime.stagger(10, { from: "last" }),
+    duration: 2000,
+    endDelay: 1000,
+    loop: false,
+    autoplay: false,
+  });
+
+  stageAni
+    .add({
+      targets: "#sec4 h1 img",
+      opacity: 0,
+      duration: 500,
+    })
+    .add({
+      translateX: () => {
+        return anime.random(-500, 500);
+      },
+      translateY: () => {
+        return anime.random(-500, 500);
+      },
+      delay: anime.stagger(200, { grid: grid, from: "last" }),
+      background: "#fff",
+      borderRadius: "50%",
+      scale: 0.2,
+    })
+    .add({
+      targets: ".img_wrap",
+      rotate: 360,
+      easing: "linear",
+      duration: 4000,
+      scale: 0.5,
+    })
+    .add({
+      targets: ".img_wrap",
+      duration: 1000,
+      scale: 1,
+    })
+    .add({
+      translateX: 0,
+      translateY: 0,
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+      duration: 3000,
+      scale: 0.8,
+      background: "#fbc8d4",
+    })
+    .add({
+      scale: 0.5,
+      rotate: 60,
+      duration: 500,
+      borderRadius: "0",
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+    })
+    .add({
+      scale: 0.8,
+      rotate: -60,
+      duration: 500,
+      borderRadius: "50%",
+      background: "#fff",
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+    })
+    .add({
+      scaleX: 0.1,
+      scaleY: 1,
+      rotate: 120,
+      duration: 500,
+      borderRadius: "0%",
+      background: "#f08aac",
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+    })
+    .add({
+      rotate: 0,
+      duration: 500,
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+    })
+    .add({
+      scaleX: 1,
+      duration: 500,
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+    })
+    .add({
+      scale: 1,
+      background: "#8BB4E9",
+      duration: 800,
+      delay: anime.stagger(100, { grid: grid, from: "center" }),
+    })
+    .add({
+      targets: "#sec4 h1 img",
+      opacity: 1,
+      duration: 500,
+    });
+
+  staggerWrap.addEventListener("click", () => {
+    stageAni.play();
+  });
+};
+
+sec4();
 
 new fullpage("#fullpage", {
   autoScrolling: true,

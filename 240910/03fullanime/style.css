@@ -266,6 +266,7 @@ nav ul li a {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
+  z-index: 2;
 }
 .section#sec4 .img_wrap {
   width: 500px;
@@ -274,7 +275,6 @@ nav ul li a {
   flex-wrap: wrap;
 }
 .section#sec4 .img_wrap .tail {
-  opacity: 0;
   background: #8bb4e9;
   width: 5%;
   height: 5%;
@@ -286,6 +286,7 @@ nav ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 #fp-nav ul li a.active span {
