@@ -1,0 +1,11 @@
+.Button_default {
+  background: #2c2c2c;
+}
+
+.Button_positive {
+  background: red;
+}
+
+.Button_negative {
+  background: green;
+}
