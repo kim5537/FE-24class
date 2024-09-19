@@ -1,19 +1,22 @@
 //top
-$(".autoplay").slick({
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 1000,
-  verticalSwiping: true,
+
+$(document).ready(function () {
+  $(".slider1,.slider2,.slider3,.slider4").slick({
+    slidesToShow: 3,
+    arrows: false,
+    autoplay: true,
+    vertical: true,
+    autoplaySpeed: 1000,
+  });
 });
 
 //design
-$(".fade").slick({
-  dots: true,
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: "linear",
-  autoplay: true,
-  autoplaySpeed: 1000,
-});
+// $(".fade").slick({
+//   dots: true,
+//   infinite: true,
+//   speed: 500,
+//   fade: true,
+//   cssEase: "linear",
+//   autoplay: true,
+//   autoplaySpeed: 1000,
+// });

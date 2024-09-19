@@ -18,7 +18,7 @@ const ButtonItem = styled.button`
 /// ButtonItem type={type}로 styled 컴포넌트에게 값을 프롭스함// 객체로 들어오니까 구조분해할당
 
 const Button = ({ text, type, onCLick }) => {
-  console.log(text, type);
+  //console.log(text, type);
   //객체로 들어왔으니 구조분해할당
   return (
     <div>
