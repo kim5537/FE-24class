@@ -1,4 +1,4 @@
-import React, { useReducer, useRef, useEffect, useState, content } from "react";
+import React, { useReducer, useRef, useEffect, useState, context } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 //BrowserRouter를 index에 넣는방법. index는 app의 부모
 import styled from "styled-components";
