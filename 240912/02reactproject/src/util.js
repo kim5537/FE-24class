@@ -23,7 +23,7 @@ export const gatEmotionImgById = (emotionId) => {
   }
 };
 
-//날짜 한자리수 일 때 앞에 0 넣기
+//날자 출력과 날짜 한자리수 일 때 앞에 0 넣기
 export const getFormattedDate = (targetDate) => {
   const year = targetDate.getFullYear();
   let month = targetDate.getMonth() + 1;
@@ -63,3 +63,27 @@ export const emotionList = [
     img: gatEmotionImgById(5),
   },
 ];
+
+// home에 사용할 날자에 맞는 일기 필터
+export const getMonthRangeByDate = (date) => {
+  const beginTimeStamp = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    1,
+    0,
+    0,
+    0
+  ).getTime();
+  // 년, 월, 일, 시,분,초
+
+  const endTimeStamp = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0,
+    23,
+    59,
+    59
+  ).getTime();
+  //다음 달 0일이라는 가상의 일을 만들어서 애매하게 걸치는 일에 작성된 데이터를 전 달에 마지막날에 작성한 것으로넣음
+  return { beginTimeStamp, endTimeStamp };
+};
