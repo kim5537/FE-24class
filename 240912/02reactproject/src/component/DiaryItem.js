@@ -79,7 +79,7 @@ const DiaryItem = ({ id, date, content, emotionId }) => {
           <Img src={gatEmotionImgById(emotionId)} alt={`emotion${emotionId}`} />
         </ImgBg>
       </DiaryContent>
-      <InfoSection onClick={goDetail}>
+      <InfoSection>
         <DateItem>{new Date(parseInt(date)).toLocaleDateString()}</DateItem>
         <ContentItem>{content.slice(0, 25)}</ContentItem>
       </InfoSection>

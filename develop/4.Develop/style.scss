@@ -19,10 +19,10 @@ $mainback: #2c2c2c;
 
 html {
   font-family: "Noto Sans KR", sans-serif;
+  background: $mainback;
 }
 .inner {
   width: 1400px;
-  border: 1px solid #f00;
   margin: 0 auto;
 }
 
@@ -44,6 +44,7 @@ html {
 
 nav {
   height: 80px;
+  background-color: #fff;
   .gnb {
     height: 100%;
     display: flex;
@@ -55,94 +56,119 @@ nav {
 }
 
 main {
-  position: relative;
   height: 680px;
-  width: 1920px;
+  width: 100%;
   margin: 0 auto;
   background: $mainback;
-  /*slider*/
-  .sliderItems {
+  .maininner {
     height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    .leftSlider {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    /*slider*/
+    .sliderItems {
+      height: 100%;
+      width: 100%;
       display: flex;
-      gap: 16px;
-      margin-left: 16px;
+      justify-content: space-between;
+      overflow: hidden;
+      .leftSlider {
+        width: 624px;
+        margin-left: 16px;
+        position: relative;
+        .slider2 {
+          position: absolute;
+          left: 320px;
+          top: 0;
+        }
+      }
+      .rightSlider {
+        width: 624px;
+        margin-left: 16px;
+        position: relative;
+        .slider4 {
+          position: absolute;
+          left: 320px;
+          top: 0;
+        }
+      }
+      .sliderItem {
+        // border: 1px solid #f00;
+        & > li {
+          width: 300px;
+          height: 400px;
+          margin: 20px 0;
+          & > img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .sliderleft {
+        margin-top: -540px;
+      }
     }
-    .rightSlider {
+    /*text*/
+    .textWrap {
+      width: 470px;
+      height: 200px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       display: flex;
-      gap: 16px;
-      margin-right: 16px;
-    }
-    .sliderItem {
-      border: 1px solid #f00;
-      & > li {
-        width: 300px;
-        height: 400px;
-        margin: 20px 0;
-        & > img {
+      flex-direction: column;
+      z-index: 2;
+      .topText {
+        flex: 1;
+        display: flex;
+        h3 {
+          margin-left: 10px;
+          font-size: 30px;
+          color: #fff;
+          font-weight: normal;
+        }
+        .mainBorder {
+          height: 50%;
           width: 100%;
-          height: 100%;
+          margin-left: 10px;
+          border-bottom: 1px solid #ffffff;
+        }
+      }
+      .maintext {
+        flex: 2;
+        text-align: center;
+        h1 {
+          font-size: 60px;
+          color: #fff;
+          font-weight: normal;
+        }
+      }
+      .bottomText {
+        flex: 1;
+        display: flex;
+        h3 {
+          margin-right: 10px;
+          font-size: 30px;
+          font-weight: normal;
+          color: #fff;
+        }
+        .mainBorder {
+          height: 50%;
+          width: 100%;
+          margin-right: 10px;
+          border-bottom: 1px solid #ffffff;
         }
       }
     }
-    .sliderleft {
-      margin-top: -540px;
-    }
-  }
-  /*text*/
-  .textWrap {
-    width: 470px;
-    height: 200px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    .topText {
-      flex: 1;
-      display: flex;
-      h3 {
-        margin-left: 10px;
-        font-size: 30px;
-        color: #fff;
-        font-weight: normal;
-      }
-      .mainBorder {
-        height: 50%;
-        width: 100%;
-        margin-left: 10px;
-        border-bottom: 1px solid #ffffff;
-      }
-    }
-    .maintext {
-      flex: 2;
-      text-align: center;
-      h1 {
-        font-size: 60px;
-        color: #fff;
-        font-weight: normal;
-      }
-    }
-    .bottomText {
-      flex: 1;
-      display: flex;
-      h3 {
-        margin-right: 10px;
-        font-size: 30px;
-        font-weight: normal;
-        color: #fff;
-      }
-      .mainBorder {
-        height: 50%;
-        width: 100%;
-        margin-right: 10px;
-        border-bottom: 1px solid #ffffff;
-      }
+    &::after {
+      content: "1";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0, rgba(#000, 0.3));
     }
   }
 }

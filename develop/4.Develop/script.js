@@ -6,7 +6,13 @@ $(document).ready(function () {
     arrows: false,
     autoplay: true,
     vertical: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 600,
+    touchMove: false,
+    swipeToSlide: false,
+    cssEase: "linear",
+    fade: false,
+    pauseOnFocus: false,
+    pauseOnHover: false,
   });
 });
 

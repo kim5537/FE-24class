@@ -17,11 +17,11 @@ a {
 
 html {
   font-family: "Noto Sans KR", sans-serif;
+  background: #2c2c2c;
 }
 
 .inner {
   width: 1400px;
-  border: 1px solid #f00;
   margin: 0 auto;
 }
 
@@ -43,6 +43,7 @@ html {
 
 nav {
   height: 80px;
+  background-color: #fff;
 }
 nav .gnb {
   height: 100%;
@@ -54,47 +55,59 @@ nav .gnb {
 }
 
 main {
-  position: relative;
   height: 680px;
-  width: 1920px;
+  width: 100%;
   margin: 0 auto;
   background: #2c2c2c;
+}
+main .maininner {
+  height: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
   /*slider*/
   /*text*/
 }
-main .sliderItems {
+main .maininner .sliderItems {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
 }
-main .sliderItems .leftSlider {
-  display: flex;
-  gap: 16px;
+main .maininner .sliderItems .leftSlider {
+  width: 624px;
   margin-left: 16px;
+  position: relative;
 }
-main .sliderItems .rightSlider {
-  display: flex;
-  gap: 16px;
-  margin-right: 16px;
+main .maininner .sliderItems .leftSlider .slider2 {
+  position: absolute;
+  left: 320px;
+  top: 0;
 }
-main .sliderItems .sliderItem {
-  border: 1px solid #f00;
+main .maininner .sliderItems .rightSlider {
+  width: 624px;
+  margin-left: 16px;
+  position: relative;
 }
-main .sliderItems .sliderItem > li {
+main .maininner .sliderItems .rightSlider .slider4 {
+  position: absolute;
+  left: 320px;
+  top: 0;
+}
+main .maininner .sliderItems .sliderItem > li {
   width: 300px;
   height: 400px;
   margin: 20px 0;
 }
-main .sliderItems .sliderItem > li > img {
+main .maininner .sliderItems .sliderItem > li > img {
   width: 100%;
   height: 100%;
 }
-main .sliderItems .sliderleft {
+main .maininner .sliderItems .sliderleft {
   margin-top: -540px;
 }
-main .textWrap {
+main .maininner .textWrap {
   width: 470px;
   height: 200px;
   position: absolute;
@@ -103,45 +116,55 @@ main .textWrap {
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
-main .textWrap .topText {
+main .maininner .textWrap .topText {
   flex: 1;
   display: flex;
 }
-main .textWrap .topText h3 {
+main .maininner .textWrap .topText h3 {
   margin-left: 10px;
   font-size: 30px;
   color: #fff;
   font-weight: normal;
 }
-main .textWrap .topText .mainBorder {
+main .maininner .textWrap .topText .mainBorder {
   height: 50%;
   width: 100%;
   margin-left: 10px;
   border-bottom: 1px solid #ffffff;
 }
-main .textWrap .maintext {
+main .maininner .textWrap .maintext {
   flex: 2;
   text-align: center;
 }
-main .textWrap .maintext h1 {
+main .maininner .textWrap .maintext h1 {
   font-size: 60px;
   color: #fff;
   font-weight: normal;
 }
-main .textWrap .bottomText {
+main .maininner .textWrap .bottomText {
   flex: 1;
   display: flex;
 }
-main .textWrap .bottomText h3 {
+main .maininner .textWrap .bottomText h3 {
   margin-right: 10px;
   font-size: 30px;
   font-weight: normal;
   color: #fff;
 }
-main .textWrap .bottomText .mainBorder {
+main .maininner .textWrap .bottomText .mainBorder {
   height: 50%;
   width: 100%;
   margin-right: 10px;
   border-bottom: 1px solid #ffffff;
-} /*# sourceMappingURL=style.css.map */
+}
+main .maininner::after {
+  content: "1";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0, rgba(0, 0, 0, 0.3));
+}

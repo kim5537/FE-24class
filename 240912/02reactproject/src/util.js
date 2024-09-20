@@ -35,7 +35,7 @@ export const getFormattedDate = (targetDate) => {
   return `${year}-${month}-${date}`;
 };
 
-//감정
+//감정 이미지
 export const emotionList = [
   {
     id: 1,

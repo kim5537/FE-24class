@@ -1,6 +1,7 @@
 import React, { useReducer, useRef, useEffect, useState, context } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 //BrowserRouter를 index에 넣는방법. index는 app의 부모
+import Globalstyle from "./styles/GlobalStyles.styles";
 import styled from "styled-components";
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -9,6 +10,7 @@ import Diary from "./pages/Diary";
 
 const Wrapper = styled.div`
   padding: 20px;
+  height: 100vh;
 `;
 
 const reducer = (state, action) => {
@@ -70,8 +72,8 @@ function App() {
 
   const onCreate = (date, content, emotionId) => {
     dispatch({
-      type: "CREAT",
-      date: {
+      type: "CREATE",
+      data: {
         id: idRef.current,
         date: new Date(date).getTime(),
         content,
@@ -99,18 +101,23 @@ function App() {
     return <div>데이터 불러오는 중</div>;
   } else {
     return (
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
-          <Wrapper>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/new" element={<New />} />
-              <Route path="/diary/:id" element={<Diary />} />
-              <Route path="/edit/:id" element={<Edit />} />
-            </Routes>
-          </Wrapper>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
+      <>
+        <Globalstyle />
+        <DiaryStateContext.Provider value={data}>
+          <DiaryDispatchContext.Provider
+            value={{ onCreate, onUpdate, onDelete }}
+          >
+            <Wrapper>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/new" element={<New />} />
+                <Route path="/diary/:id" element={<Diary />} />
+                <Route path="/edit/:id" element={<Edit />} />
+              </Routes>
+            </Wrapper>
+          </DiaryDispatchContext.Provider>
+        </DiaryStateContext.Provider>
+      </>
     );
   }
 }
