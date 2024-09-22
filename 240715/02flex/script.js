@@ -33,7 +33,7 @@ gnbLinks.forEach((link) => {
 //slick slider
 $(".myslider").slick({
   dots: true,
-  infinite: false,
+  infinite: true,
   autoplay: true,
   speed: 1000,
   slidesToShow: 3,
