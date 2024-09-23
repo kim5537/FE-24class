@@ -19,23 +19,15 @@ const reducer = (state, action) => {
       return action.data;
     }
     case "CREATE": {
-      const newState = [action.data, ...state];
-      localStorage.setItem("diary", JSON.stringify(newState));
-      return newState;
+      return [action.data, ...state];
     }
     case "UPDATE": {
-      const newState = state.map((it) =>
+      return state.map((it) =>
         String(it.id) === String(action.data.id) ? { ...action.data } : it
       );
-      localStorage.setItem("diary", JSON.stringify(newState));
-      return newState;
     }
     case "DELETE": {
-      const newState = state.filter(
-        (it) => String(it.id) !== String(action.targetId)
-      );
-      localStorage.setItem("diary", JSON.stringify(newState));
-      return newState;
+      return state.filter((it) => String(it.id) !== String(action.targetId));
     }
     default: {
       return state;
@@ -43,26 +35,26 @@ const reducer = (state, action) => {
   }
 };
 
-// const mockData = [
-//   {
-//     id: "mock1",
-//     date: new Date().getTime() - 1,
-//     content: "mock1",
-//     emotionId: 1,
-//   },
-//   {
-//     id: "mock2",
-//     date: new Date().getTime() - 2,
-//     content: "mock2",
-//     emotionId: 2,
-//   },
-//   {
-//     id: "mock3",
-//     date: new Date().getTime() - 3,
-//     content: "mock3",
-//     emotionId: 3,
-//   },
-// ];
+const mockData = [
+  {
+    id: "mock1",
+    date: new Date().getTime() - 1,
+    content: "mock1",
+    emotionId: 1,
+  },
+  {
+    id: "mock2",
+    date: new Date().getTime() - 2,
+    content: "mock2",
+    emotionId: 2,
+  },
+  {
+    id: "mock3",
+    date: new Date().getTime() - 3,
+    content: "mock3",
+    emotionId: 3,
+  },
+];
 
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
@@ -71,23 +63,9 @@ function App() {
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
   useEffect(() => {
-    const rawData = localStorage.getItem("diary");
-    if (!rawData) {
-      setIsDataLoaded(true);
-      return;
-    }
-    //정상적 페이지로 넘어가기 위함
-    const localData = JSON.parse(rawData);
-    if (localData.length === 0) {
-      setIsDataLoaded(true);
-      return;
-    }
-    //찐으로 데이터가 없다. -> 굳이액션객체를 만들 필요가 없음
-    localData.sort((a, b) => Number(b.id) - Number(a.id));
-    idRef.current = localData[0].id + 1;
     dispatch({
       type: "INIT",
-      data: localData,
+      data: mockData,
     });
     setIsDataLoaded(true);
   }, []);
@@ -97,7 +75,7 @@ function App() {
       type: "CREATE",
       data: {
         id: idRef.current,
-        date: new Date().getTime(),
+        date: new Date(date).getTime(),
         content,
         emotionId,
       },
@@ -107,7 +85,7 @@ function App() {
   const onUpdate = (targetId, date, content, emotionId) => {
     dispatch({
       type: "UPDATE",
-      data: {
+      date: {
         id: targetId,
         date: new Date(date).getTime(),
         content,
@@ -120,7 +98,7 @@ function App() {
     dispatch({ type: "DELETE", targetId });
   };
   if (!isDataLoaded) {
-    return <div>데이터 불러오는 중…</div>;
+    return <div>데이터 불러오는 중</div>;
   } else {
     return (
       <>

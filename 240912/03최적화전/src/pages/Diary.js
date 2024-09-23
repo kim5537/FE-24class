@@ -1,18 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useDiary from "../hooks/useDiary";
 import Header from "../component/Header";
 import Button from "../component/Button";
 import Viewer from "../component/Viewer";
-import { getFormattedDate, setPageTitle } from "../util";
+import { getFormattedDate } from "../util";
 
 const Diary = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const data = useDiary(id);
-  useEffect(() => {
-    setPageTitle(`${id}일기의 나의 감정!`);
-  });
   if (!data) {
     return <div>일기장를 가져오는 중…📔</div>;
   } else {

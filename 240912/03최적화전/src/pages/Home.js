@@ -14,7 +14,7 @@ import { DiaryStateContext } from "../App";
 import Header from "../component/Header";
 import Button from "../component/Button";
 import DiaryList from "../component/DiaryList";
-import { getMonthRangeByDate, setPageTitle } from "../util";
+import { getMonthRangeByDate } from "../util";
 
 const Home = () => {
   const data = useContext(DiaryStateContext);
@@ -40,10 +40,6 @@ const Home = () => {
       setFilteredData([]);
     }
   }, [data, pivotDate]);
-
-  useEffect(() => {
-    setPageTitle("안녕! RH 다이어리!");
-  }, []);
 
   const headerTitle = `${pivotDate.getFullYear()}년 ${
     pivotDate.getMonth() + 1

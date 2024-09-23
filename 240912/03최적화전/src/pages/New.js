@@ -1,16 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";
 import Header from "../component/Header";
 import Button from "../component/Button";
 import Editor from "../component/Editor";
-import { setPageTitle } from "../util";
 
 const New = () => {
   //app에 있는 함수를 provider로 보내고 new컴포넌트에서 context로 받은 것.
-  useEffect(() => {
-    setPageTitle("새 일기 쓰기!");
-  });
   const { onCreate } = useContext(DiaryDispatchContext);
   const navigate = useNavigate();
   const goBack = () => {

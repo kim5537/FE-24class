@@ -87,11 +87,3 @@ export const getMonthRangeByDate = (date) => {
   //다음 달 0일이라는 가상의 일을 만들어서 애매하게 걸치는 일에 작성된 데이터를 전 달에 마지막날에 작성한 것으로넣음
   return { beginTimeStamp, endTimeStamp };
 };
-
-//각 페이지 타이틀
-export const setPageTitle = (title) => {
-  const titleElement = document.getElementsByTagName("title")[0];
-  //titleElement은 배열형태로 가져온다.getElementsByTagName는 리엑트 문법
-  console.log(titleElement);
-  titleElement.innerText = title;
-};

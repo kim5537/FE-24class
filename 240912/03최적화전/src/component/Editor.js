@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getFormattedDate, emotionList } from "../util";
@@ -85,12 +85,12 @@ const Editor = ({ initDate, onSubmit }) => {
     navigate(-1); //직전페이지로 이동
   };
 
-  const handleChangeEmotion = useCallback((emotionId) => {
-    setState((state) => ({
+  const handleChangeEmotion = (emotionId) => {
+    setState({
       ...state,
       emotionId,
-    }));
-  }, []);
+    });
+  };
 
   return (
     <div>
