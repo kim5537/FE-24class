@@ -1,48 +1,15 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-
-const Wrapper = styled.div`
-  width: 420px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  padding: 50px 0;
-`;
-const Title = styled.h1`
-  font-size: 42px;
-`;
-
-const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 30px;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  &[type="submit"] {
-    cursor: pointer;
-    transition: opacity 0.3s;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-`;
-
-const Error = styled.span`
-  font-weight: 600;
-  color: tomato;
-`;
+import { FirebaseError } from "firebase/app";
+import {
+  Wrapper,
+  Form,
+  Input,
+  Title,
+  Error,
+} from "../components/auth-components";
 
 const CreateAccount = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +17,8 @@ const CreateAccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -63,14 +32,23 @@ const CreateAccount = () => {
 
   const onsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isLoading || name === "" || email === "" || password === "") return;
     try {
-      //creat an account
-      //set the name of the user
-      //redirect to the home page
-      if (isLoading || name === "" || password === "") return;
-      await createUserWithEmailAndPassword(auth, email, password);
+      setIsLoading(true);
+      const credentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await updateProfile(credentials.user, {
+        displayName: name,
+      });
+      navigate("/");
     } catch (e) {
-      //setError
+      if (e instanceof FirebaseError) {
+        setError(e.message);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -108,7 +86,7 @@ const CreateAccount = () => {
           value={isLoading ? "Loaging..." : "Create Account"}
         />
       </Form>
-      {error! == "" ? <Error>{error}</Error> : null}
+      {error !== "" ? <Error> {error} </Error> : null}
     </Wrapper>
   );
 };

@@ -9,7 +9,10 @@ import { getFormattedDate, setPageTitle } from "../util";
 const Diary = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  //동적 파라미터를 :id로 app에서 설정했기 때문에 id키값을 가짐
   const data = useDiary(id);
+  // useDiary는 작성한 하나의 다이어리이다. 지정된 다이어리 하나를(배열로 각각 id를 가짐) data에 넣음
+
   useEffect(() => {
     setPageTitle(`${id}일기의 나의 감정!`);
   });

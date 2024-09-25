@@ -5,8 +5,10 @@ import styled from "styled-components";
 const Wrapper = styled.div``;
 
 const H4 = styled.h4`
+  font-family: "EF_jejudoldam";
   font-weight: normal;
-  font-size: 18px;
+  font-size: 24px;
+  color: #e5e396;
 `;
 
 const Button = styled.button`
@@ -15,6 +17,9 @@ const Button = styled.button`
   padding: 14px;
   margin-left: 10px;
   width: 80px;
+  &:hover {
+    background: #eeee66;
+  }
 `;
 
 const Input = styled.input`
@@ -28,6 +33,7 @@ const Input = styled.input`
 `;
 
 const TodoEditor = ({ onCreate }) => {
+  //app에서 만들어져 props 받은 onCreate
   // const {oncreate} = useContext(TodoContext)
   const [content, setContent] = useState("");
   const inputRef = useRef();
