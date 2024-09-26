@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApmC9tDYhwTIH00Kk_Ejqw2eno9j050Os",
@@ -14,3 +16,7 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 //SDK로 초기화했다 라고 말함
+
+export const storage = getStorage(app);
+
+export const db = getFirestore(app);

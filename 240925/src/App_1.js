@@ -1,27 +1,30 @@
-import styled from "styled-components";
+import "./App.css";
+import styled, { css } from "styled-components";
 
-const Wrapper = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
+const baseShadow = css`
+  box-shadow: ${({ color }) => `0 10px 6px ${color || "red"}`};
 `;
 
-// 2파일삭제댐.. ㅠㅠ 나중에 깃허브 확인
+const font = ({ color, size, family }) => `
+  color: ${color || "red"};
+  font-size: ${size || "1rem"};
+  font-family: ${family || "serif"};
+`;
 
 const Container = styled.div`
-  font-size: 2rem;
   width: 50%;
   background: #ccc;
   margin: 0 auto;
   padding: 10px 20px;
   ${baseShadow}
+  ${font({ color: "green", size: "2rem" })}
 `;
 
 function App() {
   return (
-    <Wrapper>
-      <Container>Styled Component</Container>
-    </Wrapper>
+    <div className="App">
+      <Container color={"purple"}>Styled Components</Container>
+    </div>
   );
 }
 

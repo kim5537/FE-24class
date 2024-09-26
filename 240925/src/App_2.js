@@ -1,6 +1,9 @@
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../src/style/theme";
 
+console.log(theme);
+console.log(theme.fontSize);
+
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
