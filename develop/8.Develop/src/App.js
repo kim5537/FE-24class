@@ -2,8 +2,8 @@ import React, { useRef, useReducer, useCallback } from "react";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
-import styled from "styled-components";
-import { type } from "@testing-library/user-event/dist/type";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./style/theme";
 
 //생성
 export const TodoContext = React.createContext();
@@ -61,13 +61,15 @@ function App() {
   };
 
   return (
-    <Appcss>
-      <Header />
-      <TodoContext.Provider>
-        <TodoEditor onCreate={onCreate} />
-        <TodoList />
-      </TodoContext.Provider>
-    </Appcss>
+    <ThemeProvider theme={theme}>
+      <Appcss>
+        <Header />
+        <TodoContext.Provider>
+          <TodoEditor onCreate={onCreate} />
+          <TodoList />
+        </TodoContext.Provider>
+      </Appcss>
+    </ThemeProvider>
   );
 }
 

@@ -8,7 +8,7 @@ const H4 = styled.h4`
   font-family: "EF_jejudoldam";
   font-weight: normal;
   font-size: 24px;
-  color: #e5e396;
+  color: #ffc878;
 `;
 
 const Button = styled.button`
@@ -17,8 +17,9 @@ const Button = styled.button`
   padding: 14px;
   margin-left: 10px;
   width: 80px;
+  background: #ffc878;
   &:hover {
-    background: #eeee66;
+    background: #e5e396;
   }
 `;
 
