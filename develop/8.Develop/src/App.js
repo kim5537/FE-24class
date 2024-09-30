@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./style/theme";
-import { amcolor, pmcolor } from "./style/timetheme";
 import Counter from "./component/Counter";
 import Time from "./component/Time";
 import Header from "./component/Header";
@@ -38,7 +37,16 @@ const mockTodo = [
   },
 ];
 
+const Back = styled.div`
+  height: 100vh;
+  background: ${({ theme }) => theme.background};
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+`;
+
 const Wrapper = styled.div`
+  height: 100%;
   display: flex;
   margin: 30px auto;
   justify-content: center;
@@ -62,11 +70,8 @@ function App() {
   const [todo, dispatch] = useReducer(reducer, mockTodo);
   const idRef = useRef(3);
   const [isDark, setIsdark] = useState(false);
-  useEffect(() => {
-    const timeMode = new Date().getHours();
-    console.log(timeMode);
-  });
-
+  let timeMode = new Date().getHours();
+  console.log(timeMode);
   const onCreate = (content) => {
     dispatch({
       type: "CREATE",
@@ -81,19 +86,21 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={timeMode > 6 && timeMode < 18 ? theme.am : theme.pm}>
       <TodoContext.Provider>
-        <Wrapper>
-          <Main>
-            <Header />
-            <TodoEditor onCreate={onCreate} />
-            <TodoList />
-          </Main>
-          <SidWrap>
-            <Time />
-            <Counter />
-          </SidWrap>
-        </Wrapper>
+        <Back>
+          <Wrapper>
+            <Main>
+              <Header />
+              <TodoEditor onCreate={onCreate} />
+              <TodoList />
+            </Main>
+            <SidWrap>
+              <Time />
+              <Counter />
+            </SidWrap>
+          </Wrapper>
+        </Back>
       </TodoContext.Provider>
     </ThemeProvider>
   );
