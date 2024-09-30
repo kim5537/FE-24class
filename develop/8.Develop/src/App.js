@@ -1,9 +1,18 @@
-import React, { useRef, useReducer, useCallback } from "react";
+import React, {
+  useRef,
+  useReducer,
+  useCallback,
+  useState,
+  useEffect,
+} from "react";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./style/theme";
+import { amcolor, pmcolor } from "./style/timetheme";
+import Counter from "./component/Counter";
+import Time from "./component/Time";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "./style/theme";
 
 //생성
 export const TodoContext = React.createContext();
@@ -29,23 +38,34 @@ const mockTodo = [
   },
 ];
 
-const Appcss = styled.div`
-  width: 500px;
+const Wrapper = styled.div`
+  display: flex;
   margin: 30px auto;
+  justify-content: center;
+  gap: 10px;
+`;
+
+const Main = styled.div`
+  width: 500px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-shadow: 0 0 10px #ccc;
+  ${({ theme }) => theme.boxline}
 `;
+
+const SidWrap = styled.div``;
 
 const reducer = (state, action) => {};
 
 function App() {
   const [todo, dispatch] = useReducer(reducer, mockTodo);
   const idRef = useRef(3);
+  const [isDark, setIsdark] = useState(false);
+  useEffect(() => {
+    const timeMode = new Date().getHours();
+    console.log(timeMode);
+  });
 
   const onCreate = (content) => {
     dispatch({
@@ -62,13 +82,19 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Appcss>
-        <Header />
-        <TodoContext.Provider>
-          <TodoEditor onCreate={onCreate} />
-          <TodoList />
-        </TodoContext.Provider>
-      </Appcss>
+      <TodoContext.Provider>
+        <Wrapper>
+          <Main>
+            <Header />
+            <TodoEditor onCreate={onCreate} />
+            <TodoList />
+          </Main>
+          <SidWrap>
+            <Time />
+            <Counter />
+          </SidWrap>
+        </Wrapper>
+      </TodoContext.Provider>
     </ThemeProvider>
   );
 }

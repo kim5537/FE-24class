@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "../style/theme";
 
 const Wrapper = styled.div`
   padding: 4px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid ${({ theme }) => theme.linecolor};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,13 +14,11 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.h3`
-  font-family: "EF_jejudoldam";
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.font.md};
   margin: 0px;
 `;
 
 const TextTime = styled.h1`
-  font-family: "EF_jejudoldam";
   margin: 0 0 30px;
   font-size: 30px;
   color: #30cfd0;
@@ -28,7 +27,7 @@ const TextTime = styled.h1`
 const Header = () => {
   return (
     <Wrapper>
-      <Text>Todo List</Text>
+      <Text>TODO LIST</Text>
       <TextTime>{new Date().toLocaleDateString()}</TextTime>
     </Wrapper>
   );

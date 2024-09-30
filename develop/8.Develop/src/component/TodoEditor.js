@@ -5,8 +5,7 @@ import styled from "styled-components";
 const Wrapper = styled.div``;
 
 const H4 = styled.h4`
-  font-family: "EF_jejudoldam";
-  font-weight: normal;
+  font-weight: bold;
   font-size: 24px;
   color: #ffc878;
 `;

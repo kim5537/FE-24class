@@ -6,7 +6,7 @@ import { auth } from "../firebase";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const user = auth.currentUser;
-  console.log(user);
+  // console.log(user);
   if (!user || user === null) {
     return <Navigate to={"/login"} />;
   }

@@ -3,6 +3,10 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
+//파이어베이스 승인을 위한 api키 .
+// api를 사용해 초기화
+//권한을 위한 auth
+
 const firebaseConfig = {
   apiKey: "AIzaSyApmC9tDYhwTIH00Kk_Ejqw2eno9j050Os",
   authDomain: "sns-platform-c7c3f.firebaseapp.com",
