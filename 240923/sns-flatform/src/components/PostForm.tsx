@@ -117,10 +117,10 @@ const PostForm = () => {
         const url = await getDownloadURL(result.ref); // 스토리지에 저장된 주소값을 인자값을 받는다.
         const fileType = file.type; //return부분에 AttachFileInput에서 accept가 있어 가능하다.
         if (fileType.startsWith("image/")) {
+          //스토리지를 보면 유형이 있음.
           await updateDoc(doc, {
             photo: url,
           });
-          //스토리지를 보면 유형이 있음.
         }
 
         if (fileType.startsWith("vedio/")) {

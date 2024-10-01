@@ -1,4 +1,4 @@
-let num: number = 10;
+// let num: number = 10;
 
 // num = "hello";
 // //d에러 생김
@@ -8,6 +8,6 @@ let num: number = 10;
 // };
 // //에러 생김.
 
-const fnc = (a: number, b: string): void => {
-  console.log("hello");
-};
+// const fnc = (a: number, b: string): void => {
+//   console.log("hello");
+// };
