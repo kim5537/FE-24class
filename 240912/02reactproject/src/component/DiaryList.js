@@ -49,6 +49,7 @@ const DiaryList = ({ data }) => {
   // select로 필터된 일기 리스트 표기 state
   const [sortedData, setSortedData] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     const compare = (a, b) => {
       if (sortType === "latest") {
