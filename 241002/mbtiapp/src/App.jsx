@@ -34,8 +34,8 @@ const router = createBrowserRouter([
 const GlobalStyle = createGlobalStyle`
 ${reset}
 @font-face {
-  font-family:"SimKyungha";
-  src: url("/fonts/SimKyungha.ttf") format("truetype");
+  font-family:"CookieRun";
+  src: url("/fonts/CookieRun Regular.ttf") format("truetype");
 }
   *{
     margin: 0;
@@ -53,8 +53,8 @@ ${reset}
   }
 
   body {
-    font-family:"SimKyungha";
-    background: url("https://blog.kakaocdn.net/dn/AM6P1/btqZQIMTwid/CJWOT60buKTYXrDaeP5Sbk/img.png") center/cover no-repeat;
+    font-family:"CookieRun";
+    background: url("/img/cat-7635983_1920.png") center/cover;
     height: 100vh;
   }
 `;
