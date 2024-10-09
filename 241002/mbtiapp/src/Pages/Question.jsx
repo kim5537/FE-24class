@@ -16,16 +16,24 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   font-size: 30px;
-  width: auto;
+  width: 600px;
   text-align: center;
   margin-bottom: 20px;
   padding: 8px 16px;
-  background: #cc5a52;
+  background: #743826;
   border-radius: 8px;
+  @media screen and (max-width: 780px) {
+    width: 300px;
+    font-size: 24px;
+  }
+  @media screen and (max-width: 360px) {
+    width: 260px;
+    font-size: 18px;
+  }
 `;
 
 const style = {
-  background: "#d89292",
+  background: "#a0663f",
   border: "none",
   padding: "10px",
 };
@@ -40,6 +48,24 @@ const ButtonGroup = styled.div`
     height: 200px;
     font-size: 18px;
     ${style}
+  }
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+    button {
+      width: 300px;
+      height: 150px;
+      font-size: 16px;
+      ${style}
+    }
+  }
+  @media screen and (max-width: 360px) {
+    flex-direction: column;
+    button {
+      width: 260px;
+      height: 100px;
+      font-size: 14px;
+      ${style}
+    }
   }
 `;
 
