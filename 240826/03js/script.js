@@ -19,6 +19,8 @@ getLocation.addEventListener("click", () => {
     // 혹시 없는경우를 대비하여 if를 주는 것이 좋다.
     // window.navigator.geolocation.getCurrentPosition() // 윈도우 삭제 가능
     window.navigator.geolocation.getCurrentPosition(showPosition, erroPosition);
+    console.log(erroPosition);
+    // console.log(navigator);
 
     const options = {
       enableHighAccuracy: true,

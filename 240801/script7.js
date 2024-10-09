@@ -13,21 +13,21 @@
 
 ////헤설 /////////////////////
 
-// const num01 = Number(prompt("첫 숫자를 입력"));
-// const num02 = Number(prompt("두번째 숫자 입력"));
+const num01 = Number(prompt("첫 숫자를 입력"));
+const num02 = Number(prompt("두번째 숫자 입력"));
 
-// function getGCD() {
-//   //리턴을 쓰기위해 일부러 함수 만들기.
-//   const max = num01 > num02 ? num01 : num02;
-//   //비교공식
-//   //상대적으로 큰 숫자를 찾고 큰 숫자를 가지고 얻은 두 숫자로 나눠보고 떨어지면 값을 추출
-//   let gcd = 0;
-//   for (let i = 1; i <= max; i++) {
-//     if (num01 % i === 0 && num02 % i === 0) {
-//       gcd = i;
-//     }
-//   }
-//   return gcd;
-// }
+function getGCD() {
+  //리턴을 쓰기위해 일부러 함수 만들기.
+  const max = num01 > num02 ? num01 : num02;
+  //비교공식
+  //상대적으로 큰 숫자를 찾고 큰 숫자를 가지고 얻은 두 숫자로 나눠보고 떨어지면 값을 추출
+  let gcd = 0;
+  for (let i = 1; i <= max; i++) {
+    if (num01 % i === 0 && num02 % i === 0) {
+      gcd = i;
+    }
+  }
+  return gcd;
+}
 
-// alert(`${num01}이랑 ${num02}의 최대공약수는 ${getGCD()}입니다.`);
+alert(`${num01}이랑 ${num02}의 최대공약수는 ${getGCD()}입니다.`);

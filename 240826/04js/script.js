@@ -43,6 +43,7 @@ const getCurrentWeather = (latitude, longitude) => {
 };
 
 const getPosition = (position) => {
+  console.log(position.coords);
   const { latitude, longitude } = position.coords;
   getCurrentWeather(latitude, longitude);
 };

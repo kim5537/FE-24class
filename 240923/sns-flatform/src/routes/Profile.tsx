@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { auth, storage, db } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+//스토리지 관련 함수들
+// getDownloadURL > 스토리지에 특정 파일 다운로드 url을 가져온다. 이 url을 통해 파일에 접근 .
+// ref > 스토리지 내에 특정 파일 경로를 참조하는 함수 . 파일을 업로드하거나 다운로드 할 때 파일의 경로를 참조한다.
+// uploadBytes  > 파일릉ㄹ 스토리지에 업로드하는 함수. - 파일 데이터를 바이트 형태로 업로드한다.
 import { updateProfile } from "firebase/auth";
+//Firebase Authentication에서 사용자의 프로필 정보를 업데이트한다. 이름 프로필등 변경시 사용
+// Authentication(로그인 회원가입 기능으로 해당 부분에 이 사이트 가입자에 대한 정보가 있다.)
 import {
   collection,
   getDocs,
@@ -10,7 +16,16 @@ import {
   orderBy,
   query,
   where,
-} from "firebase/firestore"; //문서를 가져오는 것. ?. 정렬함수
+} from "firebase/firestore";
+//database 관련함수
+//collection > 특정 컬렉션을 참조하는 함수 | 컬랙션 = db에 제일 큰 폴더.
+//getDocs > 해당 컬랙션이나 쿼리 결과의 문서를 가져오는 함수 - 데이터를 가져오는 함수,(아랫줄로)
+// 여러개의 파일을 꺼내오는 기능-컬렉션을 기준으로 그 안에 있는  모든 문서를 한번에 가져온다.
+//limit > Firestore에서 쿼리 시 가져올 문서의 수를 제한하는 함수.
+// orderBy > 문서를 정렬해주는 함수. 우리는 최신정렬등을  하기 위한 목적으로 가져왔다.
+//query > firestore에서 조건을 적용한 쿼리를 만드는 함수. 특정 조건을 만족하는 데이터를 가져오기 위한 목적
+// where > 특정 조건을 설정하는 함수. 특정 필드가(컬랙선 밑 해당 사용자 폴더같은 곳. 그 안에 그 유저가 작성한 정보들이 저장된다.)
+
 import { Ipost } from "../components/TimeLine"; //타입정의해둔 것.
 import Post from "../components/Post"; //업로드한 포스트들
 
@@ -77,6 +92,11 @@ const NameInput = styled.input`
 `;
 
 const Profile = () => {
+  // console.log(` auth값`);
+  // console.log(auth);
+  // console.log(`currentUser값`);
+  // console.log(auth.currentUser);
+  //우리가 firebase에서 정의한 auth는 우리의 정보가 들어가 있다.
   const user = auth.currentUser;
   // console.log(user);
   const [avater, setAvatar] = useState(user?.photoURL || null || undefined);
@@ -84,8 +104,10 @@ const Profile = () => {
   const [posts, setPosts] = useState<Ipost[]>([]); // 데이터베이스틑 객체형태들이 배열로 되어있다.
   const [name, setName] = useState(user?.displayName ?? "Anonymouse"); // 이름을 업데이트 할 목적.
   const [editMode, setEditMode] = useState(false);
+
   const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log(e);
+    // console.log(e.target.files);
+    //해당 이벤트는 이미지를 추가 할 때 발생하는데 이때 이벤트 타겟엔 files가 있고 이 배열 안ㅌ에는 lenght값과  name키 안에 value로 파일의 링크가 들어가 있다.
     const { files } = e.target;
     if (!user) return;
     if (files && files.length === 1) {
@@ -94,25 +116,28 @@ const Profile = () => {
       const result = await uploadBytes(locationRef, file);
       //값을 들고 오길 기다려야함. 당연히 async가 붙어야 await 가능 || uploadBytes 파이어베이스 함수로 업로들할 컨텐츠의 바이트 정보를 받아올 수 있도록 하는 함수이다. (업로드할 스토리지폴더 위치 , 넣을 값)
       const avatarUrl = await getDownloadURL(result.ref);
-      //getDownloadURL - 해당 경로의 파일의 url을 추출하는 함수이다.
+      //getDownloadURL - 스토리지에서 해당 경로의 파일의 url을 추출하는 함수이다.
       setAvatar(avatarUrl);
       await updateProfile(user, { photoURL: avatarUrl });
-      //updateProfile - 인증되어진 사용자의 정보를 업데이트 해주는 함수이다. (변경할 값,{변경키값 : 신규값})
+      //updateProfile - 인증되어진 사용자의 정보(프로필정보를 말함 이름 프로필사진등등)를 업데이트 해주는 firebase 함수이다. (업데이트 대상 사용자객체,{변경키값 : 신규값})
+      //photoURL은 firebase에 auth.current(100번째 user 변수에 넣은 유저정보)객체 안에 있는 해당 사용자의 프로필이미지 url 이다
+      //firebase의 스토리지에 프로필을 저장해두었었고 그 저장한 스토리지 주소값을 말한다.
     }
   };
+
   const fetchPosts = async () => {
     //구글파이어스토어에 데이터를 가져올 것 - 컴포넌트 마운트시 끌고올 것.-- useEffect에서 실행할 것
     //파이어스토어도 쿼리값을 찾아온다 라고 표현함 -->query() - 어떠한 값을 찾아오는 함수 (무슨값을 찾아올지 , ?어떤 조건으로 찾아올지)
     const postQuery = query(
       collection(db, "contents"),
-      where("userId", "==", user?.uid),
+      where("userId", "==", user?.uid), // (필터링할 필드 , 비교연산자 , 비교값)
       orderBy("createdAt", "desc"),
       limit(25)
     );
     //collection() - 파이어베이스 뭐든 컬렉션이라는  상위요소에서 db가 만들어진다 즉 그 콜렉션을 말하는것 (권한 , "찾아오는 곳-폴더")
     //where() - (우리의 필드 , 조건값(== : 같은것), 유저의 아이디(우리가 폴더를 아이디로 ))
     //orderBy 오름차순 내림차순
-
+    console.log(postQuery);
     const snapShot = await getDocs(postQuery); //promise 반환
     const posts = snapShot.docs.map((doc) => {
       const { createdAt, photo, video, post, userId, username } = doc.data();
@@ -128,6 +153,7 @@ const Profile = () => {
     });
     setPosts(posts);
   };
+
   useEffect(() => {
     fetchPosts();
   }, []);

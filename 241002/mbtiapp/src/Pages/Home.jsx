@@ -75,8 +75,7 @@ const Home = () => {
         <Desc>MBTI를 기반으로 나랑 잘 맞는 고양이</Desc>
         <ButtonWrap>
           <Button onClick={handleClickButton} variant="light">
-            {" "}
-            테스트 시작하기{" "}
+            테스트 시작하기
           </Button>
         </ButtonWrap>
       </Contents>
