@@ -44,7 +44,6 @@ const MovieOverView = styled.p`
 `;
 
 const Banner = ({ movie }) => {
-  console.log(movie.backdrop_path);
   return (
     <BgImg>
       <Img
