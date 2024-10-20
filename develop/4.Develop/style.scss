@@ -29,8 +29,9 @@ html {
 .banner {
   height: 60px;
   background: #000;
-  & > ul {
-    height: 100%;
+  .inner > ul {
+    height: 60px;
+    width: 100%;
     display: flex;
     gap: 34px;
     justify-content: end;
@@ -45,13 +46,14 @@ html {
 nav {
   height: 80px;
   background-color: #fff;
-  .gnb {
-    height: 100%;
+  .inner > .gnb {
+    height: 80px;
     display: flex;
     gap: 34px;
     justify-content: end;
     align-items: center;
     margin-right: 20px;
+    text-align: center;
   }
 }
 
