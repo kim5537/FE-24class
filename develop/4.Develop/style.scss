@@ -187,3 +187,65 @@ main {
     opacity: 100%;
   }
 }
+
+.technology {
+  .inner {
+    .techTop {
+      font-size: 40px;
+      display: flex;
+      justify-content: end;
+      margin: 60px 200px;
+      color: #ffffff60;
+    }
+    ul {
+      li {
+        font-size: 32px;
+        font-weight: 400;
+        padding-left: 40px;
+        width: 100%;
+        cursor: pointer;
+        color: #fff;
+        .bar {
+          margin: 20px 0 12px;
+          width: 100%;
+          background: #8d8d8d;
+          height: 1px;
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+        }
+        &.active {
+          color: #71a7c7;
+          .bar {
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 300px;
+              height: 1px;
+              background: linear-gradient(
+                90deg,
+                #2665b800,
+                #2665b8,
+                #2665b8,
+                #2665b8,
+                #2665b800
+              );
+              animation: bottomLine 2s 1s infinite;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes bottomLine {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(1400px);
+  }
+}
