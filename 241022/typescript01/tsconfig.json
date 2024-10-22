@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    //컴파일될 파일들의 js버전을 정의한다. -target
+    //ESNext : 가장 최신문법의 js문법을 적용시킨다는 의미
+    "target": "ESNext",
+    // 컴파일링될 파일들의 모듈 시스템을 정의하는 옵션 - module
+    //CommonJS 옛날 방식.
+    "module": "ESNext",
+    //컴파일링될 파일들을 저장할 공간을 정의한다. -dist 파일을 만들어서 컴파일링 파일을 넣어라//단 우린 node가 18 이상 버전을 사용하기 때문에 필요없다.
+    // "outDir": "dist",
+    //컴파일링 하고자 하는 파일의 타입을 엄격하게 검사 할 것지에 대한 질문
+    "strict": false,
+    //타입 지정시 null 타입 사용에 대한 여부 - null도 하나의 타입으로 보는가 아닌가.
+    "strictNullChecks": false,
+    //type script의 각 파일을 독립적 모듈로 인식시키는 옵션 "force"은 독립적으로 보겠다는것으로 없으면 기본적으로 전역으로 본다
+    "moduleDetection": "force",
+    //외부라이브러리를 설치 할 때, 타입 지정 검사를 생략하고자 할 때.
+    "skipLibCheck": true
+  },
+  //ts-node라는 컴파일러의 모듈을 설정하고자 할 때.
+  "ts-node": {
+    "esm": true
+  },
+  //src라는 폴더 내에 있는 파일들을  ts로 컴파일링하고자 할 때.
+  "include": ["src"]
+}

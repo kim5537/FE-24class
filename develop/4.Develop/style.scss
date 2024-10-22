@@ -122,8 +122,10 @@ main {
       flex-direction: column;
       z-index: 2;
       .topText {
+        //Technology
         flex: 1;
         display: flex;
+        animation: topTitle 2s 1s linear;
         h3 {
           margin-left: 10px;
           font-size: 30px;
@@ -141,12 +143,14 @@ main {
         flex: 2;
         text-align: center;
         h1 {
+          //INNIVATIVE
           font-size: 60px;
           color: #fff;
           font-weight: normal;
         }
       }
       .bottomText {
+        //Design
         flex: 1;
         display: flex;
         h3 {
@@ -164,13 +168,22 @@ main {
       }
     }
     &::after {
-      content: "1";
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(0, rgba(#000, 0.3));
+      background: linear-gradient(#00000080, rgba(#000, 0.5), rgba(#000, 0));
     }
+  }
+}
+
+@keyframes topTitle {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
   }
 }
