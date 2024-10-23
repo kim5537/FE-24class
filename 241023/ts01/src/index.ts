@@ -90,79 +90,79 @@
 
 // // 인터페이스 > 타입 별칭
 // //타입별칭은 결과값을 정의할 때 사용하고 대부분은 인터페이스
-// // interface User01 {
-// //   id: number;
-// // }
+// interface User01 {
+//   id: number;
+// }
 // // //최우선인 이유는 쓸수있는 기능이 많다.  -> 재활용 등등...
 
-// // interface Person {
-// //   name: string;
-// //   age: number;
-// //   etc?: boolean;
-// // }
+// interface Person {
+//   name: string;
+//   age: number;
+//   etc?: boolean;
+// }
 
-// // const perso01: Person = {
-// //   name: "Peter",
-// //   age: 24,
-// // };
-// // const person02: Person = {
-// //   name: "Peter",
-// //   age: 24,
-// //   etc: true,
-// // };
+// const perso01: Person = {
+//   name: "Peter",
+//   age: 24,
+// };
+// const person02: Person = {
+//   name: "Peter",
+//   age: 24,
+//   etc: true,
+// };
 
 // // //프로포타입 객체를 만들 때 하는 class 이다
-// // class Person1 {
-// //   name: string;
-// //   age: number;
-// // }
+// class Person1 {
+//   name: string;
+//   age: number;
+// }
 
-// // const Person03: Person1 = new Person1(); //클래스 자체도 타입이 될 수 있다. 왜냐면 인스턴스는 복제품이기 때문이다.
-// // Person03.name = "peter";
-// // Person03.age = 20;
-// // console.log(Person03);
+// const Person03: Person1 = new Person1(); //클래스 자체도 타입이 될 수 있다. 왜냐면 인스턴스는 복제품이기 때문이다.
+// Person03.name = "peter";
+// Person03.age = 20;
+// console.log(Person03);
 
-// // //바닐라 자바스크립트
-// // class Person2 {
-// //   //필드값
-// //   name: string;
-// //   age: number;
+// //바닐라 자바스크립트
+// class Person2 {
+//   //필드값
+//   name: string;
+//   age: number;
 
-// //   constructor(name: string, age: number) {
-// //     //생성자 함수
-// //     this.name = name;
-// //     this.age = age;
-// //   }
-// // }
+//   constructor(name: string, age: number) {
+//     //생성자 함수
+//     this.name = name;
+//     this.age = age;
+//   }
+// }
 
 // //타입스크립트
-// // class Person2 {
-// //   //필드값 생략 가능
+// class Person2 {
+//   //필드값 생략 가능
 
-// //   //접근제어자 public - 내외에서 모두 접근 가능하게 해주겠다.
-// //   //여기에 ?도 가능 - 옵셔널 값 . 있든 없든 상관 없음
-// //   constructor(public name: string, public age: number) {
-// //     //생성자 함수
-// //     this.name = name;
-// //     this.age = age;
-// //   }
-// // }
+//   //접근제어자 public - 내외에서 모두 접근 가능하게 해주겠다.
+//   //여기에 ?도 가능 - 옵셔널 값 . 있든 없든 상관 없음
+//   constructor(public name: string, public age: number) {
+//     //생성자 함수
+//     this.name = name;
+//     this.age = age;
+//   }
+// }
 // // const person04 = new Person2("Romeo", 24);
 // // console.log(person04);
 
-// // //인터페이스 + 클래스
-// // //반드시 인터페이스 값을 가지고 있는 객체를 만든다면? implements
-// // interface Person5 {
-// //   name: string;
-// //   age: number;
-// // }
+// //인터페이스 + 클래스
+// //반드시 인터페이스 값을 가지고 있는 객체를 만든다면? implements
+// interface Person5 {
+//   name: string;
+//   age: number;
+// }
 
-// // class Person6 implements Person5 {
-// //   constructor(public name: string, public age: number) {}
-// // }
+// class Person6 implements Person5 {
+//   constructor(public name: string, public age: number) {}
+// }
 
-// // const person05 = new Person6("나", 24);
-// // console.log(person05);
+// const person05 = new Person6("나", 24);
+// console.log(person05);
 
 // // --------------추상 클래스----------------- //
 // // 추상화 : 형태가 없는 비정형화된 사물을 표현 한 것.
@@ -184,12 +184,12 @@
 // const person06 = new Person8("Bruse", 21, "서울");
 // console.log(person06);
 
-// //static 속성 // 한번에 값 가져오기
-// // class TestA {
-// //   initialValue = 1;
-// // }
+//static 속성 // 한번에 값 가져오기
+// class TestA {
+//   initialValue = 1;
+// }
 
-// // const test01A = TestA.initialValue;
+// const test01A = TestA.initialValue;
 // //------------------------
 // class TestA01 {
 //   static initialValue = 1;
@@ -199,31 +199,31 @@
 
 //Enum - Enumberalbe : 열거형 타입
 // 오타 누락  값변경을 원천적으로 막기 위해.
-// enum Role {
-//   ADMIN = 0,
-//   USER = 1,
-//   GUEST = 2,
-// }
-// const user1 = {
-//   name: "David",
-//   // role: "ADMIN",
-//   role: Role.ADMIN,
-//   // id: 0,
-// };
-// const user2 = {
-//   name: "David",
-//   // role: "USER",
-//   role: Role.USER,
-//   // id: 1,
-// };
-// const user3 = {
-//   name: "David",
-//   // role: "GUEST",
-//   role: Role.GUEST,
-//   // id: 2,
-// };
+enum Role {
+  ADMIN = 0,
+  USER = 1,
+  GUEST = 2,
+}
+const user1 = {
+  name: "David",
+  // role: "ADMIN",
+  role: Role.ADMIN,
+  // id: 0,
+};
+const user2 = {
+  name: "David",
+  // role: "USER",
+  role: Role.USER,
+  // id: 1,
+};
+const user3 = {
+  name: "David",
+  // role: "GUEST",
+  role: Role.GUEST,
+  // id: 2,
+};
 
-// console.log(user1, user2, user3);
+console.log(user1, user2, user3);
 
 //any타입
 //리터럴타입 문자열을 통해 값을 추ㄹ혼
@@ -233,7 +233,7 @@ test01 = "hello";
 let test02: unknown; // any보다 더 상위
 test02 = "worlds";
 test02 = 1;
-// test02 = () => {};
+test02 = () => {};
 
 let test03 = test01;
 
