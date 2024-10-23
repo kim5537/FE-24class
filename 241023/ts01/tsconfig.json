@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    //모듈 시스템 정의 시작.
+    "target": "ESNext",
+    "module": "ESNext", //최신버전 쓰겠다.
+    "strict": false, //함수안 메개변수까지 타입정의 할건지
+    "strictNullChecks": false,
+    "moduleDetection": "force", // 변수를 지역변수로
+    "skipLibCheck": true //외부라이브러리를 설치 할 때, 타입 지정 검사를 생략하고자 할 때.
+  },
+  "ts-node": {
+    "esm": true
+  }
+}
