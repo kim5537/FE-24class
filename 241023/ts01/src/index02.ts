@@ -5,8 +5,8 @@
 // let num1: number = 10;
 // let num2: 10 = 10; // 리터럴 타입 . 추론
 
-// // num1 = num2;// 에러 없음
-// // num2 = num1;// 에러 남
+// num1 = num2;// 에러 없음
+// num2 = num1;// 에러 남
 
 // //타입 스크립트에 기본적으로 내장되어이 있는 내장타입  > 리터럴 타입 보다 슈퍼타입 그래서 에러가 난다
 // // 서브 타입을 슈퍼타입으로 호환시키는 액션 = 업캐스팅 : 대부분 허용
@@ -36,15 +36,13 @@
 
 // // animal은 dog보다 슈퍼타입
 // // dog는 animal 보다 서브타입
-// // animal = dog;
-// // dog = animal;
+// animal = dog;
+// dog = animal;
 
 // interface Book {
 //   name: string;
 //   price: number;
 // }
-
-// let book: Book;
 
 // interface ProgrammingBook {
 //   name: string;
@@ -52,22 +50,29 @@
 //   skill: string;
 // }
 
-// let programmingBook: ProgrammingBook = {
-//   name: "TS",
-//   price: 33000,
-//   skill: "TS",
-// };
+// // let book: Book;
 
-// book = programmingBook;
-// programmingBook = book;
+// // let programmingBook: ProgrammingBook = {
+// //   name: "TS",
+// //   price: 33000,
+// //   skill: "TS",
+// // };
 
-// 초과 프로퍼티 검사
+// // book = programmingBook;
+// // programmingBook = book;
+
+// // 초과 프로퍼티 검사
 // let programmingBook: Book = {
 //   name: "TS",
 //   price: 33000,
 //   skill: "TS",
 // };
-// 이렇게는 직접적으론 안된다. skill이 없기 때문.
+// // 이렇게는 직접적으론 안된다. skill이 없기 때문.
+
+// let pro: ProgrammingBook = {
+//   name: "나",
+//   price: 20,
+// };
 
 // let book3: Book = programmingBook; // 별도의 변수를 지정해서 지정하는 건 가능하다 왜냐면 book이 슈퍼타입이기 때문
 
@@ -111,10 +116,10 @@
 
 // // 아래 union4는 왜 허용이 안될까??
 // //유니온은 우리가 아는 합집합이 아니야. - 요소 중 하나라도 충족시켜야한다.  Dog의 조건이 충족되거나 Person의 조건에 만족되거나 해야한다.
-// // let union4: Union1 = {
-// //   name: "",
-// // };
-
+// let union4: Union1 = {
+//   name: "",
+// };
+////////////////////////////////////////////////////////////////////////////////
 // //인터섹션 계념. 모두를 합친거. -- 교집합 부분 - 모두를 충족시키는 것.
 // type Intersection = Dog & Person;
 
