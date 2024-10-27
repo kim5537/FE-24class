@@ -25,11 +25,11 @@ html {
   margin: 0 auto;
 }
 
-.banner {
+header .topHeader .banner {
   height: 60px;
   background: #000;
 }
-.banner .inner > ul {
+header .topHeader .banner .inner > ul {
   height: 60px;
   width: 100%;
   display: flex;
@@ -38,15 +38,22 @@ html {
   align-items: center;
   margin-right: 20px;
 }
-.banner .inner > ul > li {
+header .topHeader .banner .inner > ul > li {
   color: #fff;
 }
-
-nav {
+header .bottomGnb {
+  width: 100%;
   height: 80px;
   background-color: #fff;
+  z-index: 2000;
 }
-nav .inner > .gnb {
+header .bottomGnb nav {
+  top: 0;
+  margin: auto;
+  position: relative;
+  z-index: 1000;
+}
+header .bottomGnb nav .inner > .gnb {
   height: 80px;
   display: flex;
   gap: 34px;
@@ -54,6 +61,10 @@ nav .inner > .gnb {
   align-items: center;
   margin-right: 20px;
   text-align: center;
+}
+header.active .bottomGnb {
+  position: fixed;
+  top: 0;
 }
 
 main {
@@ -76,6 +87,7 @@ main .maininner .sliderItems {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+  animation: opacityAni 5s 2s ease forwards;
 }
 main .maininner .sliderItems .leftSlider {
   width: 624px;
@@ -179,7 +191,7 @@ main .maininner::after {
   width: 100%;
   height: 100%;
   background: #1d1d1d;
-  animation: MainBack 3s 2s ease-in-out forwards;
+  animation: MainBack 3s 2s ease forwards;
 }
 
 @keyframes topTitleborder {
@@ -220,48 +232,104 @@ main .maininner::after {
   0% {
     background: #1d1d1d;
   }
+  50% {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  }
   100% {
-    background: linear-gradient(rgba(0, 0, 0, 0.5019607843), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
   }
 }
-.technology .inner .techTop {
+#technology {
+  margin-bottom: 104px;
+}
+#technology .inner .techTop {
   font-size: 40px;
   display: flex;
   justify-content: end;
   margin: 60px 100px;
   color: #464646;
 }
-.technology .inner ul li {
+#technology .inner .TechnologyUl li {
   font-size: 32px;
   font-weight: 400;
   width: 100%;
   cursor: pointer;
   color: #fff;
 }
-.technology .inner ul li .text {
-  padding-left: 40px;
+#technology .inner .TechnologyUl li .text {
+  padding: 0px 40px 20px;
+  height: 60px;
+  transition: color 0.3s;
 }
-.technology .inner ul li .bar {
-  margin: 20px 0 12px;
+#technology .inner .TechnologyUl li .text:hover {
+  color: #71a7c7;
+}
+#technology .inner .TechnologyUl li .bar {
+  margin: 0 0 12px;
   width: 100%;
   background: #8d8d8d;
-  height: 1px;
+  height: 2px;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-.technology .inner ul li.active {
+#technology .inner .TechnologyUl li .hoverWrap {
+  height: 0;
+  visibility: hidden;
+  transform: translateY(0px);
+  transition: transform 0s, opacity 0s, visibility 0s;
+}
+#technology .inner .TechnologyUl li.active {
   color: #71a7c7;
 }
-.technology .inner ul li.active .bar::before {
+#technology .inner .TechnologyUl li.active .bar::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 300px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(38, 101, 184, 0), #71a7c7, #71a7c7, #71a7c7, rgba(38, 101, 184, 0));
-  animation: bottomLine 2s 1s infinite;
+  width: 400px;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(38, 101, 184, 0), #71a7c7, #0fa8ca, #71a7c7, rgba(38, 101, 184, 0));
+  animation: bottomLine 2s 0s infinite;
+}
+#technology .inner .TechnologyUl li.active .hoverWrap {
+  height: 100%;
+  display: flex;
+  visibility: visible;
+  padding: 100px 160px;
+  gap: 60px;
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
+  transform: translateY(20px);
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .hoverImg {
+  height: 680px;
+  flex: 2;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .hoverImg.aiImg {
+  background-image: url(./img/AIimg.png);
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .hoverImg.dcImg {
+  background-image: url(./img/displayImg.png);
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .hoverImg.soundImg {
+  background-image: url(./img/soundImg.png);
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .hoverImg.weightImg {
+  background-image: url(./img/weightImg.png);
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .Techdesc {
+  flex: 3;
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .Techdesc h3 {
+  color: #fff;
+  margin-bottom: 60px;
+}
+#technology .inner .TechnologyUl li.active .hoverWrap .Techdesc p {
+  font-size: 1.3rem;
 }
 
 @keyframes bottomLine {
@@ -272,3 +340,458 @@ main .maininner::after {
     transform: translateX(1400px);
   }
 }
+#design .designinner {
+  display: flex;
+  height: 610px;
+  margin: auto;
+  width: 100%;
+}
+#design .designinner .right {
+  flex: 3;
+  height: 610px;
+  width: 100%;
+  background-color: #3f6f8b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  position: relative;
+}
+#design .designinner .right > div {
+  margin-right: 300px;
+  text-align: center;
+  color: #fff;
+  height: 120px;
+  overflow: hidden;
+}
+#design .designinner .right > div .textSlide {
+  width: 300px;
+  height: 120px;
+}
+#design .designinner .right > div .textSlide div h4 {
+  font-size: 32px;
+  font-weight: normal;
+}
+#design .designinner .right > div .textSlide div p {
+  font-size: 44px;
+  font-weight: 600;
+}
+#design .designinner .right::before {
+  content: "Design";
+  position: absolute;
+  color: #fff;
+  opacity: 10%;
+  font-size: 200px;
+  top: 50px;
+  right: 100px;
+}
+#design .designinner .DesignslidWrap {
+  flex: 2;
+  position: relative;
+}
+#design .designinner .DesignslidWrap .Designslid {
+  width: 810px;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+#design .designinner .DesignslidWrap .Designslid li {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#design .designinner .DesignslidWrap .Designslid li img {
+  height: 620px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#more .inner .moreWrap {
+  width: 90%;
+  margin: auto;
+}
+#more .inner .moreWrap .moreTitle {
+  margin: 250px auto 70px;
+  width: 240px;
+  height: 60px;
+  border: 2px solid #0fa8ca;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 56px;
+}
+#more .inner .moreWrap .moreTitle h3 {
+  font-size: 32px;
+  color: #aecddf;
+}
+#more .inner .moreWrap .moreSlide {
+  width: 100%;
+}
+#more .inner .moreWrap .moreSlide .slideMore {
+  overflow: hidden;
+  width: 400px;
+  height: 420px;
+}
+#more .inner .moreWrap .moreSlide .slideMore img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#more .inner .moreWrap .moreSlide .slick-prev {
+  left: -30px;
+}
+#more .inner .moreWrap .moreSlide .slick-prev::before {
+  content: url(./img/Vector.svg);
+}
+#more .inner .moreWrap .moreSlide .slick-next::before {
+  content: url(./img/Vector2.svg);
+}
+#more .inner .moreWrap .moreBottomT {
+  width: 100%;
+  text-align: center;
+}
+#more .inner .moreWrap .moreBottomT p {
+  margin: auto;
+  color: #aecddf;
+  margin: 8px 0 96px;
+}
+
+footer {
+  width: 100%;
+  margin: auto;
+  border-top: 1px solid #aecddf;
+}
+footer > .inner {
+  color: #aecddf;
+}
+footer > .inner > div {
+  width: 650px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+}
+footer > .inner > div h2 {
+  font-size: 32px;
+  font-weight: normal;
+}
+footer > .inner > div div {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 1400px) {
+  .inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+  header .topHeader .banner .inner > ul {
+    padding-right: 10px;
+  }
+  header .topHeader .banner .inner > ul > li {
+    color: #fff;
+    font-size: 12px;
+  }
+  main .maininner {
+    /*slider*/
+    /*text*/
+  }
+  main .maininner .textWrap {
+    width: 370px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+  #technology {
+    margin-bottom: 104px;
+  }
+  #technology .inner .TechnologyUl {
+    padding: 10px;
+  }
+  #technology .inner .TechnologyUl li .bar {
+    overflow: hidden;
+  }
+  #technology .inner .TechnologyUl li.active {
+    color: #71a7c7;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap {
+    padding: 80px 30px;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .hoverImg {
+    height: 480px;
+    flex: 1;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .Techdesc {
+    flex: 1;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .Techdesc h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .Techdesc p {
+    font-size: 1rem;
+  }
+  #design {
+    height: 600px;
+    padding: 0;
+  }
+  #design .designinner {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  #design .designinner .right {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    display: block;
+  }
+  #design .designinner .right > div {
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    padding: 200px 0 0;
+  }
+  #design .designinner .right > div .textSlide {
+    width: 300px;
+    height: 120px;
+  }
+  #design .designinner .right::before {
+    font-size: 80px;
+    top: 460px;
+    right: 30px;
+  }
+  #design .designinner .DesignslidWrap {
+    position: relative;
+    height: 600px;
+    width: 100%;
+  }
+  #design .designinner .DesignslidWrap .Designslid {
+    height: 100%;
+    top: 0;
+  }
+  #design .designinner .DesignslidWrap .Designslid li {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  #design .designinner .DesignslidWrap .Designslid li img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  #more .inner .moreTitle {
+    margin: 250px auto 70px;
+    width: 240px;
+    height: 60px;
+    border: 2px solid #0fa8ca;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 56px;
+  }
+  #more .inner .moreTitle h3 {
+    font-size: 32px;
+    color: #aecddf;
+  }
+  #more .inner .moreSlide {
+    width: 100%;
+  }
+  #more .inner .moreSlide > div {
+    overflow: hidden;
+    margin-left: 0px;
+  }
+  #more .inner .moreSlide > div img {
+    width: 400px;
+    height: 420px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  #more .inner .moreSlide .slick-prev::before {
+    content: url(./img/Vector.svg);
+  }
+  #more .inner .moreSlide .slick-next::before {
+    content: url(./img/Vector2.svg);
+  }
+  #more .inner .moreBottomT {
+    width: 100%;
+    text-align: center;
+  }
+  #more .inner .moreBottomT p {
+    margin: auto;
+    color: #aecddf;
+    margin: 8px 0 96px;
+  }
+  footer > .inner > div {
+    margin: 30px auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    padding: 0px 10px;
+  }
+  footer > .inner > div h2 {
+    font-size: 32px;
+    font-weight: normal;
+    width: 300px;
+    margin: auto;
+  }
+  footer > .inner > div div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 300px;
+    font-size: 14px;
+    text-align: start;
+    margin: 0px auto 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  main .maininner {
+    /*slider*/
+    /*text*/
+  }
+  main .maininner .sliderItems {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    animation: opacityAni 5s 2s ease forwards;
+  }
+  main .maininner .sliderItems .leftSlider {
+    width: 100%;
+    margin: auto;
+    position: relative;
+  }
+  main .maininner .sliderItems .leftSlider .slider2 {
+    position: absolute;
+    left: 320px;
+    top: 0;
+  }
+  main .maininner .sliderItems .rightSlider {
+    width: 624px;
+    margin-left: 16px;
+    position: relative;
+    display: none;
+  }
+  main .maininner .sliderItems .rightSlider .slider4 {
+    position: absolute;
+    left: 320px;
+    top: 0;
+  }
+  main .maininner .sliderItems .sliderItem > li {
+    width: 300px;
+    height: 400px;
+    margin: 20px 0;
+  }
+  main .maininner .sliderItems .sliderItem > li > img {
+    width: 100%;
+    height: 100%;
+  }
+  main .maininner .sliderItems .sliderleft {
+    margin-top: -540px;
+  }
+  main .maininner .textWrap {
+    width: 370px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+  #technology {
+    margin-bottom: 104px;
+  }
+  #technology .inner .TechnologyUl {
+    padding: 10px;
+  }
+  #technology .inner .TechnologyUl li {
+    height: 100%;
+  }
+  #technology .inner .TechnologyUl li .bar {
+    overflow: hidden;
+  }
+  #technology .inner .TechnologyUl li.active {
+    color: #71a7c7;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap {
+    padding: 10px 30px 40px;
+    display: block;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .hoverImg {
+    height: 380px;
+    margin-bottom: 20px;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .Techdesc h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  #technology .inner .TechnologyUl li.active .hoverWrap .Techdesc p {
+    font-size: 1rem;
+  }
+  #design {
+    height: 700px;
+    padding: 0;
+  }
+  #design .designinner {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  #design .designinner .right {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    display: block;
+  }
+  #design .designinner .right > div {
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    padding: 40px 0 0;
+  }
+  #design .designinner .right > div .textSlide {
+    width: 300px;
+    height: 120px;
+  }
+  #design .designinner .right::before {
+    font-size: 60px;
+    top: 100px;
+    right: 10px;
+  }
+  #design .designinner .DesignslidWrap {
+    position: relative;
+    height: 600px;
+    width: 100%;
+  }
+  #design .designinner .DesignslidWrap .Designslid {
+    height: 100%;
+    top: 0;
+  }
+  #design .designinner .DesignslidWrap .Designslid li {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  #design .designinner .DesignslidWrap .Designslid li img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}/*# sourceMappingURL=style.css.map */
