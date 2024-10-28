@@ -793,5 +793,7 @@ footer > .inner > div div {
     width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
+    top: 50%;
+    left: 50%;
   }
-}/*# sourceMappingURL=style.css.map */
+}

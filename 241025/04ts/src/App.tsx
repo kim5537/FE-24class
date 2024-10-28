@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import DataView from "./components/DataView";
-import TextInput from "./components/TextInput";
-import Button from "./components/Button";
+import InputContainer from "./components/InputContainer";
+import { TodoListContextProvider } from "./contexts/TodoContexts";
 
 const Container = styled.main`
   width: 100%;
@@ -22,27 +22,38 @@ const MockData = [
 
 //TodoList에 배열형태로 프롭스
 const App = () => {
+  const [showTodoInput, setshowTodoInput] = useState(false);
   const [todoList, setTodoList] = useState(MockData);
   const [todo, setTodo] = useState("");
 
-  const onAdd = () => {
-    if (todo === "") return;
+  // const onAdd = (todo: string) => {
+  //   if (todo === "") return;
+  //   setTodoList([todo, ...todoList]);
+  //   setshowTodoInput(false);
+  //   setTodo("");
+  // };
 
-    setTodoList([todo, ...todoList]);
-    setTodo("");
-  };
-
-  const onDelete = (todo: string) => {
-    setTodoList(todoList.filter((item) => item !== todo));
-  };
+  // const onDelete = (todo: string) => {
+  //   setTodoList(todoList.filter((item) => item !== todo));
+  // };
 
   return (
     <Container>
-      <DataView todoList={todoList} onDelete={onDelete} />
-      <TextInput value={todo} onChange={setTodo} />
-      <Button label={"추가"} color="#304ffe" onClick={onAdd} />
+      <TodoListContextProvider>
+        <DataView />
+        <InputContainer />
+      </TodoListContextProvider>
     </Container>
   );
 };
 
 export default App;
+
+//효율적 상태관리를 도와주는 방법들
+//1. useReducer
+//2. useContext
+//3. Redux
+//3. Redux-thunk
+//4. Recoil
+//5. React-Query
+//......
