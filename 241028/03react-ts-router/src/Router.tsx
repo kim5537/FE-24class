@@ -7,6 +7,8 @@ import About from "./components/About";
 import Root from "./Root";
 import NotFound from "./components/NotFound"; // 클라이언트가 잘못된 값을 요구할 때 에러
 import ErrorComponent from "./components/ErrorComponent"; // 서버에서 값이 안 올때 에러
+import User from "./components/User";
+import Followers from "./components/Followers";
 
 const Router = createBrowserRouter([
   {
@@ -21,6 +23,16 @@ const Router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "users/:userId",
+        element: <User />,
+        children: [
+          {
+            path: "followers",
+            element: <Followers />,
+          },
+        ],
       },
     ],
     errorElement: <NotFound />,
