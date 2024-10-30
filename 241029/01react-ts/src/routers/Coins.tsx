@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCoins } from "../api";
+import { Helmet } from "react-helmet";
 
 const Container = styled.main`
   width: 100%;
@@ -53,7 +56,7 @@ const Img = styled.img`
   height: auto;
 `;
 
-interface CoinInterface {
+export interface CoinInterface {
   id: string;
   name: string;
   symbol: string;
@@ -63,42 +66,50 @@ interface CoinInterface {
   type: string;
 }
 const Coins = () => {
-  const [coins, setCoins] = useState<CoinInterface[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [coins, setCoins] = useState<CoinInterface[]>([]);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/Divjason/coindata/refs/heads/main/coins.json"
-      );
-      const json = await response.json();
-      setCoins(json.slice(0, 101));
-    })();
-    setLoading(false);
-  }, []);
-
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await fetch(
+  //       "https://raw.githubusercontent.com/Divjason/coindata/refs/heads/main/coins.json"
+  //     );
+  //     const json = await response.json();
+  //     setCoins(json.slice(0, 101));
+  //   })();
+  //   setLoading(false);
+  // }, []);
+  const { isLoading, data } = useQuery<CoinInterface[]>({
+    queryKey: ["allCoins"],
+    queryFn: fetchCoins,
+  }); // 반드시 두가지 값을 반환한다. 로딩여부(isLoading으로 이름을 붙임) | 데이터
+  //인자값 : 앞에 첫 인자는 비워둬야한다(식별자로 고정된다. - 복수로 사용 할 경우 필요한 정보)
+  console.log(isLoading, data);
   return (
     <Container>
+      <Helmet>
+        <Title>Coin List</Title>
+      </Helmet>
       <Header>
         <Title>Coin List</Title>
       </Header>
-      <CoinList>
-        {loading ? (
-          <Loader> Loading.... </Loader>
-        ) : (
-          coins.map((coin) => (
+      {isLoading ? (
+        <Loader>"Loading..."</Loader>
+      ) : (
+        <CoinList>
+          {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link to={`/${coin.id}`} state={`${coin.name}`}>
-                {coin.rank}.
+                Rank {coin.rank}.
                 <Img
                   src={`https://cryptoicon-api.pages.dev/api/icon/${coin.symbol.toLowerCase()}`}
                 />
-                {coin.name} ({coin.symbol}) &raquo; {coin.name} Information ;
+                {coin.name} ({coin.symbol}) &rarr; {coin.name} Information
               </Link>
             </Coin>
-          ))
-        )}
-      </CoinList>
+          ))}
+        </CoinList>
+      )}
     </Container>
   );
 };

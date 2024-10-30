@@ -1,6 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
 
 const Globalstyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
@@ -26,8 +29,14 @@ const Globalstyle = createGlobalStyle`
 const App = () => {
   return (
     <>
-      <Globalstyle />
-      <Outlet />
+      <ThemeProvider theme={lightTheme}>
+        <Globalstyle />
+        <Outlet />
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          buttonPosition="bottom-left"
+        />
+      </ThemeProvider>
     </>
   );
 };

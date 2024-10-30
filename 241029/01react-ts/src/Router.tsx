@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Root from "./Root";
 import Coin from "./routers/Coin";
 import Coins from "./routers/Coins";
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         path: "/:coinId",
         element: <Coin />,
         children: [
+          {
+            path: "",
+            element: <Navigate to={"chart"} replace />, // 바로 차트가 뜨게
+          },
           {
             path: "chart",
             element: <Chart />,
