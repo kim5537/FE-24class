@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoins } from "../api";
 import { Helmet } from "react-helmet";
+import { isDarkAtom } from "../atoms";
+import { useSetRecoilState } from "recoil";
 
 const Container = styled.main`
   width: 100%;
@@ -16,6 +18,17 @@ const Container = styled.main`
 
 const Header = styled.header`
   font-size: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+const Button = styled.button`
+  background: ${(props) => props.theme.accentColor};
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  color: ${(props) => props.theme.bgColor};
 `;
 
 const Title = styled.h1`
@@ -84,14 +97,16 @@ const Coins = () => {
     queryFn: fetchCoins,
   }); // 반드시 두가지 값을 반환한다. 로딩여부(isLoading으로 이름을 붙임) | 데이터
   //인자값 : 앞에 첫 인자는 비워둬야한다(식별자로 고정된다. - 복수로 사용 할 경우 필요한 정보)
-  console.log(isLoading, data);
+
+  const setterFn = useSetRecoilState(isDarkAtom);
   return (
     <Container>
       <Helmet>
-        <Title>Coin List</Title>
+        <title>Coin List</title>
       </Helmet>
       <Header>
         <Title>Coin List</Title>
+        <Button onClick={() => setterFn((prev) => !prev)}>Mode</Button>
       </Header>
       {isLoading ? (
         <Loader>"Loading..."</Loader>

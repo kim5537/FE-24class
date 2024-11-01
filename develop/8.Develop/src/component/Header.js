@@ -3,25 +3,22 @@ import styled from "styled-components";
 import theme from "../style/theme";
 
 const Wrapper = styled.div`
-  padding: 4px;
-  border-bottom: 1px solid ${({ theme }) => theme.linecolor};
+  height: 108px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-  font-size: 40px;
-  color: #e5e396;
+  gap: 4px;
 `;
 
 const Text = styled.h3`
   font-size: ${({ theme }) => theme.font.md};
-  margin: 0px;
+  color: ${({ theme }) => theme.linecolor};
 `;
 
 const TextTime = styled.h1`
-  margin: 0 0 30px;
   font-size: 30px;
-  color: #30cfd0;
+  color: ${({ theme }) => theme.linecolor};
 `;
 
 const Header = () => {

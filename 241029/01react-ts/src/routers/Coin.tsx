@@ -1,4 +1,10 @@
-import { useParams, useLocation, useMatch, Outlet } from "react-router-dom";
+import {
+  useParams,
+  useLocation,
+  useMatch,
+  Outlet,
+  useOutletContext,
+} from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -69,9 +75,9 @@ const Tab = styled.span<IsActive>`
   font-size: 14px;
   font-weight: bold;
   background: ${(props) =>
-    props.isActive ? props.theme.textColor : props.theme.accentColor};
+    props.$isActive ? props.theme.textColor : props.theme.accentColor};
   color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+    props.$isActive ? props.theme.accentColor : props.theme.textColor};
   padding: 8px 0;
   border-radius: 8px;
   transition: background 0.3s, color 0.3s;
@@ -135,7 +141,7 @@ interface PriceData {
 }
 
 interface IsActive {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 const Coin = () => {
@@ -181,7 +187,7 @@ const Coin = () => {
   return (
     <Container>
       <Helmet>
-        <Title>{state ? state : loading ? "Loading..." : infoData?.name}</Title>
+        <title>{state ? state : loading ? "Loading..." : infoData?.name}</title>
       </Helmet>
       <Header>
         <Title>{state ? state : loading ? "Loading..." : infoData?.name}</Title>
@@ -224,10 +230,10 @@ const Coin = () => {
             </OverViewItem>
           </OverView>
           <Tabs>
-            <Tab isActive={chartMatch !== null}>
+            <Tab $isActive={chartMatch !== null}>
               <Link to={`/${coinId}/chart`}>Chart</Link>
             </Tab>
-            <Tab isActive={priceMatch !== null}>
+            <Tab $isActive={priceMatch !== null}>
               <Link to={`/${coinId}/price`}>price</Link>
             </Tab>
           </Tabs>
@@ -239,4 +245,7 @@ const Coin = () => {
 };
 
 //isActive는 우리가 프롭스를 만들기 위해 만들 것이다. chartMatch는 참일 때 객체를 반환한다. 따라서 false면 null을 반환한다.
+//isActive 를 dom으로 전송 콘솔 에러 (styled-components 에러)
+//styled-components에 있는 transient Props 사용하기
+// 컴포넌트 내에서 스타일을 정의하도록 도와주는 역할을 학는 것 까지만 승인하고 dom에게 전달 안하게 하는 것 == 방법 $붙음
 export default Coin;

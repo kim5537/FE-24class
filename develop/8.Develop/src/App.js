@@ -5,7 +5,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import theme from "./style/theme";
 import Counter from "./component/Counter";
 import Time from "./component/Time";
@@ -37,29 +37,45 @@ const mockTodo = [
   },
 ];
 
-const Back = styled.div`
-  height: 100vh;
-  background: ${({ theme }) => theme.background};
-  margin: 0;
+const GlobalStyle = createGlobalStyle`
+* {
+  margin:  0;
   padding: 0;
   box-sizing: border-box;
+}
+ul , li {
+list-style: none;
+}
+a {
+text-decoration: none;
+color: inherit;
+}
+`;
+
+const Back = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background: ${({ theme }) => theme.background};
+  /* border: 1px solid transparent; */
 `;
 
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  margin: 30px auto;
+  padding: 30px;
   justify-content: center;
   gap: 10px;
 `;
 
 const Main = styled.div`
+  height: calc(100vh - 60px);
   width: 500px;
-  padding: 20px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  ${({ theme }) => theme.boxline}
+  background: ${({ theme }) => theme.opacityWhite};
+  border-radius: 15px;
 `;
 
 const SidWrap = styled.div``;
@@ -84,9 +100,12 @@ function App() {
     });
     idRef.current += 1;
   };
+  //6 <= timeMode <= 18
+  //6 <= timeMode <= 18
 
   return (
-    <ThemeProvider theme={timeMode > 6 && timeMode < 18 ? theme.am : theme.pm}>
+    <ThemeProvider theme={6 <= timeMode <= 18 ? theme.am : theme.pm}>
+      <GlobalStyle />
       <TodoContext.Provider>
         <Back>
           <Wrapper>

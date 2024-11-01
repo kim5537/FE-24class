@@ -1,6 +1,6 @@
 // theme.js
 import ambackground from "../img/ambg.png";
-import pmbackground from "../img/pmbg.png";
+import pmbackground from "../img/pmbg.jpg";
 
 const font = {
   lg: "30px",
@@ -16,6 +16,7 @@ const theme = {
     basecolor: "#F2ECD5",
     maincolor: "#9F8B7D",
     linecolor: "#584343",
+    opacityWhite: "#ffffff80",
     font,
     boxline,
   },
@@ -24,6 +25,7 @@ const theme = {
     basecolor: "#8CB3C3",
     maincolor: "#4F6B82",
     linecolor: "#435558",
+    opacityWhite: "#ffffff80",
     font,
     boxline,
   },
