@@ -1,16 +1,22 @@
-export const basket = () => {
+import styled from "styled-components";
+
+const StyledSvg = styled.svg`
+  path {
+    fill: ${(props) => props.theme.linecolor};
+  }
+`;
+
+export const Basket = ({ onClick }) => {
   return (
-    <svg
+    <StyledSvg
+      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       width="18"
       height="16"
       viewBox="0 0 18 16"
       fill="none"
     >
-      <path
-        d="M17 6H1C0.734784 6 0.48043 5.89464 0.292893 5.70711C0.105357 5.51957 0 5.26522 0 5C0 4.73478 0.105357 4.48043 0.292893 4.29289C0.48043 4.10536 0.734784 4 1 4H17C17.2652 4 17.5196 4.10536 17.7071 4.29289C17.8946 4.48043 18 4.73478 18 5C18 5.26522 17.8946 5.51957 17.7071 5.70711C17.5196 5.89464 17.2652 6 17 6Z"
-        fill= `${(props) => props.theme.linecolor} `
-      />
+      <path d="M17 6H1C0.734784 6 0.48043 5.89464 0.292893 5.70711C0.105357 5.51957 0 5.26522 0 5C0 4.73478 0.105357 4.48043 0.292893 4.29289C0.48043 4.10536 0.734784 4 1 4H17C17.2652 4 17.5196 4.10536 17.7071 4.29289C17.8946 4.48043 18 4.73478 18 5C18 5.26522 17.8946 5.51957 17.7071 5.70711C17.5196 5.89464 17.2652 6 17 6Z" />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -23,6 +29,6 @@ export const basket = () => {
         stroke-width="2"
         stroke-linecap="round"
       />
-    </svg>
+    </StyledSvg>
   );
 };

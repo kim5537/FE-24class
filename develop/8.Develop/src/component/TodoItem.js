@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { basket } from "../style/Icon";
+import { Basket } from "../style/Icon";
 
 const Wapper = styled.div`
   height: 68px;
@@ -8,6 +8,11 @@ const Wapper = styled.div`
   border: 1px solid ${({ theme }) => theme.maincolor};
   border-radius: 10px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
 `;
 
 // const Todo = styled.div`
@@ -49,7 +54,9 @@ const Wapper = styled.div`
 //   color: ${({ theme }) => theme.linecolor};
 // `;
 
-const Todo = styled.div``;
+const Todo = styled.div`
+  flex: 2;
+`;
 
 const Input = styled.input``;
 
@@ -57,24 +64,18 @@ const Labale = styled.label``;
 
 const TextItem = styled.div``;
 
-const Button = styled.button``;
-
 const TodoItem = () => {
+  const onDelete = () => {
+    console.log("삭제");
+  };
   return (
-    <div>
-      <Wapper>
-        <p>
-          <Input type="checkbox" />
-          <Labale>
-            <basket />
-          </Labale>
-        </p>
-        <Todo>
-          <TextItem>item</TextItem>
-          <Button>삭제</Button>
-        </Todo>
-      </Wapper>
-    </div>
+    <Wapper>
+      <Input type="checkbox" />
+      <Todo>
+        <TextItem>item</TextItem>
+      </Todo>
+      <Basket onClick={onDelete} />
+    </Wapper>
   );
 };
 

@@ -12,6 +12,7 @@ import Time from "./component/Time";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
+import { type } from "@testing-library/user-event/dist/type";
 
 //생성
 export const TodoContext = React.createContext();
@@ -80,15 +81,28 @@ const Main = styled.div`
 
 const SidWrap = styled.div``;
 
-const reducer = (state, action) => {};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "CREATE": {
+      return [action.newItem, ...state];
+    }
+    case "UPDATE": {
+      return state.map((it) =>
+        it.id === action.targetId ? { ...it, isDone: !it.isDone } : it
+      );
+    }
+    default:
+      return state;
+  }
+};
 
 function App() {
   const [todo, dispatch] = useReducer(reducer, mockTodo);
+  //todo: 값 || dispatch :  구분을 위한 것 || reducer : 분류 함수 || mocktodo: 초기값
   const idRef = useRef(3);
-  const [isDark, setIsdark] = useState(false);
   let timeMode = new Date().getHours();
-  console.log(timeMode);
-  const onCreate = (content) => {
+
+  const onCreate = useCallback((content) => {
     dispatch({
       type: "CREATE",
       newItem: {
@@ -99,14 +113,26 @@ function App() {
       },
     });
     idRef.current += 1;
-  };
-  //6 <= timeMode <= 18
-  //6 <= timeMode <= 18
+  }, []);
+
+  const onUpdate = useCallback((targetId) => {
+    dispatch({
+      type: "UPDATE",
+      targetId,
+    });
+  }, []);
+
+  const onDelete = useCallback((targetId) => {
+    dispatch({
+      type: "DELETE",
+      targetId,
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={6 <= timeMode <= 18 ? theme.am : theme.pm}>
       <GlobalStyle />
-      <TodoContext.Provider>
+      <TodoContext.Provider value={(todo, onCreate)}>
         <Back>
           <Wrapper>
             <Main>
