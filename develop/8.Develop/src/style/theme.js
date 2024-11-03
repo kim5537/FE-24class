@@ -22,7 +22,7 @@ const theme = {
   },
   pm: {
     background: `center/cover  no-repeat  url(${pmbackground})`,
-    basecolor: "#8CB3C3",
+    basecolor: "#81A6B6",
     maincolor: "#4F6B82",
     linecolor: "#435558",
     opacityWhite: "#ffffff80",

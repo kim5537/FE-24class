@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
+  border-bottom: 1px solid ${(props) => props.theme.linecolor};
 `;
 
 const Text = styled.h3`

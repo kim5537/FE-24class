@@ -1,80 +1,107 @@
-import React from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Basket } from "../style/Icon";
+import { TodoContext } from "../App";
+import { Check } from "../style/Icon";
 
 const Wapper = styled.div`
-  height: 68px;
+  height: 46px;
   margin: 0 auto;
-  border: 1px solid ${({ theme }) => theme.maincolor};
-  border-radius: 10px;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  gap: 10px;
+  gap: 3px;
+  margin-bottom: 10px;
 `;
 
-// const Todo = styled.div`
-//   height: 60px;
-//   display: flex;
-//   align-content: center;
-//   justify-content: space-between;
-//   background: ${({ theme }) => theme.opacityWhite};
-//   border: 1px solid ${({ theme }) => theme.basecolor};
-//   border-radius: 10px;
-//   padding: 10px;
-//   margin: 3px;
-// `;
+const CheckWrap = styled.div`
+  width: 46px;
+  height: 100%;
+  background: ${(props) => props.theme.basecolor};
+  border: 1px solid ${({ theme }) => theme.maincolor};
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-// const Input = styled.input`
-//   width: 20px;
-//   height: 20px;
-//   appearance: none;
-//   border: 1px solid #ccc;
-//   border-radius: 50px;
-//   &:checked {
-//     border: 1px solid #ffc878;
-//     background-color: #ffc878;
-//   }
-// `;
+const Label = styled.label`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  svg {
+    width: 50px;
+    display: none;
+  }
+  &.active svg {
+    display: block;
+    position: absolute;
+    top: -8px;
+    left: 6px;
+  }
+`;
 
-// const TextItem = styled.div`
-//   height: 40px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 6px;
-// `;
-// const Button = styled.button`
-//   border: none;
-//   border-radius: 10px;
-//   padding: 10px 20px;
-//   background: ${({ theme }) => theme.basecolor};
-//   color: ${({ theme }) => theme.linecolor};
-// `;
+const ItemWrap = styled.div`
+  width: calc(100% - 46px);
+  border: 1px solid ${({ theme }) => theme.maincolor};
+  border-radius: 10px;
+  background: ${(props) => props.theme.basecolor};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+`;
 
 const Todo = styled.div`
   flex: 2;
 `;
 
-const Input = styled.input``;
+const Input = styled.input`
+  display: none;
+`;
 
-const Labale = styled.label``;
+const TextItem = styled.div`
+  color: ${(props) => props.theme.linecolor};
+  font-weight: 600;
+  &.active {
+    text-decoration: line-through;
+    opacity: 40%;
+  }
+`;
 
-const TextItem = styled.div``;
-
-const TodoItem = () => {
-  const onDelete = () => {
-    console.log("삭제");
+const TodoItem = ({ id, isDone, content, createdDate }) => {
+  const { onUpdate, onDelete } = useContext(TodoContext);
+  const [checkItem, setCheckItem] = useState(isDone);
+  const check = `check-${id}`;
+  const onItemDelete = () => {
+    onDelete(id);
   };
+
+  const onCheckItem = () => {
+    setCheckItem((prev) => !prev);
+    onUpdate(id);
+  };
+
+  const onCheck = () => {};
   return (
     <Wapper>
-      <Input type="checkbox" />
-      <Todo>
-        <TextItem>item</TextItem>
-      </Todo>
-      <Basket onClick={onDelete} />
+      <CheckWrap onClick={onCheck}>
+        <Label className={checkItem ? "active" : ""} htmlFor={check}>
+          <Check />
+        </Label>
+      </CheckWrap>
+      <Input
+        type="checkbox"
+        id={check}
+        checked={checkItem}
+        onChange={onCheckItem}
+      />
+      <ItemWrap>
+        <Todo>
+          <TextItem className={checkItem ? "active" : ""}>{content}</TextItem>
+        </Todo>
+        <Basket onClick={onItemDelete} />
+      </ItemWrap>
     </Wapper>
   );
 };

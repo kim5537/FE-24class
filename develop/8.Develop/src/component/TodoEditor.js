@@ -1,45 +1,48 @@
 import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
-// import { TodoContext } from "../App";
+import { TodoContext } from "../App";
 
-const Wrapper = styled.div``;
-
-const H4 = styled.h4`
-  font-weight: bold;
-  font-size: 24px;
-  color: #ffc878;
-`;
-
-const Button = styled.button`
-  border: none;
-  border-radius: 8px;
-  padding: 14px;
-  margin-left: 10px;
-  width: 80px;
-  background: #ffc878;
-  &:hover {
-    background: #e5e396;
-  }
+const Wrapper = styled.div`
+  display: flex;
+  height: 40px;
+  margin: 0 auto;
+  gap: 10px;
 `;
 
 const Input = styled.input`
   width: 380px;
   border: none;
-  padding: 8px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid ${(props) => props.theme.linecolor};
+  background: transparent;
+  color: ${(props) => props.theme.linecolor};
+  font-size: 18px;
   &:focus {
     outline: none;
   }
 `;
 
-const TodoEditor = ({ onCreate }) => {
-  //app에서 만들어져 props 받은 onCreate
-  // const {oncreate} = useContext(TodoContext)
+const H1 = styled.h1`
+  color: ${(props) => props.theme.linecolor};
+  cursor: pointer;
+  border: 2px solid ${(props) => props.theme.linecolor};
+  border-radius: 10px;
+  width: 40px;
+  text-align: center;
+  line-height: 32px;
+  background-color: #ffffff20;
+`;
+
+const TodoEditor = () => {
+  const { onCreate } = useContext(TodoContext);
   const [content, setContent] = useState("");
   const inputRef = useRef();
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
+  };
+
+  const enterEnvent = (e) => {
+    if (e.keyCode === 13) onsubmit();
   };
 
   const onsubmit = () => {
@@ -50,17 +53,16 @@ const TodoEditor = ({ onCreate }) => {
     onCreate(content);
     setContent("");
   };
+
   return (
     <Wrapper>
-      <H4>내가 할 일은?</H4>
-      <div>
-        <Input
-          ref={inputRef}
-          value={content}
-          onChange={onChangeContent}
-        ></Input>
-        <Button onClick={onsubmit}>추가</Button>
-      </div>
+      <Input
+        ref={inputRef}
+        value={content}
+        onChange={onChangeContent}
+        onKeyDown={enterEnvent}
+      ></Input>
+      <H1 onClick={onsubmit}>+</H1>
     </Wrapper>
   );
 };

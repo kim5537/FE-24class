@@ -91,6 +91,9 @@ const reducer = (state, action) => {
         it.id === action.targetId ? { ...it, isDone: !it.isDone } : it
       );
     }
+    case "DELETE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
     default:
       return state;
   }
@@ -130,9 +133,9 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={6 <= timeMode <= 18 ? theme.am : theme.pm}>
+    <ThemeProvider theme={6 <= timeMode && timeMode < 18 ? theme.am : theme.pm}>
       <GlobalStyle />
-      <TodoContext.Provider value={(todo, onCreate)}>
+      <TodoContext.Provider value={{ todo, onCreate, onUpdate, onDelete }}>
         <Back>
           <Wrapper>
             <Main>
