@@ -1,15 +1,21 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 
-export const minuteState = atom({
-  key: "minutes",
-  default: 0,
+interface ToDoState {
+  [key: string]: string[];
+}
+
+export const toDoState = atom<ToDoState>({
+  key: "toDo",
+  default: {
+    ToDo: ["리액트복습", "노드공부", "next,js복습"],
+    Doing: ["영화보기", "일기쓰기"],
+    Done: ["운동하기"],
+  },
 });
 
-//selector : state값을 바꿔보자
-export const hourSelector = selector({
-  key: "hours",
-  get: ({ get }) => {
-    const minutes = get(minuteState);
-    return minutes / 60;
-  },
-}); // get set 두가지를 사용해볼것
+//배열이 가장 좋은 형태이다.
+//{
+//todo:[]
+//doing:[]
+//done:[]
+// }

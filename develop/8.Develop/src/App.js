@@ -13,6 +13,7 @@ import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
 import { type } from "@testing-library/user-event/dist/type";
+import WeatherItem from "./component/WeatherItem";
 
 //생성
 export const TodoContext = React.createContext();
@@ -76,10 +77,14 @@ const Main = styled.div`
   flex-direction: column;
   gap: 30px;
   background: ${({ theme }) => theme.opacityWhite};
-  border-radius: 15px;
+  ${({ theme }) => theme.boxline}
 `;
 
-const SidWrap = styled.div``;
+const SidWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+`;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -145,6 +150,7 @@ function App() {
             </Main>
             <SidWrap>
               <Time />
+              <WeatherItem />
               <Counter />
             </SidWrap>
           </Wrapper>

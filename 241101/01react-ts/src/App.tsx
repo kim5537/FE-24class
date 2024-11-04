@@ -1,8 +1,15 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { hourSelector, minuteState } from "./atoms";
-//useRecoilState = 값을 관리
+import { createGlobalStyle, styled } from "styled-components";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from "react-beautiful-dnd";
+import { useRecoilState } from "recoil";
+import { toDoState } from "./atoms";
+import DraggableCard from "./components/DraggableCard";
+import Board from "./components/Board";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -19,26 +26,71 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  body {
+    background: ${(props) => props.theme.bgColor};
+    color: #000;
+  }
+`;
+
+const Wrapper = styled.main`
+  width: 1200px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`;
+
+const Boards = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 `;
 
 const App = () => {
-  const hours = useRecoilValue(hourSelector);
-  const [minutes, setMinutes] = useRecoilState(minuteState);
-  const onMinutesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMinutes(+event.currentTarget.value); // 형변환 필수~ input값은 string으로 되기 때문 atom에는 number의 속성을 가지고 있기 때문이다. // Number()은 + 랑 같다. 타입스크립트의 문법이다.
+  const [toDos, setToDos] = useRecoilState(toDoState);
+  const onDragEnd = ({ destination, draggableId, source }: DropResult) => {
+    if (!destination) return;
+    if (destination?.droppableId === source.droppableId) {
+      setToDos((oldToDos) => {
+        const boardCopy = [...oldToDos[source.droppableId]]; //중첩 배열이 되기 때문에 전개연산자로 풀어 배열로 출력 || oldToDos[source.droppableId] == 객체 대괄호 표기법
+        boardCopy.splice(source.index, 1);
+        boardCopy.splice(destination.index, 0, draggableId);
+        //초기값을 객체로 가지고 있기때문에(atom에 보면 알수있다) return값도 객체여야한다.
+        return {
+          ...oldToDos,
+          [source.droppableId]: boardCopy,
+        };
+      });
+    }
+    if (destination?.droppableId !== source.droppableId) {
+      setToDos((oldToDos) => {
+        const sourceBoard = [...oldToDos[source.droppableId]]; // 이동한 곳
+        const destinationBoard = [...oldToDos[destination.droppableId]]; // 이동하고자 하는 곳
+        sourceBoard.splice(source.index, 1);
+        destinationBoard.splice(destination.index, 0, draggableId);
+
+        return {
+          ...oldToDos,
+          [source.droppableId]: sourceBoard,
+          [destination?.droppableId]: destinationBoard,
+        };
+      });
+    }
   };
   return (
     <>
       <GlobalStyle />
-      <div>
-        <input
-          onChange={onMinutesChange}
-          type="number"
-          placeholder="Minutes"
-          value={minutes}
-        />
-        <input type="number" placeholder="Hours" value={hours} />
-      </div>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Wrapper>
+          <Boards>
+            {Object.keys(toDos).map((boardId) => (
+              <Board key={boardId} toDos={toDos[boardId]} boardId={boardId} />
+            ))}
+          </Boards>
+        </Wrapper>
+      </DragDropContext>
     </>
   );
 };

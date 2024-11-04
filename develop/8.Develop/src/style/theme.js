@@ -10,6 +10,8 @@ const font = {
 
 const boxline = `border: 1px solid #ccc; border-radius: 15px; box-shadow: 0 0 6px #AB868650;`;
 
+const timeLine = ` position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); `;
+
 const theme = {
   am: {
     background: `center/cover no-repeat url(${ambackground})  `,
@@ -19,6 +21,7 @@ const theme = {
     opacityWhite: "#ffffff80",
     font,
     boxline,
+    timeLine,
   },
   pm: {
     background: `center/cover  no-repeat  url(${pmbackground})`,
@@ -28,6 +31,7 @@ const theme = {
     opacityWhite: "#ffffff80",
     font,
     boxline,
+    timeLine,
   },
 };
 

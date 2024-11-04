@@ -36,7 +36,7 @@ const Label = styled.label`
   &.active svg {
     display: block;
     position: absolute;
-    top: -8px;
+    top: -6px;
     left: 6px;
   }
 `;
