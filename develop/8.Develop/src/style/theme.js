@@ -10,7 +10,7 @@ const font = {
 
 const boxline = `border: 1px solid #ccc; border-radius: 15px; box-shadow: 0 0 6px #AB868650;`;
 
-const timeLine = ` position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); `;
+const timeLine = ` position:absolute; top: 50%; left: 50%;  `;
 
 const theme = {
   am: {
@@ -25,7 +25,7 @@ const theme = {
   },
   pm: {
     background: `center/cover  no-repeat  url(${pmbackground})`,
-    basecolor: "#81A6B6",
+    basecolor: "#7c8f97",
     maincolor: "#4F6B82",
     linecolor: "#435558",
     opacityWhite: "#ffffff80",

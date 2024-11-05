@@ -1,15 +1,23 @@
 import { atom } from "recoil";
 
+export interface ToDo {
+  id: number;
+  text: string;
+}
+
 interface ToDoState {
-  [key: string]: string[];
+  [key: string]: ToDo[];
 }
 
 export const toDoState = atom<ToDoState>({
   key: "toDo",
   default: {
-    ToDo: ["리액트복습", "노드공부", "next,js복습"],
-    Doing: ["영화보기", "일기쓰기"],
-    Done: ["운동하기"],
+    ToDo: [
+      { id: 1, text: "Hello" },
+      { id: 2, text: "World" },
+    ],
+    Doing: [],
+    Done: [],
   },
 });
 

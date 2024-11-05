@@ -45,7 +45,7 @@ const Timer = styled.div`
 
 const Second = styled.div`
   ${({ theme }) => theme.timeLine}
-  transform: translate(-50%, -50%) rotate(${(props) => props.rotate});
+  transform: translate(3px, -42%) rotate(${(props) => props.rotate});
   height: 30px;
   width: 1px;
   border-radius: 1px;
@@ -56,12 +56,12 @@ const Second = styled.div`
 
 const Minute = styled.div`
   ${({ theme }) => theme.timeLine}
-  transform: translate(-50%, -50%) rotate(${(props) => props.rotate});
+  transform: translate(100%, -50%) rotate(${(props) => props.rotate});
   height: 70px;
   width: 2px;
   background-color: ${({ theme }) => theme.maincolor};
   border-radius: 2px;
-  margin-top: -34px;
+  margin-top: -31px;
   transform-origin: center bottom;
 `;
 
@@ -71,8 +71,8 @@ const Hour = styled.div`
   border-radius: 2px;
   background-color: ${({ theme }) => theme.linecolor};
   ${({ theme }) => theme.timeLine}
-  transform: translate(-50%, -50%) rotate(${(props) => props.rotate});
-  margin-top: -25px;
+  transform: translate(100%, -50%) rotate(${(props) => props.rotate});
+  margin-top: -22px;
   transform-origin: center bottom;
 `;
 

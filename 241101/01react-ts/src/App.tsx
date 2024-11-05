@@ -49,35 +49,66 @@ const Boards = styled.div`
 `;
 
 const App = () => {
-  const [toDos, setToDos] = useRecoilState(toDoState);
-  const onDragEnd = ({ destination, draggableId, source }: DropResult) => {
+  const [toDos, setToDos] = useRecoilState(toDoState); //>> { todo:[{},{}] doing[{},{}]... }
+  const onDragEnd = (info: DropResult) => {
+    //{ destination, draggableId, source }
+    console.log(info);
+    const { destination, source, draggableId } = info;
     if (!destination) return;
-    if (destination?.droppableId === source.droppableId) {
+    if (destination.droppableId === source.droppableId) {
       setToDos((oldToDos) => {
-        const boardCopy = [...oldToDos[source.droppableId]]; //중첩 배열이 되기 때문에 전개연산자로 풀어 배열로 출력 || oldToDos[source.droppableId] == 객체 대괄호 표기법
+        //oldToDos는 객체이다.
+        const boardCopy = [...oldToDos[source.droppableId]]; //중첩 배열이 되기 때문에 전개연산자로 풀어 배열로 출력
+        const taskObj = boardCopy[source.index];
         boardCopy.splice(source.index, 1);
-        boardCopy.splice(destination.index, 0, draggableId);
-        //초기값을 객체로 가지고 있기때문에(atom에 보면 알수있다) return값도 객체여야한다.
+        boardCopy.splice(destination.index, 0, taskObj);
         return {
           ...oldToDos,
           [source.droppableId]: boardCopy,
         };
       });
     }
-    if (destination?.droppableId !== source.droppableId) {
+    if (destination.droppableId !== source.droppableId) {
       setToDos((oldToDos) => {
-        const sourceBoard = [...oldToDos[source.droppableId]]; // 이동한 곳
-        const destinationBoard = [...oldToDos[destination.droppableId]]; // 이동하고자 하는 곳
+        //oldToDos는 객체이다.
+        const sourceBoard = [...oldToDos[source.droppableId]]; //중첩 배열이 되기 때문에 전개연산자로 풀어 배열로 출력
+        const taskObj = sourceBoard[source.index];
+        const destinationBoard = [...oldToDos[destination.droppableId]];
         sourceBoard.splice(source.index, 1);
-        destinationBoard.splice(destination.index, 0, draggableId);
-
+        destinationBoard.splice(destination.index, 0, taskObj);
         return {
           ...oldToDos,
           [source.droppableId]: sourceBoard,
-          [destination?.droppableId]: destinationBoard,
+          [destination.droppableId]: destinationBoard,
         };
       });
     }
+    // if (destination?.droppableId === source.droppableId) {
+    //   setToDos((oldToDos) => {
+    //     const boardCopy = [...oldToDos[source.droppableId]]; //중첩 배열이 되기 때문에 전개연산자로 풀어 배열로 출력 || oldToDos[source.droppableId] == 객체 대괄호 표기법|| 예 : (...toDOs['Doing'])
+    //     boardCopy.splice(source.index, 1); // source=기존 위치
+    //     boardCopy.splice(destination.index, 0, draggableId); // destination: 변경위치
+    //     //초기값을 객체로 가지고 있기때문에(atom에 보면 알수있다) return값도 객체여야한다.
+    //     return {
+    //       ...oldToDos,
+    //       [source.droppableId]: boardCopy,
+    //     };
+    //   });
+    // }
+    // if (destination?.droppableId !== source.droppableId) {
+    //   setToDos((oldToDos) => {
+    //     const sourceBoard = [...oldToDos[source.droppableId]]; // 이동한 곳
+    //     const destinationBoard = [...oldToDos[destination.droppableId]]; // 이동하고자 하는 곳
+    //     sourceBoard.splice(source.index, 1);
+    //     destinationBoard.splice(destination.index, 0, draggableId);
+
+    //     return {
+    //       ...oldToDos,
+    //       [source.droppableId]: sourceBoard,
+    //       [destination?.droppableId]: destinationBoard,
+    //     };
+    //   });
+    // }
   };
   return (
     <>
