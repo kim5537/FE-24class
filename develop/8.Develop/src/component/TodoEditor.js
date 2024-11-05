@@ -16,6 +16,7 @@ const Input = styled.input`
   background: transparent;
   color: ${(props) => props.theme.linecolor};
   font-size: 18px;
+  padding-left: 20px;
   &:focus {
     outline: none;
   }
@@ -61,6 +62,7 @@ const TodoEditor = () => {
         value={content}
         onChange={onChangeContent}
         onKeyDown={enterEnvent}
+        placeholder="오늘 할 일은?"
       ></Input>
       <H1 onClick={onsubmit}>+</H1>
     </Wrapper>

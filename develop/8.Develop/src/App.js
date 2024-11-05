@@ -52,6 +52,10 @@ a {
 text-decoration: none;
 color: inherit;
 }
+
+html {
+  font-family: "Inter", sans-serif;
+}
 `;
 
 const Back = styled.div`
@@ -105,7 +109,7 @@ const reducer = (state, action) => {
 };
 
 function App() {
-  const [todo, dispatch] = useReducer(reducer, mockTodo);
+  const [todo, dispatch] = useReducer(reducer, []);
   //todo: 값 || dispatch :  구분을 위한 것 || reducer : 분류 함수 || mocktodo: 초기값
   const idRef = useRef(3);
   let timeMode = new Date().getHours();

@@ -33,7 +33,7 @@ const Img = styled.img`
 const WeatherText = styled.div`
   font-size: 0%.9;
   color: ${(props) => props.theme.linecolor};
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
 `;
 
@@ -86,4 +86,4 @@ const WeatherItem = () => {
   );
 };
 
-export default WeatherItem;
+export default React.memo(WeatherItem);

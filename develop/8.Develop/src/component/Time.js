@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   background: ${(props) => props.theme.opacityWhite};
 `;
 
-const Header = styled.div`
+const Title = styled.div`
   text-align: center;
   line-height: 50px;
   width: 100%;
@@ -23,6 +23,7 @@ const P = styled.p`
   font-size: 12px;
   color: ${({ theme }) => theme.maincolor};
   text-align: center;
+  word-break: keep-all;
 `;
 
 const TimerWrapper = styled.div`
@@ -87,6 +88,7 @@ const Dot = styled.div`
 const TimeNum = styled.div`
   color: ${({ theme }) => theme.maincolor};
   font-size: 16px;
+  font-weight: 500;
 `;
 
 const Time = () => {
@@ -112,8 +114,8 @@ const Time = () => {
 
   return (
     <Wrapper>
-      <Header>현재 시간은?</Header>
-      <P>*6AM-6PM을 기준으로 테마가 바뀝니다</P>
+      <Title>현재 시간은?</Title>
+      <P>*6AM-6PM을 기준으로 테마가 변경됩니다.</P>
       <TimerWrapper>
         <Timer>
           <Second rotate={`${secondAngle}deg`}></Second>
@@ -122,11 +124,11 @@ const Time = () => {
           <Dot></Dot>
         </Timer>
         <TimeNum>
-          {/* {`${timeText} ${hourText} : ${minueteText} :${secondText}`} */}
+          {`${timeText} ${hourText} : ${minueteText} :${secondText}`}
         </TimeNum>
       </TimerWrapper>
     </Wrapper>
   );
 };
 
-export default Time;
+export default React.memo(Time);
