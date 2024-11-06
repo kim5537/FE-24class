@@ -91,26 +91,25 @@ const SidWrap = styled.div`
 `;
 
 const reducer = (state, action) => {
+  let result;
+
   switch (action.type) {
     case "CREATE": {
-      const createResult = [action.newItem, ...state];
-      localStorage.clear();
-      localStorage.setItem("todo", createResult);
-      return createResult;
+      result = [action.newItem, ...state];
+      localStorage.setItem("todo", JSON.stringify(result));
+      return result;
     }
     case "UPDATE": {
-      const updateResult = state.map((it) =>
+      result = state.map((it) =>
         it.id === action.targetId ? { ...it, isDone: !it.isDone } : it
       );
-      localStorage.clear();
-      localStorage.setItem("todo", updateResult);
-      return updateResult;
+      localStorage.setItem("todo", JSON.stringify(result));
+      return result;
     }
     case "DELETE": {
-      const deleteResult = state.filter((it) => it.id !== action.targetId);
-      localStorage.clear();
-      localStorage.setItem("todo", deleteResult);
-      return deleteResult;
+      result = state.filter((it) => it.id !== action.targetId);
+      localStorage.setItem("todo", JSON.stringify(result));
+      return result;
     }
     default:
       return state;
