@@ -32,7 +32,7 @@ const Img = styled.img`
 
 const WeatherText = styled.div`
   font-size: 0%.9;
-  color: ${(props) => props.theme.linecolor};
+  color: ${(props) => props.theme.maincolor};
   font-weight: 600;
   text-align: center;
 `;

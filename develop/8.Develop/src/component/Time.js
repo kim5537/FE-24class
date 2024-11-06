@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import theme from "../style/theme";
 
 const Wrapper = styled.div`
   width: 230px;
@@ -108,7 +107,7 @@ const Time = () => {
   let secondAngle = second * 6;
 
   let timeText = hour < 12 ? "오전" : "오후";
-  let hourText = hour < 10 ? `0${hour}` : hour;
+  let hourText = hour > 12 ? hour - 12 : hour < 10 ? `0${hour}` : hour;
   let minueteText = minuete < 10 ? `0${minuete}` : minuete;
   let secondText = second < 10 ? `0${second}` : second;
 
