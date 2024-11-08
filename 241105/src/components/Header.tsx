@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion, useAnimation, useScroll } from "framer-motion";
-import { Link, useMatch } from "react-router-dom";
+import { Link, useMatch, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Nav = styled(motion.nav)`
   width: 100%;
@@ -15,6 +16,7 @@ const Nav = styled(motion.nav)`
   font-size: 18px;
   position: fixed;
   top: 0;
+  z-index: 999;
 `;
 
 const Col = styled.div`
@@ -64,7 +66,7 @@ const Circle = styled(motion.span)`
   background: ${(props) => props.theme.red};
 `;
 
-const Search = styled.span`
+const Search = styled.form`
   color: ${(props) => props.theme.white.darker};
   display: flex;
   align-items: center;
@@ -104,18 +106,35 @@ const logoVariants = {
   },
 };
 
+interface Form {
+  keyword: string;
+}
+
 const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const homeMatch = useMatch("/");
+  const modalMatch = useMatch("/movies/*"); // 뒤에 어떤 경로가 오던 다 true의 값이 된다.// 모달이 뜨면 home 위치에 있다는 의미로 넣어둔 circle이 사라지는 이슈를 해결하기 위해 지정함.
   const tvMatch = useMatch("/tv");
   const inputAnimation = useAnimation();
   // const scrollTest = useScroll(); //가상돔 때문에 새로고침을 해야 값을 출력하기 때문에 useEffect가 필요하다.
   const navAnimation = useAnimation();
   const { scrollY } = useScroll();
+  const main = useNavigate();
+
+  const goToMain = () => {
+    main("/");
+  };
+
+  const { register, handleSubmit, setValue } = useForm<Form>();
+
+  const onValid = (data: Form) => {
+    main(`/search?keyword=${data.keyword}`);
+    setValue("keyword", "");
+  };
 
   const navVariants = {
-    top: { background: "rgba(0,0,0,1)" },
-    scroll: { background: "rgba(0,0,0,0)" },
+    top: { background: "rgba(0,0,0,0)" },
+    scroll: { background: "rgba(0,0,0,1)" },
   };
 
   const openSearch = () => {
@@ -146,6 +165,7 @@ const Header = () => {
     <Nav variants={navVariants} animate={navAnimation} initial={"top"}>
       <Col>
         <Logo
+          onClick={goToMain}
           variants={logoVariants}
           initial="normal"
           whileHover="active"
@@ -158,7 +178,9 @@ const Header = () => {
         <Items>
           <Item>
             <Link to={"/"}>
-              Home {homeMatch && <Circle layoutId="circle" />}
+              Home
+              {homeMatch && <Circle layoutId="circle" />}
+              {modalMatch && <Circle layoutId="circle" />}
             </Link>
           </Item>
           <Item>
@@ -169,7 +191,7 @@ const Header = () => {
         </Items>
       </Col>
       <Col>
-        <Search>
+        <Search onSubmit={handleSubmit(onValid)}>
           <motion.svg
             onClick={openSearch}
             animate={{ x: searchOpen ? -194 : 0 }}
@@ -180,6 +202,7 @@ const Header = () => {
             <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
           </motion.svg>
           <Input
+            {...register("keyword", { required: true, minLength: 2 })}
             type="text"
             transition={{ type: "linear" }}
             placeholder="Search for MOVIE or TV"

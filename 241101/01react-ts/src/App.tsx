@@ -57,7 +57,7 @@ const App = () => {
     if (!destination) return;
     if (destination.droppableId === source.droppableId) {
       setToDos((oldToDos) => {
-        //oldToDos는 객체이다.
+        //oldToDos는 객체이다. { todo:[{},{}] doing[{},{}]... }
         const boardCopy = [...oldToDos[source.droppableId]]; //중첩 배열이 되기 때문에 전개연산자로 풀어 배열로 출력
         const taskObj = boardCopy[source.index];
         boardCopy.splice(source.index, 1);

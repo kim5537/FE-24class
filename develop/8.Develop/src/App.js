@@ -91,36 +91,34 @@ const SidWrap = styled.div`
 `;
 
 const reducer = (state, action) => {
-  let result;
-
   switch (action.type) {
     case "CREATE": {
-      result = [action.newItem, ...state];
-      localStorage.setItem("todo", JSON.stringify(result));
-      return result;
+      return [action.newItem, ...state];
     }
     case "UPDATE": {
-      result = state.map((it) =>
+      return state.map((it) =>
         it.id === action.targetId ? { ...it, isDone: !it.isDone } : it
       );
-      localStorage.setItem("todo", JSON.stringify(result));
-      return result;
     }
     case "DELETE": {
-      result = state.filter((it) => it.id !== action.targetId);
-      localStorage.setItem("todo", JSON.stringify(result));
-      return result;
+      return state.filter((it) => it.id !== action.targetId);
     }
     default:
       return state;
   }
 };
 
+const localToDo = JSON.parse(localStorage.getItem("todo")) || [];
+
 function App() {
-  const [todo, dispatch] = useReducer(reducer, []);
+  const [todo, dispatch] = useReducer(reducer, localToDo);
   //todo: 값 || dispatch :  구분을 위한 것 || reducer : 분류 함수 || mocktodo: 초기값
-  const idRef = useRef(3);
+  const idRef = useRef(0);
   let timeMode = new Date().getHours();
+
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(todo));
+  }, [todo]);
 
   const onCreate = useCallback((content) => {
     dispatch({
