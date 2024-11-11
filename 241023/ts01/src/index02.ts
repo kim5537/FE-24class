@@ -85,15 +85,15 @@
 // a = 1;
 // a = "헬로";
 
-// type Dog = {
-//   name: string;
-//   color: string;
-// };
+type Dog = {
+  name: string;
+  color: string;
+};
 
-// type Person = {
-//   name: string;
-//   language: string;
-// };
+type Person = {
+  name: string;
+  language: string;
+};
 
 // // 유니온 타입으로 하나로 마늗ㄹ기 - 합집합?
 // type Union1 = Dog | Person;
@@ -121,70 +121,70 @@
 // };
 ////////////////////////////////////////////////////////////////////////////////
 // //인터섹션 계념. 모두를 합친거. -- 교집합 부분 - 모두를 충족시키는 것.
-// type Intersection = Dog & Person;
+type Intersection = Dog & Person;
 
-// let intersection: Intersection = {
-//   name: "",
-//   color: "",
-//   language: "",
-// };
+let intersection: Intersection = {
+  name: "",
+  color: "",
+  language: "",
+};
 
-// interface Person01 {
-//   name: string;
-//   age: number;
-// }
+interface Person01 {
+  name: string;
+  age: number;
+}
 
-// // let Person01: Person01 = {}; //오류발생
+// let Person01: Person01 = {}; //오류발생
 
-// // Person01.name = "";
-// // Person01.age = 20;
+// Person01.name = "";
+// Person01.age = 20;
 
-// // 오류 안나기! 약속하기! name과 age 가져갈거야! 약속 - 타입단언
+// // // 오류 안나기! 약속하기! name과 age 가져갈거야! 약속 - 타입단언
 // let Person01: Person01 = {} as Person01; //오류발생
 
 // Person01.name = "";
 // Person01.age = 20;
 
-type Dog = {
-  name: string;
-  color: string;
-};
+// // type Dog = {
+// //   name: string;
+// //   color: string;
+// // };
 
-//초가 프로퍼티를 통과하지 못했지만 dog의 형태를 가져간다고 약속(타입단언)하면 통과된다.- any다음의 치트키
-let dog: Dog = {
-  name: "뽀삐",
-  color: "갈색",
-  breed: "시고르자브종",
-} as Dog;
+// // //초가 프로퍼티를 통과하지 못했지만 dog의 형태를 가져간다고 약속(타입단언)하면 통과된다.- any다음의 치트키
+// // let dog: Dog = {
+// //   name: "뽀삐",
+// //   color: "갈색",
+// //   breed: "시고르자브종",
+// // } as Dog;
 
-//치트키 . 그 전 약속을 취소하고 새로운 약속을 한다.
-let num1 = 10 as never;
-let num2 = 10 as unknown;
+// //치트키 . 그 전 약속을 취소하고 새로운 약속을 한다.
+// let num1 = 10 as never;
+// let num2 = 10 as unknown;
 
-//타입단언이 치트키 같은 역할을 한다. 그러나...
+// //타입단언이 치트키 같은 역할을 한다. 그러나...
 // let num3 = 10 as string;
-//타입단언을 실행 시키려면 반드시 필요한 조건
-//상호간 슈퍼 & 서브 타입이어야한다. number 이랑 string은 같은 열에 있다.
-// 이럴 때는 어떻게 해야하나 ...
-let num3 = 10 as unknown as string; //우회한다.
+// //타입단언을 실행 시키려면 반드시 필요한 조건
+// //상호간 슈퍼 & 서브 타입이어야한다. number 이랑 string은 같은 열에 있다.
+// // 이럴 때는 어떻게 해야하나 ...
+// let num30 = 10 as unknown as string; //우회한다.
 
-// let num4: 10 = 10 ; // 숫자 10으로 리터럴타입 지정
-let num4 = 10 as const; // 숫자 10으로 리터럴타입 지정
+// // let num4: 10 = 10 ; // 숫자 10으로 리터럴타입 지정
+// let num4 = 10 as const; // 숫자 10으로 리터럴타입 지정
 
-//타입가드
-const func = (value: number | string) => {
-  // //숫자나 문자 들어갈수있는 유니온 타입
-  // value.toFixed(2); // 에러 . 숫자도 올 수 있는데 숫자 소수점 2자리를 출력하는 숫자 함수는 왜 안되는걸까.
-  // value.toUpperCase(); // 이것도 안된다.
-  // // 반대의 경우도 생각해야 하기 때문에 안 된다.
-  // // 이게 유니온 타입의 함정이다.
+// //타입가드
+// const func = (value: number | string) => {
+//   // //숫자나 문자 들어갈수있는 유니온 타입
+//   // value.toFixed(2); // 에러 . 숫자도 올 수 있는데 숫자 소수점 2자리를 출력하는 숫자 함수는 왜 안되는걸까.
+//   // value.toUpperCase(); // 이것도 안된다.
+//   // // 반대의 경우도 생각해야 하기 때문에 안 된다.
+//   // // 이게 유니온 타입의 함정이다.
 
-  // // 그래서 if로 조건문을 줘야한다.
+//   // // 그래서 if로 조건문을 줘야한다.
 
-  // 타입 가드
-  if (typeof value === "number") {
-    value.toFixed(2);
-  } else if (typeof value === "string") {
-    value.toUpperCase();
-  }
-};
+//   // 타입 가드
+//   if (typeof value === "number") {
+//     value.toFixed(2);
+//   } else if (typeof value === "string") {
+//     value.toUpperCase();
+//   }
+// };

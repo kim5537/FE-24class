@@ -108,10 +108,9 @@ const reducer = (state, action) => {
   }
 };
 
-const localToDo = JSON.parse(localStorage.getItem("todo")) || [];
-
 function App() {
-  const [todo, dispatch] = useReducer(reducer, localToDo);
+  const localToDo = () => JSON.parse(localStorage.getItem("todo")) || [];
+  const [todo, dispatch] = useReducer(reducer, [], localToDo);
   //todo: 값 || dispatch :  구분을 위한 것 || reducer : 분류 함수 || mocktodo: 초기값
   const idRef = useRef(0);
   let timeMode = new Date().getHours();
