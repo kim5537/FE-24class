@@ -12,6 +12,7 @@ const Container = styled.div`
   height: 2000px;
   margin-top: 60px;
   background: ${(props) => props.theme.black.lighterDark};
+  overflow-x: hidden;
 `;
 
 const Loader = styled.div`

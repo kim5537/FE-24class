@@ -1,9 +1,8 @@
-// 데이터를 만들 곳
 import { LinkedList } from "./linkedList.mjs";
 
 class Stack {
   constructor() {
-    this.list = LinkedList();
+    this.list = new LinkedList();
   }
 
   push(data) {
@@ -26,3 +25,5 @@ class Stack {
     return this.list.count === 0;
   }
 }
+
+export { Stack };
