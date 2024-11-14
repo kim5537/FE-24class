@@ -1,0 +1,9 @@
+/* 페이지 속에  css - react로 치면 app.css*/
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & h3 {
+    margin-bottom: 0;
+  }
+}

@@ -1,15 +1,29 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { ReactNode } from "react";
+// import { useRouter } from "next/router";
+import SearchableLayout from "@/components/searchable-layout";
+import books from "@/mock/book.json";
+import BookItem from "@/components/book-item";
 
-const Search = () => {
-  const router = useRouter();
-  // console.log(router);
-  //next는 data를 가져올 때 받아오기 전 후 둘 다 보여준다. 그래서 데이터를 두번씩 찍어준다.
-  const {
-    query: { q },
-  } = router;
-  return <h1>Search : {q}</h1>;
+const Page = () => {
+  // const router = useRouter();
+  // // console.log(router);
+  // //next는 data를 가져올 때 받아오기 전 후 둘 다 보여준다. 그래서 데이터를 두번씩 찍어준다.
+  // const {
+  //   query: { q },
+  // } = router;
+
+  return (
+    <div>
+      {books.map((book) => (
+        <BookItem key={book.id} {...book} />
+      ))}
+    </div>
+  );
 };
 
-export default Search;
+Page.getLayout = (page: ReactNode) => {
+  return <SearchableLayout>{page}</SearchableLayout>;
+};
+
+export default Page;
 //next.js는 프레임워크이나 react를 기틀로 만들어 져서 똑같이 훅이라고 부르고 있다.

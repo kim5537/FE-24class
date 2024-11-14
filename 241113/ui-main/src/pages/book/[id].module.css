@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cover_img_container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  & > img {
+    z-index: 1;
+    height: 100%;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000090;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subTitle {
+  color: gray;
+}
+
+.author {
+  color: gray;
+}
+
+.description {
+  background-color: rgb(245, 245, 245);
+  padding: 12px;
+  line-height: 1.6;
+  border-radius: 5px;
+}

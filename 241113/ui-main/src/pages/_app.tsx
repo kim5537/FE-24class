@@ -1,30 +1,24 @@
 import "@/styles/globals.css";
+import { ReactNode } from "react";
+import { NextPage } from "next";
 import type { AppProps } from "next/app";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import GlobalLayout from "@/components/global-layout";
+// import SearchableLayout from "@/components/searchable-layout"; ///index.tsx로 이사함
 
-export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter(); //페이지를 어딘가로 이동함
-  const onclickButton = () => {
-    router.push("/test");
-  };
-  return (
-    <>
-      <header>
-        <Link href={"/"}>Index</Link>
-        &nbsp;
-        {/* //nonblockspace라는 뜻으로 줄 바꿈없는 띄어쓰기를 말한다. */}
-        <Link href={"/search"}>search</Link>
-        &nbsp;
-        <Link href={"/book/1"}>book/1</Link>
-        <div>
-          <button onClick={onclickButton}>/test 페이지로 이동</button>
-        </div>
-      </header>
-      <Component {...pageProps} />
-    </>
-  );
+type NextPagewithLaout = NextPage & {
+  //NextPage 꼭 먼저 있고 후에 값을 지정해줘야한다.
+  getLayout: (page: ReactNode) => ReactNode;
+};
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps & { Component: NextPagewithLaout }) {
+  const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
+  return <GlobalLayout>{getLayout(<Component {...pageProps} />)}</GlobalLayout>;
 }
 
 // Component :  가장 최종 루트 파일이라는 곳에 자식 요소의 페이지를 말한다.
 //pageProps : 자식요소에게 보낼 props 값을 가지고 움직 일 수 있다
+
+//getLaout의 역할 - 우리가 index.tsx에서 Home.getLayout로 지정한 component를 가져온다.
