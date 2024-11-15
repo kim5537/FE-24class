@@ -1,6 +1,8 @@
 import React from "react";
 // import { useRouter } from "next/router";
 import style from "./[id].module.css";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import FetchOneBook from "@/lib/fetch-one-book";
 
 const mockData = {
   id: 1,
@@ -14,9 +16,27 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-const Index = () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params!.id;
+  //? = undefinde 가능성을 열어주는 것
+  // ! = 무조건 있다고 확정하는 것
+  // 둘 다 가능하다.
+  // console.log(id);
+  const book = await FetchOneBook(Number(id));
+  return {
+    props: { book },
+  };
+};
+
+const Index = ({
+  book,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  if (!book) return "문제가 발생했습니다 다시 시도해 주세요";
+
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    mockData;
+    book;
   // const router = useRouter();
   // const { id } = router.query;
 

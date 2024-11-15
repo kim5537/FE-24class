@@ -3,20 +3,42 @@ import style from "./index.module.css";
 import books from "@/mock/book.json";
 import SearchableLayout from "@/components/searchable-layout";
 import BookItem from "@/components/book-item";
+import { InferGetServerSidePropsType } from "next";
+import fetchBooks from "@/lib/fetch-books";
+import fetchRandomBooks from "@/lib/fetch-ramdom-books";
 //@ = src를 의미
 
-const Home = () => {
+//ssr방식으로 데이터 패칭을 한다.
+export const getServerSideProps = async () => {
+  // const allBooks = await fetchBooks();
+  // const recoBooks = await fetchRandomBooks();
+
+  //서로 상관없는 데이터라 서로를 기다릴 필욘 없음
+  const [allBooks, recoBooks] = await Promise.all([
+    fetchBooks(),
+    fetchRandomBooks(),
+  ]);
+
+  return {
+    props: { allBooks, recoBooks },
+  };
+};
+
+const Home = ({
+  allBooks,
+  recoBooks,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <main className={style.container}>
       <section>
         <h3>지금 추천하는 도서</h3>
-        {books.map((book) => (
+        {recoBooks.map((book) => (
           <BookItem key={book.id} {...book} />
         ))}
       </section>
       <section>
         <h3>등록된 모든 도서</h3>
-        {books.map((book) => (
+        {allBooks.map((book) => (
           <BookItem key={book.id} {...book} />
         ))}
       </section>
