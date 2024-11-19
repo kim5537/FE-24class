@@ -5,8 +5,8 @@ let arr = [3, 5, 2, 4, 1, 7, 8, 6];
 // rightIndex = 해당 배열에 가장 우측 인덱스값
 
 const merge = (arr, leftIndex, midIndex, rightIndex) => {
-  let leftArrIndex = leftIndex;
-  let rightArrIndex = midIndex + 1;
+  let leftAreaIndex = leftIndex;
+  let rightAreaIndex = midIndex + 1;
 
   let tempArr = [];
 
@@ -14,22 +14,21 @@ const merge = (arr, leftIndex, midIndex, rightIndex) => {
   tempArr.fill(0, 0, rightIndex + 1);
 
   let tempArrIndex = leftIndex;
-
-  while (leftArrIndex <= midIndex && rightArrIndex <= rightIndex) {
-    if (arr[leftArrIndex] <= arr[rightArrIndex]) {
-      tempArr[tempArrIndex] = arr[leftArrIndex++];
+  while (leftAreaIndex <= midIndex && rightAreaIndex <= rightIndex) {
+    if (arr[leftAreaIndex] <= arr[rightAreaIndex]) {
+      tempArr[tempArrIndex] = arr[leftAreaIndex++];
     } else {
-      tempArr[tempArrIndex] = arr[rightArrIndex++];
+      tempArr[tempArrIndex] = arr[rightAreaIndex++];
     }
     tempArrIndex++;
   }
 
-  if (leftArrIndex > midIndex) {
-    for (let i = rightArrIndex; i <= rightIndex; i++) {
-      tempArr[tempArrIndex] = arr[i];
+  if (leftAreaIndex > midIndex) {
+    for (let i = rightAreaIndex; i <= rightIndex; i++) {
+      tempArr[tempArrIndex++] = arr[i];
     }
   } else {
-    for (let i = leftArrIndex; i <= midIndex; i++) {
+    for (let i = leftAreaIndex; i <= midIndex; i++) {
       tempArr[tempArrIndex++] = arr[i];
     }
   }
@@ -42,7 +41,6 @@ const merge = (arr, leftIndex, midIndex, rightIndex) => {
 const mergeSort = (arr, leftIndex, rightIndex) => {
   if (leftIndex < rightIndex) {
     let midIndex = parseInt((leftIndex + rightIndex) / 2);
-    // 재귀함수를 사용해 배열을 나눔
     mergeSort(arr, leftIndex, midIndex);
     mergeSort(arr, midIndex + 1, rightIndex);
     merge(arr, leftIndex, midIndex, rightIndex);
