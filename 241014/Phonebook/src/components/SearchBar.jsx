@@ -9,7 +9,7 @@ const SearchBar = () => {
   const searchByName = (e) => {
     e.preventDefault();
     dispatch({ type: "search", payload: { keyword } });
-    //리듀서에게 값 보내기 2개를 보냄
+    //리듀서에게 값 보내기.2개를 보냄
     //payload: { keyword }  === payload: { keyword : keyword }
   };
 

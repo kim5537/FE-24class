@@ -21,7 +21,7 @@ const ContactForm = () => {
       payload: { name, phoneNumber },
     });
     //인풋안에 값을 보낼 방법은 state뿐이다. 이 usestate로 payload으로 값 전달
-    //payload: { name: name, phoneNumber: phoneNumber } 인데 키와 벨류가 같으면 줄여쓰기 가능
+    //payload: { name: name, phoneNumber: phoneNumber } 인데 키와 벨류가 같으면 줄여쓰기 가능, 페이로드는 무조건 객체형태
   };
 
   return (
