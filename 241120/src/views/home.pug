@@ -1,4 +1,9 @@
 extends base.pug
+include mixins/video
 
 block content
-  h1 Welcome Here!
+  h2 Welcome Here You will see the following videos!
+  each video in Videos
+    +video(video)
+  else
+    li Sorry Nothing Found

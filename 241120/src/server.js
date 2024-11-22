@@ -16,12 +16,14 @@ app.set("views", process.cwd() + "/src/views");
 
 app.use(logger);
 //전역 라우터 = 글로벌 라우터 //
+app.use(express.urlencoded({ extended: true }));
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
 
 const handleListening = () =>
   console.log(`Server Listening on Port http://localhost:${PORT}`);
+
 app.listen(4000, handleListening);
 
 //dev : 개발자모드를 말한다.
