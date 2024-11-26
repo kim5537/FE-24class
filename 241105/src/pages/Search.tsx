@@ -246,7 +246,7 @@ const Search = () => {
       });
     }
   }, [movieData, videoData]);
-
+  console.log(videos);
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage, setMoviesPerPage] = useState(2);
 
@@ -258,7 +258,7 @@ const Search = () => {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
-
+  console.log(currentMovies);
   return (
     <Container>
       {movieLoading ? (

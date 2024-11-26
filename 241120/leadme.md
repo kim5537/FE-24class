@@ -31,3 +31,27 @@
 /video/delete -> Delete Video
 /video/comments -> comment Video
 /video/comments/delete -> Delete comment
+
+///
+creat
+-video
+
+> user / ID / CreatedAt / source etc.....
+
+Reae
+
+Update
+
+> user / ID /CreatedAt / source etc....
+
+Delete
+
+> All
+> 탈퇴시 db값
+
+schema (스키마)
+[{
+id: "...." ,
+soure : ".mp4:
+......
+}]

@@ -1,9 +1,11 @@
 extends base.pug
 
-block content 
-  h4 Change Title of Video
-  form(method="POST")
-    input(type="text" name="title" value=video.title placeholder="Video Title" required)
+block content
+  h4 Update Video
+  form(method="POST") 
+    input(type="text" name="title" placeholder="Video Title" value=video.title required )
+    input(type="text" name="description" placeholder="description" value=video.description required )
+    input(type="text" name="hashtags" placeholder="hashtags, separated by comma." value=video.hashtags.join() required )
     input(type="submit" value="save")
-
+    
     //- 포스팅을 했을 때 Post인데 우리가 라우터에서 get으로 명칭했기에 post 타입의 페이지가 준비되어있지 않다고 뜬다.--> getpost라고 에러가 뜬다.

@@ -7,8 +7,10 @@ import { BookData } from "@/types";
 import React from "react";
 
 const Footer = async () => {
+  //캐식값을 저장하지 않기 때문에 다이나믹(동적)페이지가 된다.
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
+    { cache: "force-cache" }
   );
 
   if (!response) {
