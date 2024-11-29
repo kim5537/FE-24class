@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-export const formHashTags = (hashtags) => {
-  return hashtags
-    .split(",")
-    .map((word) => (word.startsWith("#") ? word : `#${word}`));
-};
+// export const formHashTags = (hashtags) => {
+//   return hashtags
+//     .split(",")
+//     .map((word) => (word.startsWith("#") ? word : `#${word}`));
+// };
 
 //스키마를만들기 위함 모델 세팅
 const videoSchema = new mongoose.Schema({
@@ -16,6 +16,12 @@ const videoSchema = new mongoose.Schema({
     views: { type: Number, required: true, default: 0 },
     rating: { type: Number, required: true, default: 0 },
   },
+});
+
+videoSchema.static("formatHashtags", (hashtags) => {
+  return hashtags
+    .split(",")
+    .map((word) => (word.startsWith("#") ? word : `#${word}`));
 });
 
 //모델이 생성되기 전에 움직이는 ㄴ미들웨어 함수 - 몽구스

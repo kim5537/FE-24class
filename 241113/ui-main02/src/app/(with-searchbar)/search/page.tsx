@@ -3,7 +3,7 @@ import { BookData } from "@/types";
 import BookItem from "@/components/book-item";
 import delay from "@/util/delay";
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 //정적 페이지에 스트리밍 서비스 넣기
 const SearchResult = async ({ q }: { q: string }) => {
@@ -32,7 +32,10 @@ const Page = async ({
   searchParams: Promise<{ q: string }>;
 }) => {
   return (
-    <Suspense fallback={<div>Loading</div>} key={(await searchParams).q || ""}>
+    <Suspense
+      key={(await searchParams).q || ""}
+      fallback={<div>Loading...</div>}
+    >
       <SearchResult q={(await searchParams).q || ""} />
     </Suspense>
   );

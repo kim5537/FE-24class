@@ -1,17 +1,26 @@
-import { render } from "pug";
-import Video, { formHashTags } from "../models/video";
-import { response } from "express";
+import Video from "../models/video";
 
 export const home = async (req, res) => {
   try {
-    const Videos = await Video.find({});
-    return res.render("home", { pageTitle: "Home", Videos });
+    const videos = await Video.find({}).sort({ createdAt: "desc" });
+    return res.render("home", { pageTitle: "Home", videos });
   } catch (err) {
     return res.render("server-error", err);
   }
 };
 
-export const search = (req, res) => res.send("search Videos");
+export const search = async (req, res) => {
+  const { keyword } = req.query;
+  let videos = [];
+  if (keyword) {
+    videos = await Video.find({
+      title: {
+        $regex: new RegExp(`${keyword}`, "i"),
+      },
+    });
+  }
+  return res.render("search", { pageTitle: "Search", videos });
+};
 
 export const watch = async (req, res) => {
   const { id } = req.params;
@@ -45,7 +54,7 @@ export const postEdit = async (req, res) => {
   await Video.findByIdAndUpdate(id, {
     title,
     description,
-    hashtags: formHashTags(hashtags),
+    hashtags: Video.formatHashtags(hashtags),
   });
 
   //값 저장하기 - save 편
@@ -66,7 +75,7 @@ export const postUpload = async (req, res) => {
     await Video.create({
       title,
       description,
-      hashtags: formHashTags(hashtags),
+      hashtags: Video.formatHashtags(hashtags),
     });
     return res.redirect("/");
   } catch (error) {
@@ -78,7 +87,8 @@ export const postUpload = async (req, res) => {
   }
 };
 
-export const deleteVideo = (req, res) => {
-  console.log(req.params);
-  return res.send("Delete Videos");
+export const deleteVideo = async (req, res) => {
+  const { id } = req.params;
+  await Video.findByIdAndDelete(id);
+  return res.redirect("/");
 };

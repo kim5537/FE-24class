@@ -24,6 +24,9 @@ const RecoBooks = async () => {
       },
     }
   );
+  if (!response.ok) {
+    return <div>오류가 발생했습니다...</div>;
+  }
   const recoBooks: BookData[] = await response.json();
   return (
     <div>
@@ -58,14 +61,13 @@ const Home = async () => {
     <div className={styles.container}>
       <section>
         <h3>지금 추천 도서</h3>
-
         <Suspense fallback={<BookListSkeleton count={3} />}>
           <RecoBooks />
         </Suspense>
       </section>
       <section>
-        <h3>등록된 도서 </h3>
-        <Suspense fallback={<BookListSkeleton count={8} />}>
+        <h3>등록된 모든 도서</h3>
+        <Suspense fallback={<BookListSkeleton count={10} />}>
           <AllBooks />
         </Suspense>
       </section>
