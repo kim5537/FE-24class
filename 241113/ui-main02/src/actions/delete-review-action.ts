@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use-server";
-import { error } from "console";
 import { revalidatePath } from "next/cache";
 
 export const deleteReviewAction = async (_: any, formData: FormData) => {

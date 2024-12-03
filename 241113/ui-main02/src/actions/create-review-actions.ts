@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 import delay from "@/util/delay";
-import { error } from "console";
 //"use server" =서버 액션을 하게 시킨것
 import { revalidatePath } from "next/cache";
 

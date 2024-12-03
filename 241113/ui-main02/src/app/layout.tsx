@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import style from "./layout.module.css";
 import { BookData } from "@/types";
-
 import React from "react";
 
 const Footer = async () => {
@@ -28,7 +27,13 @@ const Footer = async () => {
   );
 };
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({
+  children,
+  modal,
+}: {
+  children: ReactNode;
+  modal: ReactNode;
+}) => {
   return (
     <html lang="ko">
       <body>
@@ -39,6 +44,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <main>{children}</main>
           <Footer />
         </div>
+        {modal}
+        <div id="modal-root"></div>
       </body>
     </html>
   );

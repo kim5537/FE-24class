@@ -27,7 +27,7 @@ export const watch = async (req, res) => {
   const video = await Video.findById(id); //매칭되는 값을 찾아줌
 
   if (!video) {
-    return res.render("404", { pageTitle: "Video not Found" });
+    return res.status(404).render("404", { pageTitle: "Video not Found" });
   }
   return res.render("watch", { pageTitle: video.title, video });
 };
@@ -37,7 +37,7 @@ export const getEdit = async (req, res) => {
   const video = await Video.findById(id);
 
   if (!video) {
-    return res.render("404", { pageTitle: "Video not found." });
+    return res.status(404).render("404", { pageTitle: "Video not found." });
   }
   return res.render("edit", { pageTitle: `Editing ${video.title}`, video });
 };
