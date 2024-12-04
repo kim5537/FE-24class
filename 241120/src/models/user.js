@@ -1,11 +1,17 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import { type } from "express/lib/response";
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
     unique: true,
+  },
+  avatarUrl: String,
+  socialOnly: {
+    type: Number,
+    default: false,
   },
   username: {
     type: String,
@@ -14,7 +20,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   name: {
     type: String,

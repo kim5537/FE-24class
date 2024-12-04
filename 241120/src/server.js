@@ -17,16 +17,23 @@ app.use(logger);
 //전역 라우터 = 글로벌 라우터 //
 app.use(express.urlencoded({ extended: true }));
 //글로벌 라우터 실행 전 session 정의를 해야함
+
+// console.log(process.env.COOKIE_SECRET);
 app.use(
   session({
-    secret: "Hellow!",
+    secret: process.env.COOKIE_SECRET,
     //암호화를 위해 hellow라고 적는다. 현업에선 이것 또한 hashing해서 넣는다. 이 키를 알면 데이터를 다 빼내어 갈 수 있기 때문이다.
-    resave: false,
+    resave: true,
     // 이 세션을 얼만에 한번씩 업뎃할 것인지 - 특정 시간이 되면 업뎃 시키겠다는 뜻
     //(= true일 경우)세션 안에 잇는 데이터가 변경되지 않아도 클라이언트의 매 요청마다 세션을 저장하는 옵션
     saveUninitialized: true,
     //무슨 프로그램이든 init으로 시작하는데 실제 세션이 초기화 되기 전부터 저장하겠다는 의미이다.
-    store: MongoStore.create({ mongoUrl: "mongodb://127.0.0.1:27017/nodejs" }),
+    cookie: {
+      maxAge: 20000,
+      //20초를 말함
+      //쿠키에 대한 유효 시간을 정한다.
+    },
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }), // 여기는 client도 볼 수있어 환경변수로 설정한다.
   })
 );
 
@@ -43,7 +50,7 @@ app.use(
 // app.get("/add-one", (req, res, next) => {
 //   req.session.specialUser += 1; // 새로운 유저인 척
 //   //세션의 고유 아이디이다.
-//   return res.send(`${req.session.id}`);
+//   return res.send(`${req.session.id} ${req.session.specialUser}`);
 // });
 app.use(localMiddleware);
 app.use("/", rootRouter);
