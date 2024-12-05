@@ -10,7 +10,7 @@ html(lang="ko")
       }
   body 
     header
-      h1 I Love #{nickname}
+      h1=pageTitle
       nav
         ul
           li
@@ -19,14 +19,16 @@ html(lang="ko")
             li 
               a(href="/users/logout") Log Out
             li
+              a(href="/videos/upload") Upload Video
+            li
               a(href="/my-profile") #{loggedInUser.name}의 profile
+            li 
+              a(href="/users/edit") Edit Profile
           else
             li
               a(href="/login") Login
             li
               a(href="/join") Join
-          li
-            a(href="/videos/upload") Upload Video
           li
             a(href="/search") search
       h1=pageTitle

@@ -2,7 +2,6 @@ import User from "../models/user";
 import bcrypt from "bcrypt";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
-
 export const postJoin = async (req, res) => {
   const { email, username, password, password1, name, location } = req.body;
   const pageTitle = "Join";
@@ -13,9 +12,8 @@ export const postJoin = async (req, res) => {
       errorMessage: "Password confirmation does not match",
     });
   }
-  //$or == 둘 중 하나라도 있으면 이란 의미 $or키 안에 벨류값은 배열안에 객체형으로 해줘야한다.
-  const exists = await User.exists({ $or: [{ username }, { email }] }); //=> 하나라도 충족하면 true
 
+  const exists = await User.exists({ $or: [{ username }, { email }] });
   if (exists) {
     return res.status(400).render("Join", {
       pageTitle,
@@ -26,7 +24,6 @@ export const postJoin = async (req, res) => {
   try {
     await User.create({
       email,
-      socialOnly: true,
       username,
       password,
       name,
@@ -34,49 +31,44 @@ export const postJoin = async (req, res) => {
     });
     res.redirect("/login");
   } catch (error) {
-    return res
-      .status(400)
-      .render("join", { pageTitle, errorMessage: error._message });
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: error._message,
+    });
   }
 };
-
 export const startGithubLogin = (req, res) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
   const config = {
-    client_id: process.env.GH_CLIENT,
+    client_id: process.env.GITHUB_CLIENT,
     allow_signup: false,
     scope: "read:user user:email",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
+
   return res.redirect(finalUrl);
 };
-
 export const finishGithubLogin = async (req, res) => {
   const baseUrl = "https://github.com/login/oauth/access_token";
   const config = {
-    client_id: process.env.GH_CLIENT,
-    client_secret: process.env.GH_SECRET,
+    client_id: process.env.GITHUB_CLIENT,
+    client_secret: process.env.GITHUB_SECRET,
     code: req.query.code,
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
-  const tonkenRequest = await (
+  const tokenRequest = await (
     await fetch(finalUrl, {
       method: "POST",
-      //포스트 방식으로 값을 받아올 땐 이렇게 옵션값을 넣어줘야한다.
-      //서버에서 값이 오기 때문에  json이 필요하다
       headers: {
         Accept: "application/json",
       },
     })
   ).json();
-
-  // const json = await data.json();
-  if ("access_token" in tonkenRequest) {
-    const { access_token } = tonkenRequest;
-    const apiUrl = " https://api.github.com";
-
+  if ("access_token" in tokenRequest) {
+    const { access_token } = tokenRequest;
+    const apiUrl = "https://api.github.com";
     const userData = await (
       await fetch(`${apiUrl}/user`, {
         headers: {
@@ -84,7 +76,6 @@ export const finishGithubLogin = async (req, res) => {
         },
       })
     ).json();
-
     const emailData = await (
       await fetch(`${apiUrl}/user/emails`, {
         headers: {
@@ -107,8 +98,8 @@ export const finishGithubLogin = async (req, res) => {
     } else {
       const user = await User.create({
         email: emailObj.email,
-        avatarUrl: userData.avatarUrl,
         socialOnly: true,
+        avatarUrl: userData.avatar_url,
         username: userData.login,
         password: "",
         name: userData.name,
@@ -122,15 +113,53 @@ export const finishGithubLogin = async (req, res) => {
     return res.redirect("/login");
   }
 };
+export const getEdit = (req, res) => {
+  return res.render("edit-profile", { pageTitle: "Edit Profile" });
+};
 
-export const edit = (req, res) => res.send("Edit");
-export const remove = (req, res) => res.send("remove");
+export const postEdit = async (req, res) => {
+  // const { user } = req.session;
+  // const { name, email, username, location } = req.body;
+
+  const {
+    session: {
+      user: { _id, email: sesstionEmail, username: sessionUsername },
+    },
+    body: { name, email, username, location },
+  } = req;
+
+  const usernameExists =
+    username !== sessionUsername ? await User.exists({ username }) : undefined;
+  const emailExists =
+    email !== sesstionEmail ? await User.exists({ email }) : undefined;
+
+  if (usernameExists || emailExists) {
+    return res.status(400).render("edit-profile", {
+      pageTitle: "Edit Profile ",
+      usernameErrorMessage: usernameExists
+        ? "This use name is already taken"
+        : 0,
+      emailErrorMessage: emailExists ? "This email is already taken" : 0,
+    });
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      email,
+      username,
+      location,
+    },
+    { new: true }
+  );
+  //세번째 매개변수  { new: true }를 주면 값을 반환한다. 그래서 바로 하단처럼 사용 할 수 있게 된다.
+  req.session.user = updatedUser;
+  return res.redirect("/users/edit");
+};
 
 export const getLogin = (req, res) =>
-  res.render("login", {
-    pageTitle: "Login",
-  });
-
+  res.render("login", { pageTitle: "Login" });
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
   const pageTitle = "Login";
@@ -141,22 +170,17 @@ export const postLogin = async (req, res) => {
       errorMessage: "An account with this username does not exits",
     });
   }
-
   const ok = await bcrypt.compare(password, user.password);
-  // 두 값을 비교 후 boolean 값
   if (!ok) {
-    return res
-      .status(400)
-      .render("login", { pageTitle, errorMessage: "Wrong password" });
+    return res.status(400).render("login", {
+      pageTitle,
+      errorMessage: "Wrong Password",
+    });
   }
-  // res.end();
-  // console.log("user login coming soon!");
   req.session.loggedIn = true;
-  //loggedIn 이라는 키를 만들고 로그인이 되면 true 값을 저장하게 만름
-  req.session.user = user; // 세션에서 유저 정보 비교
+  req.session.user = user;
   return res.redirect("/");
 };
-
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
