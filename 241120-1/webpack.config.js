@@ -6,12 +6,15 @@ const path = require("path");
 // console.log(path.resolve(__dirname, "assets", "js"));
 
 module.exports = {
-  entry: "./src/client/js/main.js",
+  entry: {
+    main: "./src/client/js/main.js",
+    videoPlayer: "./src/client/js/videoPlayer.js",
+  },
   mode: "development",
   watch: true,
   plugins: [new MiniCssExtractPlugin({ filename: "css/style.css" })],
   output: {
-    filename: "js/main.js",
+    filename: "js/[name].js", // [name] = 변수의 값으로 남기겠다.
     path: path.resolve(__dirname, "assets"),
     clean: true,
   },

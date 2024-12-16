@@ -19,9 +19,9 @@ export const search = async (req, res) => {
   if (keyword) {
     videos = await Video.find({
       title: {
-        $regex: new RegExp(keyword, "i"),
+        $regex: new RegExp(keyword, "i"), //정규표현식
       },
-    });
+    }).populate("owner"); // owner은 유저가 직접 입력한 값이 아닌 스키마에서 참조 해온 값이기 때문에 populate 를 사용해야한다.
   }
   return res.render("search", { pageTitle: "Search", videos });
 };

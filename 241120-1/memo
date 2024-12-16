@@ -1,0 +1,20 @@
+User 라는 모델 안에서 video 정보만 찾아옴. 
+->비디오 소유주에 대한 정보를 넣을 것이기 때문에 
+
+Double Populate 
+-> videos 라는 데이터를 찾아오는 데 user의 정보값도 추가로 찾아온다. 
+
+
+동영상 시간 편하게 계산하기 위해 date 를 사용하였고.string으로 변환하여 잘라냈다
+new Date(0)
+Thu Jan 01 1970 09:00:00 GMT+0900 (한국 표준시)
+new Date(10000)
+Thu Jan 01 1970 09:00:10 GMT+0900 (한국 표준시)
+new Date(1000 * 19)
+Thu Jan 01 1970 09:00:19 GMT+0900 (한국 표준시)
+new Date(1000 * 19).toISOString()
+'1970-01-01T00:00:19.000Z'
+new Date(1000 * 19).toISOString().substr(11,8)
+'00:00:19'
+new Date(1000 * 19).toISOString().substring(11,19)
+'00:00:19'

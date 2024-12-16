@@ -24,6 +24,7 @@
     "express-session": "^1.18.1",
     "mongoose": "^8.8.2",
     "morgan": "^1.10.0",
+    "nodeproject": "file:",
     "pug": "^3.0.3"
   },
   "devDependencies": {
